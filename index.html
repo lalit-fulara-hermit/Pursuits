@@ -339,11 +339,11 @@ const STAGES=["Qualify","Develop","Propose","Negotiate","Close"];
 const STAGE_PROB={Qualify:.2,Develop:.4,Propose:.6,Negotiate:.8};
 
 const KITS={
- "ADV-1":{name:"Operating Model Redesign",line:"Advisory",tags:["operating model","post-merger","cost-out"],levers:["cost↓","risk↓"],disq:["No exec mandate for change"]},
- "ADV-2":{name:"GTM Strategy",line:"Advisory",tags:["market entry","growth","pricing"],levers:["revenue↑"],disq:["No growth budget"]},
- "TEC-1":{name:"Data Migration & Modernization",line:"Technology",tags:["legacy systems","data silos","cloud"],levers:["cost↓","time↓"],disq:["Mid-migration with another vendor"]},
- "TEC-2":{name:"ML Demand Forecasting",line:"Hybrid",tags:["forecasting","planning","inventory"],levers:["revenue↑","cost↓"],disq:["No usable historical data"]},
- "TEC-3":{name:"AI Document Intelligence",line:"Technology",tags:["document processing","compliance","claims"],levers:["cost↓","time↓","compliance"],disq:["Regulated data not yet scoped"]},
+ "ADV-1":{name:"Operating Model Redesign",line:"Advisory",tags:["operating model","post-merger","cost-out"],levers:["cost↓","risk↓"],disq:[{t:"No exec mandate for change",hard:true}]},
+ "ADV-2":{name:"GTM Strategy",line:"Advisory",tags:["market entry","growth","pricing"],levers:["revenue↑"],disq:[{t:"No growth budget",hard:true}]},
+ "TEC-1":{name:"Data Migration & Modernization",line:"Technology",tags:["legacy systems","data silos","cloud"],levers:["cost↓","time↓"],disq:[{t:"Mid-migration with another vendor",hard:true}]},
+ "TEC-2":{name:"ML Demand Forecasting",line:"Hybrid",tags:["forecasting","planning","inventory"],levers:["revenue↑","cost↓"],disq:[{t:"No usable historical data",hard:true}]},
+ "TEC-3":{name:"AI Document Intelligence",line:"Technology",tags:["document processing","compliance","claims"],levers:["cost↓","time↓","compliance"],disq:[{t:"Regulated data not yet scoped",hard:false}]},
 };
 
 const TEAM=[{name:"A. Rao",cap:2,active:1},{name:"J. Okafor",cap:2,active:1},{name:"M. Fischer",cap:2,active:0}];
@@ -393,7 +393,7 @@ const ACCOUNTS=[
    {d:"Jul 02",type:"fin",mat:"high",t:"Board mandated 12% cost-out over 18 months",trig:"Position claims automation against the cost-out target"},
    {d:"Jun 12",type:"lead",mat:"med",t:"Merger integration office stood up under COO",trig:"Brief COO office on operating model kit"}],
   matches:[
-   {kit:"TEC-3",s:{problem:90,value:84,ready:68,constr:52,signal:82},disq:["HIPAA / data-residency scoping required before any build"],
+   {kit:"TEC-3",s:{problem:90,value:84,ready:68,constr:52,signal:82},disq:[{t:"HIPAA / data-residency scoping required before any build",hard:false}],
     ev:{problem:"Claims + compliance map directly to kit tags",value:"Cost↓ hits the 12% mandate",ready:"Analytics team exists; automation thin",constr:"Regulated-data scoping unresolved — capped",signal:"Live audit + cost mandate"}},
    {kit:"ADV-1",s:{problem:82,value:76,ready:74,constr:72,signal:66},disq:[],
     ev:{problem:"Post-merger gaps map to operating-model tags",value:"Cost↓ + risk↓ apply",ready:"Integration office is a ready buyer",constr:"No blockers",signal:"Integration office stand-up fresh"}}]},
@@ -415,7 +415,7 @@ const ACCOUNTS=[
   matches:[
    {kit:"ADV-2",s:{problem:84,value:78,ready:82,constr:68,signal:62},disq:[],
     ev:{problem:"Market entry is the stated priority",value:"Revenue↑ matches expansion",ready:"Founder-led — fast decisions",constr:"Advisory budget unconfirmed (CFO history)",signal:"Announcement recent, single-source"}},
-   {kit:"TEC-1",s:{problem:70,value:58,ready:48,constr:40,signal:56},disq:["Mid-migration with another vendor"],
+   {kit:"TEC-1",s:{problem:70,value:58,ready:48,constr:40,signal:56},disq:[{t:"Mid-migration with another vendor",hard:true}],
     ev:{problem:"ERP data problem maps to kit",value:"Partial cost lever",ready:"Migration mid-flight",constr:"Incumbent SI holds the work",signal:"Migration visible"}}]},
  {id:"cascade",name:"Cascade Biotech",industry:"Life Sciences",size:"2,200 emp · $640M",region:"North America",owner:"J. Okafor",value:2.7,tam:9,
   setup:{complete:false,play:"",engagements:[],incumbents:[],relationships:[],notes:""},
@@ -464,9 +464,9 @@ const ACCOUNTS=[
    {d:"Jul 08",type:"lead",mat:"med",t:"CEO made public AI-first statement",trig:"Monitor — statement without owner or budget is not a trigger"},
    {d:"Jun 15",type:"fin",mat:"med",t:"FY budget closed; next window Q1",trig:"Set re-engage reminder for budget window"}],
   matches:[
-   {kit:"TEC-2",s:{problem:72,value:76,ready:30,constr:38,signal:44},disq:["No executive sponsor identified","Data foundation not in place"],
+   {kit:"TEC-2",s:{problem:72,value:76,ready:30,constr:38,signal:44},disq:[{t:"No executive sponsor identified",hard:true},{t:"Data foundation not in place",hard:true}],
     ev:{problem:"AI ambition maps on paper",value:"Levers would apply if foundations existed",ready:"No data owner, no infrastructure",constr:"Budget closed",signal:"One statement, nothing structural"}},
-   {kit:"TEC-1",s:{problem:68,value:58,ready:36,constr:42,signal:46},disq:["Budget cycle closed — no funding this FY"],
+   {kit:"TEC-1",s:{problem:68,value:58,ready:36,constr:42,signal:46},disq:[{t:"Budget cycle closed — no funding this FY",hard:true}],
     ev:{problem:"Foundation gap maps to modernization",value:"Partial",ready:"Same gap",constr:"Same block",signal:"Same weak signal"}}]},
  {id:"beacon",name:"Beacon Media",industry:"Media & Entertainment",size:"1,400 emp · $320M",region:"North America",owner:"A. Rao",value:0.9,tam:4,
   setup:{complete:true,play:"none",engagements:[],incumbents:[],relationships:[{who:"Head of Ad Product",strength:"warm",note:"ex-colleague of A. Rao"}],notes:"Small but fast. Entry could reference-build media vertical."},
@@ -494,7 +494,7 @@ const ACCOUNTS=[
    {d:"Jul 03",type:"fin",mat:"med",t:"Renewed multi-year Big-4 engagement",trig:"Park — revisit at renewal minus 6 months"},
    {d:"Jun 10",type:"risk",mat:"med",t:"Procurement freeze extended to Q4",trig:"No action — freeze blocks new vendors"}],
   matches:[
-   {kit:"ADV-1",s:{problem:50,value:46,ready:64,constr:28,signal:24},disq:["Entrenched incumbent advisor","Procurement freeze in effect"],
+   {kit:"ADV-1",s:{problem:50,value:46,ready:64,constr:28,signal:24},disq:[{t:"Entrenched incumbent advisor",hard:true},{t:"Procurement freeze in effect",hard:true}],
     ev:{problem:"No open problem the incumbent is not covering",value:"No urgent lever",ready:"Mature org",constr:"Freeze + incumbent",signal:"Negative triggers"}}]},
 ];
 /* normalize: furnished accounts default to confirmed baselines */
@@ -548,16 +548,17 @@ const PERSONA_LIB={
 /* ============ SCORING ============ */
 function kitScore(s){const w=WEIGHTS,t=w.problem+w.value+w.ready+w.constr+w.signal;return Math.round((s.problem*w.problem+s.value*w.value+s.ready*w.ready+s.constr*w.constr+s.signal*w.signal)/t);}
 function bestMatch(a){return a.matches.map(m=>({...m,score:kitScore(m.s)})).sort((x,y)=>y.score-x.score)[0];}
-function hasHardDisq(a){const h=/sponsor|incumbent|budget|freeze|funding|vendor/i;return a.matches.some(m=>m.disq.some(d=>h.test(d)));}
+function hardDisqs(a){const top=bestMatch(a);return (top&&top.disq?top.disq:[]).filter(d=>d.hard);}
+function hasHardDisq(a){return hardDisqs(a).length>0;}
 function rtwScore(a){const r=a.rtw;return Math.round((r.rel+r.cred+r.del+r.comp+r.comm)/5*20);}
 function staleDims(a){return RTW_DIMS.filter(d=>(a.rtwAge[d.key]||0)>d.exp).map(d=>d.key);}
 function rtpFail(a){return (a.rtp||[]).some(x=>x.st!=="ok");}
 function verdict(a){
  if(!a.setup.complete)return{v:"setup",top:null,rtw:null,stale:[]};
  const top=bestMatch(a),hard=hasHardDisq(a),rtw=rtwScore(a),stale=staleDims(a);
- if(hard&&top.score<THRESHOLD.accept)return{v:"reject",top,hard,rtw,stale};
+ if(hard)return{v:"reject",top,hard,rtw,stale};
  if(top.score>=THRESHOLD.review&&rtpFail(a))return{v:"rtp",top,hard,rtw,stale};
- if(top.score>=THRESHOLD.accept&&!hard){
+ if(top.score>=THRESHOLD.accept){
   if(rtw<THRESHOLD.rtw)return{v:"build",top,hard,rtw,stale};
   if(stale.length)return{v:"review",top,hard,rtw,stale,staleHold:true};
   return{v:"accept",top,hard,rtw,stale};}
@@ -610,22 +611,93 @@ function render(){renderNav();
  ({how:renderHow,overview:renderOverview,setup:renderSetup,furnish:renderFurnish,portfolio:renderPortfolio,pursuits:renderPursuits,library:renderLibrary,insights:renderInsights,registry:renderRegistry,methodology:renderMethodology,governance:renderGovernance})[state.view]();}
 
 /* ============ HOW IT WORKS ============ */
+function howPipeline(){
+ const ph=[["1","Furnish","Set up your kits & accounts","#43224d"],
+           ["2","Analyze","Score & rank the portfolio","#3265aa"],
+           ["3","Execute","Run the chosen pursuits","#1f8a4c"],
+           ["4","Learn","Capture every win & loss","#b9791a"]];
+ const W=170,G=18,H=80,y=16;let x=8,boxes="",arrows="";
+ ph.forEach((p,i)=>{
+  boxes+=`<rect x="${x}" y="${y}" rx="11" width="${W}" height="${H}" fill="#fff" stroke="#e8e6ea"/>`
+   +`<circle cx="${x+24}" cy="${y+27}" r="13" fill="${p[3]}"/><text x="${x+24}" y="${y+31}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${p[0]}</text>`
+   +`<text x="${x+46}" y="${y+31}" font-size="14.5" font-weight="700" fill="#1c1a1f">${p[1]}</text>`
+   +`<text x="${x+16}" y="${y+59}" font-size="11.5" fill="#7a7681">${p[2]}</text>`;
+  if(i<3)arrows+=`<path d="M${x+W} ${y+H/2} h${G}" stroke="#a6a2ad" stroke-width="1.6" marker-end="url(#hp)"/>`;
+  x+=W+G;
+ });
+ const TW=x-G+8;
+ const loop=`<path d="M${TW-94} ${y+H} C${TW-94} ${y+H+42}, 102 ${y+H+42}, 102 ${y+H+6}" fill="none" stroke="#b9791a" stroke-width="1.6" stroke-dasharray="5 4" marker-end="url(#hp2)"/>`
+  +`<text x="${TW/2}" y="${y+H+35}" text-anchor="middle" font-size="11.5" fill="#b9791a" font-weight="600">every close feeds back — the tool gets sharper</text>`;
+ return `<svg viewBox="0 0 ${TW} 152" width="100%" style="max-width:770px;display:block;margin:10px auto 4px">
+  <defs><marker id="hp" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto"><path d="M0 0 L6 4 L0 8 z" fill="#a6a2ad"/></marker>
+  <marker id="hp2" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto"><path d="M0 0 L6 4 L0 8 z" fill="#b9791a"/></marker></defs>
+  ${boxes}${arrows}${loop}</svg>`;
+}
+function howGate(){
+ const q=[["Is it real?","Fit — scored by agents","#3265aa"],["Are we allowed?","RTP — factual checklist","#43224d"],["Can we win?","RTW — your judgment","#1f8a4c"]];
+ const W=192,G=26,H=72,y=44;let x=8,boxes="",arr="";
+ q.forEach((c,i)=>{
+  boxes+=`<rect x="${x}" y="${y}" rx="11" width="${W}" height="${H}" fill="#fff" stroke="#e8e6ea"/>`
+   +`<text x="${x+16}" y="${y+31}" font-size="14.5" font-weight="700" fill="#1c1a1f">${c[0]}</text>`
+   +`<text x="${x+16}" y="${y+54}" font-size="11.5" font-weight="600" fill="${c[2]}">${c[1]}</text>`;
+  if(i<2)arr+=`<text x="${x+W+G/2}" y="${y+H/2+6}" text-anchor="middle" font-size="18" fill="#a6a2ad">→</text>`;
+  x+=W+G;
+ });
+ const EX=x-G+8;
+ const verds=[["Pursue","#1f8a4c"],["Build RTW","#3265aa"],["Build RTP","#43224d"],["Review","#b9791a"],["Pass","#c4083f"]];
+ let pills="",py=8;verds.forEach(v=>{pills+=`<rect x="${EX+20}" y="${py}" rx="11" width="126" height="22" fill="${v[1]}1a" stroke="${v[1]}" stroke-opacity=".45"/><text x="${EX+83}" y="${py+15}" text-anchor="middle" font-size="11" font-weight="700" fill="${v[1]}">${v[0]}</text>`;py+=27;});
+ const a3=`<path d="M${EX} ${y+H/2} h16" stroke="#a6a2ad" stroke-width="1.6" marker-end="url(#hg)"/>`;
+ const dq=`<rect x="8" y="150" rx="9" width="${EX-8}" height="36" fill="#fdf4f7" stroke="#f0d4dc"/>`
+  +`<text x="22" y="173" font-size="12.5" font-weight="700" fill="#c4083f">⛔ Any blocking reason not to sell?</text>`
+  +`<text x="292" y="173" font-size="12" fill="#7a7681">It skips all three questions — the answer is <tspan fill="#c4083f" font-weight="700">Pass</tspan>, every time.</text>`;
+ return `<svg viewBox="0 0 ${EX+158} 194" width="100%" style="max-width:790px;display:block;margin:10px auto 4px">
+  <defs><marker id="hg" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto"><path d="M0 0 L6 4 L0 8 z" fill="#a6a2ad"/></marker></defs>
+  ${boxes}${arr}${a3}${pills}${dq}</svg>`;
+}
+function howTriggers(){
+ let many="";for(let i=0;i<11;i++)many+=`<rect x="8" y="${14+i*14}" rx="3" width="152" height="9" fill="#d8d5dc"/>`;
+ let five="";for(let i=0;i<5;i++)five+=`<rect x="452" y="${58+i*17}" rx="3" width="152" height="11" fill="#b9791a" opacity=".92"/>`;
+ return `<svg viewBox="0 0 620 196" width="100%" style="max-width:640px;display:block;margin:10px auto 4px">
+  <defs><marker id="ht" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto"><path d="M0 0 L6 4 L0 8 z" fill="#a6a2ad"/></marker></defs>
+  <text x="8" y="192" font-size="11" fill="#7a7681">every signal we pick up</text>
+  ${many}
+  <path d="M170 95 h56" stroke="#a6a2ad" stroke-width="1.6" marker-end="url(#ht)"/>
+  <rect x="236" y="62" rx="11" width="158" height="66" fill="#fff" stroke="#e8e6ea"/>
+  <text x="315" y="92" text-anchor="middle" font-size="13.5" font-weight="700" fill="#43224d">Materiality filter</text>
+  <text x="315" y="112" text-anchor="middle" font-size="11" fill="#7a7681">only what matters · max 5/week</text>
+  <path d="M394 95 h48" stroke="#a6a2ad" stroke-width="1.6" marker-end="url(#ht)"/>
+  <text x="452" y="48" font-size="11.5" font-weight="700" fill="#1c1a1f">5 things worth your attention</text>
+  ${five}
+  <text x="452" y="160" font-size="11" fill="#7a7681">everything else waits in a weekly digest</text>
+ </svg>`;
+}
 function renderHow(){
  setCrumb('<b>How it works</b>');
- const steps=[
-  {n:1,t:"Furnish your solution kits",d:"The supply side. Upload a kit as PPT/PDF and let GenAI propose its tags, or build it by hand picking tags from the taxonomy. Nothing can match until a kit is approved.",go:"registry",l:"Solution Kits"},
-  {n:2,t:"Furnish your accounts",d:"The demand side. Agents pre-draft what they can find; you review their findings and add what they never could — plays, relationships, incumbents, history, eligibility, your Right-to-Win baseline. An account is invisible to analysis until furnishing is 100%.",go:"setup",l:"Account Setup"},
-  {n:3,t:"Read the portfolio",d:"Every furnished account is scored on three questions: is it real (fit, by agents), are we allowed (RTP), can we win (RTW, by you). The gate answers Pursue / Build RTW / Build RTP / Review / Pass — always with reasons.",go:"portfolio",l:"Target Portfolio"},
-  {n:4,t:"Act on triggers",d:"Watchers track developments. Only high-materiality events interrupt you, capped at "+TRIGGER_BUDGET+" per week; the rest waits in a digest. Each trigger carries a suggested next action.",go:"overview",l:"Overview"},
-  {n:5,t:"Run the pursuit",d:"A Pursue verdict competes for a capacity slot. The workspace tracks stages, next steps, meeting prep, proposals and battlecards.",go:"pursuits",l:"Pursuits"},
-  {n:6,t:"Close the loop",d:"Every win and loss is captured with reasons and lessons. The engine proposes recalibrations; you approve them. The tool gets sharper with every close.",go:"insights",l:"Insights"}];
+ const phases=[
+  {n:1,t:"Furnish — set the table",go:"setup",l:"Account Setup",
+   d:"Nothing gets analyzed until you have set it up — that is the whole idea. You furnish two things. <b>Kits</b> are what you sell: upload a slide deck or PDF and the tool proposes the tags, or build one by hand. <b>Accounts</b> are who you might sell to: agents pre-draft what they can find in public sources, you approve it, and you add what they never could — your relationships, the incumbents, the history, and your honest read on whether you can win. An account stays invisible to analysis until it is fully furnished."},
+  {n:2,t:"Analyze — read the board",go:"portfolio",l:"Target Portfolio",
+   d:"Now the tool does its job. Every furnished account is put through three plain questions — is it real, are we allowed, can we win — and gets one clear verdict with the reasons attached. Meanwhile, watchers track what is happening at each account and surface only the handful of developments actually worth acting on."},
+  {n:3,t:"Execute — run the pursuit",go:"pursuits",l:"Pursuits",
+   d:"A “Pursue” verdict earns one of your team’s limited capacity slots. From there the workspace tracks the deal stage, your next steps, meeting prep, the proposal, and the battlecard against whoever you are up against. Nothing goes out the door without you approving it."},
+  {n:4,t:"Learn — get sharper",go:"insights",l:"Insights",
+   d:"Every win and loss is logged with the reason and the lesson. The tool spots patterns and proposes small adjustments to how it scores — but you approve each one. Over time it tunes itself to how you actually win."}];
  content.innerHTML=`
-  <div class="topbar"><div><h2>How Pursuits works</h2><p>Bottom-up, zero to one: furnish first, analyze second, act third, learn always. Nothing is scored that you have not grounded.</p></div></div>
+  <div class="topbar"><div><h2>How Pursuits works</h2><p>The tool turns scattered signals about your accounts into a short, ranked list of “pursue this, now — here’s the first move.” It runs in four steps, in order. This page walks them the same way.</p></div></div>
   <div class="meth">
-   ${steps.map(s=>`<div class="fsec"><div class="fh"><span class="fn">${s.n}</span><b>${s.t}</b>
-     <small><span class="whylink" onclick="go('${s.go}')">open ${s.l} →</span></small></div>
-    <p style="font-size:13px">${s.d}</p></div>`).join("")}
-   <p class="hint">Two more pages back everything above: <span class="whylink" onclick="go('methodology')">Methodology</span> explains where every number comes from, and <span class="whylink" onclick="go('governance')">Governance &amp; Data</span> sets the rules the engine runs under.</p>
+   <div class="block" style="margin-bottom:16px"><h3>The whole loop at a glance</h3>
+    ${howPipeline()}
+    <p class="hint">You furnish once. After that you live in <b>Analyze</b> and <b>Execute</b> day to day, and every close quietly improves the next decision.</p></div>
+   ${phases.map(p=>`<div class="fsec"><div class="fh"><span class="fn">${p.n}</span><b>${p.t}</b>
+     <small><span class="whylink" onclick="go('${p.go}')">open ${p.l} →</span></small></div>
+    <p style="font-size:13.5px">${p.d}</p></div>`).join("")}
+   <div class="block" style="margin:16px 0"><h3>How the gate decides — three questions</h3>
+    ${howGate()}
+    <p style="font-size:13.5px"><b>Is it real?</b> is the fit score — how well your kit matches their problem, judged by agents from evidence. <b>Are we allowed?</b> is eligibility — the factual boxes like certifications or registration. <b>Can we win?</b> is your own call on relationships, credentials, delivery, price and competition. The tool combines the three into one verdict. And if there is a blocking reason not to sell — a hard disqualifier — it overrides everything: the deal is a Pass, no matter how good the numbers look.</p></div>
+   <div class="block"><h3>Why it stays quiet — protecting your attention</h3>
+    ${howTriggers()}
+    <p style="font-size:13.5px">A tool that cries wolf gets ignored. So of everything the watchers pick up, only the few most material developments interrupt you — capped at five a week. The rest waits in a weekly digest. Dismiss any alert and that teaches the filter what you do not care about.</p></div>
+   <p class="hint" style="margin-top:16px">Two reference pages sit behind all of this: <span class="whylink" onclick="go('methodology')">Methodology</span> shows where every number comes from, and <span class="whylink" onclick="go('governance')">Governance &amp; Data</span> sets the rules the tool runs under.</p>
   </div>`;
 }
 
@@ -949,7 +1021,7 @@ function renderRegistry(){
     <div class="sec-label" style="margin:0 0 6px">Value levers (${manualKit.levers.length} picked)</div>
     <div class="chips" style="margin-bottom:12px">${LEVER_OPTS.map(t=>{const on=manualKit.levers.includes(t);return `<span class="chip click" style="${on?'background:#43224d;color:#fff;border-color:#43224d':''}" onclick="togglePick('levers','${t}')">${t}</span>`;}).join("")}</div>
     <div class="sec-label" style="margin:0 0 6px">Disqualifiers — when NOT to sell this</div>
-    <div class="chips" style="margin-bottom:8px">${manualKit.disq.map((d,i)=>`<span class="chip" style="border-color:#f0d4dc;color:var(--red);background:#fdf4f7">${d}<span class="x" onclick="manualKit.disq.splice(${i},1);render()">×</span></span>`).join("")}</div>
+    <div class="chips" style="margin-bottom:8px">${manualKit.disq.map((d,i)=>`<span class="chip" style="border-color:#f0d4dc;color:var(--red);background:#fdf4f7">${d.t}<span class="x" onclick="manualKit.disq.splice(${i},1);render()">×</span></span>`).join("")}</div>
     <div class="jadd" style="margin-bottom:14px"><input id="mkDisq" placeholder="e.g. No exec sponsor for the change"><button class="btn sm ghost" onclick="addManualDisq()">Add</button></div>
     <div style="display:flex;gap:8px">
      <button class="btn" onclick="saveManualKit()">Approve — add to registry (v1)</button>
@@ -964,7 +1036,7 @@ function renderRegistry(){
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px">
      <div><div class="sec-label" style="margin:0 0 6px">Proposed problem tags</div><div class="chips">${draftKit.tags.map((t,i)=>`<span class="chip">${t}<span class="x" onclick="dropDraftTag('tags',${i})">×</span></span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">Proposed value levers</div><div class="chips">${draftKit.levers.map((t,i)=>`<span class="chip">${t}<span class="x" onclick="dropDraftTag('levers',${i})">×</span></span>`).join("")}</div></div>
-     <div><div class="sec-label" style="margin:0 0 6px">Proposed disqualifiers</div><div class="chips">${draftKit.disq.map((t,i)=>`<span class="chip" style="border-color:#f0d4dc;color:var(--red);background:#fdf4f7">${t}<span class="x" onclick="dropDraftTag('disq',${i})">×</span></span>`).join("")}</div></div>
+     <div><div class="sec-label" style="margin:0 0 6px">Proposed disqualifiers</div><div class="chips">${draftKit.disq.map((d,i)=>`<span class="chip" style="border-color:${d.hard?'#f0d4dc':'#eee0bd'};color:${d.hard?'var(--red)':'var(--amber)'};background:${d.hard?'#fdf4f7':'#fdf8ec'}">${d.t}<span class="x" onclick="dropDraftTag('disq',${i})">×</span></span>`).join("")}</div></div>
     </div>
     <div style="margin-top:14px;display:flex;gap:8px">
      <button class="btn" onclick="approveKit()">Approve — add to registry (v1)</button>
@@ -978,7 +1050,7 @@ function renderRegistry(){
     <div class="cb" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
      <div><div class="sec-label" style="margin:0 0 6px">Problem tags</div><div class="chips">${k.tags.map(t=>`<span class="chip">${t}</span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">Value levers</div><div class="chips">${k.levers.map(t=>`<span class="chip">${t}</span>`).join("")}</div></div>
-     <div><div class="sec-label" style="margin:0 0 6px">Disqualifiers</div><div class="chips">${k.disq.map(t=>`<span class="chip" style="border-color:#f0d4dc;color:var(--red);background:#fdf4f7">${t}</span>`).join("")}</div></div>
+     <div><div class="sec-label" style="margin:0 0 6px">Disqualifiers</div><div class="chips">${k.disq.map(d=>`<span class="chip" style="border-color:${d.hard?'#f0d4dc':'#eee0bd'};color:${d.hard?'var(--red)':'var(--amber)'};background:${d.hard?'#fdf4f7':'#fdf8ec'}">${d.hard?'⛔ ':'⚠ '}${d.t}</span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">In portfolio</div><p style="font-size:12.5px">${used.length?used.map(a=>`<span class="whylink" onclick="open_('${a.id}')">${a.name}</span>`).join(" · "):'<span class="muted">no match yet</span>'}</p></div>
     </div></div>`;}).join("")}`;
 }
@@ -987,7 +1059,7 @@ function addKitDemo(){
  draftKit={id:"HYB-1",srcFile:"Customer_Analytics_Suite.pdf",slides:34,
   name:"Customer Analytics & Segmentation",line:"Hybrid",
   tags:["customer segmentation","churn prediction","personalization"],
-  levers:["revenue↑"],disq:["No consented first-party customer data"]};
+  levers:["revenue↑"],disq:[{t:"No consented first-party customer data",hard:true}]};
  render();toast("Simulated upload — in production you drop the PPT/PDF and GenAI extracts this draft.");}
 function dropDraftTag(kind,i){draftKit[kind].splice(i,1);render();}
 function startManualKit(){draftKit=null;manualKit={name:"",line:"Advisory",tags:[],levers:[],disq:[]};render();}
@@ -999,7 +1071,7 @@ function togglePick(kind,t){
 function addManualDisq(){
  const nm=document.getElementById("mkName");if(nm)manualKit.name=nm.value;
  const el=document.getElementById("mkDisq");if(!el.value.trim())return;
- manualKit.disq.push(el.value.trim());render();}
+ manualKit.disq.push({t:el.value.trim(),hard:true});render();}
 function saveManualKit(){
  const nm=document.getElementById("mkName");if(nm)manualKit.name=nm.value.trim();
  const ln=document.getElementById("mkLine");if(ln)manualKit.line=ln.value;
@@ -1158,10 +1230,10 @@ function refreshGate(){
  const w=WEIGHTS,t=w.problem+w.value+w.ready+w.constr+w.signal;
  document.getElementById("axisBars").innerHTML=AXES.map(x=>{const c=Math.round(top.s[x.key]*w[x.key]/t);
   return `<div class="axis"><div class="top"><b>${x.label}</b><span class="v">${top.s[x.key]} × ${w[x.key]} → +${c}</span></div><div class="track"><i style="width:${top.s[x.key]}%"></i></div></div>`;}).join("");
- const allDisq=[...new Set(a.matches.flatMap(m=>m.disq))];
- document.getElementById("disqBox").innerHTML=allDisq.length
-  ?`<h3 style="color:var(--red)">Disqualifiers <span class="sub">override the score — by design</span></h3><div class="disq">${allDisq.map(d=>`<div class="d">⚠ ${d}</div>`).join("")}</div>`
-  :`<h3 style="color:var(--green)">No disqualifiers</h3>`;
+ const topd=(bestMatch(a).disq)||[],hd=topd.filter(d=>d.hard),sd=topd.filter(d=>!d.hard);
+ document.getElementById("disqBox").innerHTML=(hd.length||sd.length)
+  ?`${hd.length?`<h3 style="color:var(--red)">Blocking disqualifiers <span class="sub">force a Pass — cannot be overridden</span></h3><div class="disq">${hd.map(d=>`<div class="d">⛔ ${d.t}</div>`).join("")}</div>`:''}${sd.length?`<h3 style="color:var(--amber)${hd.length?';margin-top:14px':''}">Cautions <span class="sub">factored in, not blocking</span></h3><div class="disq">${sd.map(d=>`<div class="d" style="color:var(--amber);border-color:#eee0bd">⚠ ${d.t}</div>`).join("")}</div>`:''}`
+  :`<h3 style="color:var(--green)">No disqualifiers on the best-fit kit</h3>`;
  document.getElementById("quadBox").innerHTML=quadSvg(top.score,v.rtw);
  const now=gateCounts();
  const delta=k=>{const d=now[k]-baseCounts[k];return d===0?"":` (${d>0?"+":""}${d})`;};
