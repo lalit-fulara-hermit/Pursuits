@@ -19,20 +19,18 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--body);font-family:var(--font);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
   .app{display:grid;grid-template-columns:224px 1fr;min-height:100vh}
-
-  .side{background:var(--panel);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:22px}
+  .side{background:var(--panel);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:20px}
   .brand{display:flex;align-items:center;gap:10px;padding:0 6px}
   .logo{width:28px;height:28px;border-radius:7px;background:var(--accent);display:grid;place-items:center;font-weight:800;color:#fff;font-size:14px}
-  .brand h1{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:.2px}
-  .brand span{display:block;font-size:10.5px;color:var(--muted);font-weight:500}
+  .brand h1{font-size:15px;font-weight:700;color:var(--ink)}
+  .brand span{display:block;font-size:10.5px;color:var(--muted)}
   .sec-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 6px 8px;font-weight:600}
   .nav{display:flex;flex-direction:column;gap:1px}
-  .nav a{color:var(--body);text-decoration:none;padding:8px 10px;border-radius:8px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-left:2px solid transparent}
+  .nav a{color:var(--body);text-decoration:none;padding:7px 10px;border-radius:8px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-left:2px solid transparent}
   .nav a:hover{background:var(--panel-2)}
   .nav a.active{background:var(--panel-2);color:var(--accent);font-weight:600;border-left-color:var(--accent);border-radius:0 8px 8px 0}
   .nav .badge{font-size:10px;background:#faf3e5;color:var(--amber);border-radius:12px;padding:1px 7px;font-weight:700}
   .side-foot{margin-top:auto;font-size:11px;color:var(--faint);border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
-
   .main{overflow:auto}
   .masthead{position:sticky;top:0;z-index:20;background:rgba(250,250,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 30px;display:flex;justify-content:space-between;align-items:center}
   .crumb{font-size:13px;color:var(--muted)}
@@ -52,7 +50,6 @@
   .lens-menu button small{color:var(--muted);font-size:11px}
   .tag{font-size:9px;padding:2px 7px;border-radius:20px;background:var(--panel-2);color:var(--muted);border:1px solid var(--line);text-transform:uppercase;letter-spacing:.04em}
   .tag.on{background:#eaf5ee;color:var(--green);border-color:transparent}
-
   .content{padding:24px 30px;max-width:1240px}
   .topbar{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px;gap:16px;flex-wrap:wrap}
   .topbar h2{font-size:21px;font-weight:700;color:var(--ink)}
@@ -60,7 +57,6 @@
   .geo{display:flex;gap:6px}
   .geo button{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:6px 13px;font:inherit;font-size:12.5px;color:var(--muted);cursor:pointer}
   .geo button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
-
   .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
   .kpi{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 16px;box-shadow:var(--shadow)}
   .kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
@@ -71,17 +67,14 @@
   .statline .sw{width:9px;height:9px;border-radius:3px}
   .statline b{color:var(--ink)}
   .statline .why{margin-left:auto;color:var(--faint);font-size:11.5px}
-
   .cols{display:grid;grid-template-columns:1.15fr .85fr;gap:14px}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
   .card .ch{padding:14px 16px;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700;border-bottom:1px solid var(--line-2);display:flex;justify-content:space-between;align-items:center;gap:10px}
   .card .ch .sub{text-transform:none;letter-spacing:0;font-weight:500;color:var(--faint);font-size:11px}
   .card .cb{padding:16px}
-
   .banner{border:1px solid #f0e3c8;background:#fdf8ec;border-radius:var(--radius);padding:13px 16px;font-size:13px;color:#7a5c17;margin-bottom:16px;display:flex;gap:10px;align-items:flex-start}
   .banner b{color:#5f470f}
   .banner .whylink{margin-left:auto;white-space:nowrap}
-
   .dev{display:flex;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line-2)}
   .dev:last-child{border-bottom:none}
   .dev .dt{font-family:var(--mono);font-size:10.5px;color:var(--faint);white-space:nowrap;padding-top:2px;width:52px}
@@ -94,8 +87,6 @@
   .dev .act{margin-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--accent);background:#f6f2f8;border:1px solid #e9e0ee;border-radius:14px;padding:3px 10px;cursor:pointer}
   .dev .act:hover{background:#efe7f3}
   .dev .dismiss{margin-top:6px;margin-left:6px;display:inline-flex;font-size:11.5px;color:var(--faint);border:1px solid var(--line);border-radius:14px;padding:3px 10px;cursor:pointer;background:var(--panel)}
-  .dev .dismiss:hover{color:var(--body);background:var(--panel-2)}
-
   table{width:100%;border-collapse:collapse}
   th{text-align:left;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);padding:11px 16px;border-bottom:1px solid var(--line);font-weight:700}
   td{padding:12px 16px;border-bottom:1px solid var(--line-2);font-size:13px;color:var(--body)}
@@ -111,28 +102,27 @@
   .pill{font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
   .pill.accept{background:#eaf5ee;color:var(--green)}
   .pill.build{background:#eaf0fa;color:var(--blue)}
+  .pill.rtp{background:#f2edf6;color:var(--accent)}
   .pill.review{background:#faf3e5;color:var(--amber)}
   .pill.reject{background:#fbeaef;color:var(--red)}
   .pill.setup{background:var(--panel-2);color:var(--muted)}
+  .pill.won{background:#eaf5ee;color:var(--green)}
+  .pill.lost{background:#fbeaef;color:var(--red)}
   .pill .pd{width:5px;height:5px;border-radius:50%;background:currentColor}
   .val{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:12.5px}
-  .mat{font-size:9.5px;padding:2px 6px;border-radius:4px;font-weight:700;letter-spacing:.03em}
+  .mat{font-size:9.5px;padding:2px 6px;border-radius:4px;font-weight:700}
   .mat.high{background:#fbeaef;color:var(--red)}
   .mat.med{background:var(--panel-2);color:var(--muted);border:1px solid var(--line)}
-
   .filters{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
   .filters button{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:6px 13px;font:inherit;font-size:12.5px;color:var(--muted);cursor:pointer}
   .filters button.active{background:var(--ink);color:#fff;border-color:var(--ink)}
-
   .back{background:none;border:none;color:var(--accent);cursor:pointer;font:inherit;font-size:13px;font-weight:600;margin-bottom:12px;display:inline-flex;gap:6px}
   .tabs{display:flex;gap:2px;border-bottom:1px solid var(--line);margin:16px 0 20px;flex-wrap:wrap}
   .tabs button{background:none;border:none;color:var(--muted);font:inherit;font-size:13px;padding:10px 13px;cursor:pointer;border-bottom:2px solid transparent;font-weight:500}
   .tabs button:hover{color:var(--ink)}
   .tabs button.active{color:var(--ink);border-bottom-color:var(--accent);font-weight:700}
-  .tabs button:disabled{opacity:.45;cursor:not-allowed}
   .tabs .num{font-size:10px;color:var(--muted);background:var(--panel-2);border:1px solid var(--line);border-radius:20px;padding:1px 6px;margin-right:6px}
   .tabs button.active .num{background:var(--accent);color:#fff;border-color:var(--accent)}
-
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .block{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
   .block h3{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:13px;font-weight:700;display:flex;justify-content:space-between;align-items:center;gap:8px}
@@ -145,13 +135,13 @@
   .chip.sig{background:#eef5fb;border-color:#d7e7f4;color:#2c6395}
   .chip.rel-strong{background:#eaf5ee;border-color:#cfe7d8;color:var(--green)}
   .chip.rel-warm{background:#faf3e5;border-color:#eee0bd;color:var(--amber)}
+  .chip.rel-cooling{background:#fbeaef;border-color:#f0d4dc;color:var(--red)}
   .chip.rel-cold{background:var(--panel-2);color:var(--muted)}
-
   .matrix{width:100%;border-collapse:collapse;font-size:12.5px}
   .matrix th{padding:9px 8px;text-transform:none;letter-spacing:0;font-size:11px;color:var(--muted)}
   .matrix td{padding:8px;border-bottom:1px solid var(--line-2);text-align:center}
   .matrix .kit{padding:11px 12px;font-weight:600;color:var(--ink);text-align:left}
-  .matrix .kit small{display:block;color:var(--faint);font-weight:400;font-size:11px;margin-top:1px}
+  .matrix .kit small{display:block;color:var(--faint);font-weight:400;font-size:11px}
   .mcell{display:inline-flex;flex-direction:column;align-items:center;gap:3px;font-family:var(--mono);font-weight:700;color:var(--ink);font-size:12.5px}
   .mcell i{display:block;width:30px;height:3px;border-radius:2px}
   .rowscore{font-weight:800;font-family:var(--mono);text-align:right !important}
@@ -161,7 +151,6 @@
   .motion{font-size:10px;padding:2px 8px;border-radius:12px;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
   .motion.cross{background:#f2edf6;color:var(--accent)}
   .motion.new{background:#eef5fb;color:var(--blue)}
-
   .gate-wrap{display:grid;grid-template-columns:1.08fr .92fr;gap:14px}
   .verdict{border-radius:var(--radius);padding:20px;border:1px solid var(--line);box-shadow:var(--shadow);background:var(--panel)}
   .verdict .vh{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -184,14 +173,20 @@
   .rtw input[type=range]{accent-color:var(--accent)}
   .thresh{margin-top:8px;padding-top:13px;border-top:1px solid var(--line)}
   .reset{margin-top:12px;background:var(--panel-2);border:1px solid var(--line);border-radius:8px;padding:7px 13px;font:inherit;font-size:12px;color:var(--body);cursor:pointer}
-  .reset:hover{background:var(--line-2)}
   .btn{background:var(--accent);border:none;border-radius:8px;padding:9px 16px;font:inherit;font-size:13px;font-weight:600;color:#fff;cursor:pointer}
-  .btn:hover{opacity:.92}
+  .btn.sm{padding:5px 12px;font-size:12px}
+  .btn.ghost{background:var(--panel);border:1px solid var(--line);color:var(--body)}
   .hint{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6}
   .hint b{color:var(--body)}
   .disq .d{display:flex;gap:9px;font-size:12.5px;color:var(--red);padding:8px 0;border-top:1px dashed #f0d4dc}
   .disq .d:first-child{border-top:none}
-
+  .stale{opacity:.55}
+  .stale-tag{font-size:9.5px;background:#faf3e5;color:var(--amber);border-radius:4px;padding:1px 6px;font-weight:700;margin-left:6px}
+  .reaffirm{font-size:10.5px;color:var(--accent);cursor:pointer;font-weight:700;margin-left:6px}
+  .rtpitem{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--line-2);font-size:12.5px}
+  .rtpitem:last-child{border-bottom:none}
+  .rtpitem .st{margin-left:auto;font-size:10.5px;font-weight:700}
+  .rtpitem .st.ok{color:var(--green)} .rtpitem .st.missing{color:var(--red)} .rtpitem .st.pending{color:var(--amber)}
   .persona{border:1px solid var(--line);border-radius:10px;padding:15px;background:var(--panel)}
   .persona .ph{display:flex;align-items:center;gap:10px;margin-bottom:10px}
   .persona .av{width:34px;height:34px;border-radius:50%;background:var(--panel-2);border:1px solid var(--line);color:var(--ink);display:grid;place-items:center;font-weight:700;font-size:12px}
@@ -201,7 +196,6 @@
   .persona .rel.gate{color:var(--amber);background:#faf3e5;border-color:transparent}
   .persona .lab{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);margin:10px 0 2px;font-weight:700}
   .persona p{font-size:12.5px;color:var(--body);line-height:1.5}
-
   .camp{border:1px solid var(--line);border-radius:10px;margin-bottom:12px;background:var(--panel);overflow:hidden}
   .camp .chd{padding:13px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px}
   .camp .ct{font-weight:700;color:var(--ink);font-size:13.5px}
@@ -210,13 +204,12 @@
   .camp .cg{padding:11px 16px;border-right:1px solid var(--line-2)}
   .camp .cg:last-child{border-right:none}
   .camp .cg .lab{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);font-weight:700;margin-bottom:2px}
-  .camp .cg p{font-size:12px;color:var(--body);line-height:1.45}
+  .camp .cg p{font-size:12px;color:var(--body)}
   .camp .hook{padding:11px 16px;border-top:1px solid var(--line-2);font-size:12.5px;color:var(--body);font-style:italic;background:var(--panel-2)}
   .tl-item{padding:12px 0;border-bottom:1px solid var(--line-2);font-size:13px;color:var(--body)}
   .tl-item:last-child{border-bottom:none}
   .tl-item b{color:var(--ink);display:block;margin-bottom:2px}
   .tl-item small{color:var(--muted);font-size:11.5px}
-
   .meth{max-width:880px}
   .meth .step{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--line-2)}
   .meth .step:last-child{border-bottom:none}
@@ -229,11 +222,8 @@
   .gov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:14px}
   .gov li{font-size:12.5px;margin:0 0 8px 16px;color:var(--body)}
   .gov li b{color:var(--ink)}
-
-  /* Setup */
   .setup-row{display:flex;align-items:center;gap:14px;padding:14px 16px;border-bottom:1px solid var(--line-2);cursor:pointer}
   .setup-row:hover{background:var(--panel-2)}
-  .setup-row:last-child{border-bottom:none}
   .setup-row .st{margin-left:auto;display:flex;align-items:center;gap:10px}
   .prog{width:90px;height:6px;background:var(--line-2);border-radius:4px;overflow:hidden}
   .prog>i{display:block;height:100%;border-radius:4px;background:var(--green)}
@@ -242,7 +232,47 @@
   .field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);font-weight:700;margin-bottom:5px}
   .field input,.field textarea,.field select{width:100%;font:inherit;font-size:13px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 12px}
   .field textarea{resize:vertical;min-height:64px}
-  .quad{display:block;margin:6px auto}
+  /* journal */
+  .jrnl{border-left:2px solid var(--line);margin-left:6px;padding-left:16px}
+  .jent{position:relative;padding:9px 0}
+  .jent:before{content:"";position:absolute;left:-21px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--faint)}
+  .jent.you:before{background:var(--accent)}
+  .jent.agent:before{background:var(--blue)}
+  .jent.linkedin:before{background:#0a66c2}
+  .jent .jh{font-size:11px;color:var(--faint);font-family:var(--mono)}
+  .jent .jh .src{font-family:var(--font);font-weight:700;text-transform:uppercase;font-size:9.5px;letter-spacing:.04em}
+  .jent p{font-size:12.5px;color:var(--body)}
+  .jadd{display:flex;gap:8px;margin-top:12px}
+  .jadd input{flex:1;font:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+  .prop{border:1px solid #e9e0ee;background:#faf7fb;border-radius:10px;padding:14px;margin-top:12px}
+  .prop b{color:var(--ink)}
+  .prop p{font-size:12.5px;margin:6px 0 10px}
+  /* pursuit workspace */
+  .stagebar{display:flex;margin:8px 0 4px}
+  .stagebar .sg{flex:1;text-align:center;position:relative;padding:0 4px}
+  .stagebar .sg .cir{width:24px;height:24px;border-radius:50%;background:var(--line-2);color:var(--muted);display:grid;place-items:center;margin:0 auto 6px;font-size:11px;font-weight:700}
+  .stagebar .sg.done .cir{background:var(--green);color:#fff}
+  .stagebar .sg.cur .cir{background:var(--accent);color:#fff}
+  .stagebar .sg .lb{font-size:10.5px;color:var(--muted);font-weight:600}
+  .stagebar .sg.cur .lb{color:var(--ink)}
+  .stagebar .sg:not(:last-child):after{content:"";position:absolute;top:12px;left:60%;right:-40%;height:2px;background:var(--line-2)}
+  .stagebar .sg.done:not(:last-child):after{background:var(--green)}
+  .task{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line-2);font-size:12.5px;cursor:pointer}
+  .task:last-child{border-bottom:none}
+  .task .cb{width:16px;height:16px;border-radius:4px;border:1.5px solid var(--faint);display:grid;place-items:center;flex-shrink:0;font-size:10px;color:#fff}
+  .task.done .cb{background:var(--green);border-color:var(--green)}
+  .task.done span{text-decoration:line-through;color:var(--faint)}
+  .task .due{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+  .funl{display:flex;flex-direction:column;gap:10px}
+  .funl .fr .t{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:4px}
+  .funl .fr .t b{color:var(--ink);font-family:var(--mono)}
+  .funl .fr .track{height:9px;background:var(--line-2);border-radius:5px;overflow:hidden}
+  .funl .fr .track>i{display:block;height:100%;border-radius:5px;background:var(--es-gray)}
+  .lib{display:flex;gap:12px;padding:13px 16px;border-bottom:1px solid var(--line-2);align-items:center}
+  .lib:last-child{border-bottom:none}
+  .lib .ic{width:34px;height:34px;border-radius:8px;background:var(--panel-2);border:1px solid var(--line);display:grid;place-items:center;font-size:10px;font-weight:800;color:var(--accent);flex-shrink:0}
+  .lib b{color:var(--ink);font-weight:600;font-size:13px;display:block}
+  .lib small{color:var(--muted);font-size:11.5px}
   .muted{color:var(--muted)}
   .empty{padding:30px;text-align:center;color:var(--faint);font-size:13px}
 </style>
@@ -253,7 +283,7 @@
     <div class="brand"><div class="logo">P</div><div><h1>Pursuits</h1><span>Growth Cockpit</span></div></div>
     <div><div class="sec-label">Workspace</div><nav class="nav" id="nav"></nav></div>
     <div><div class="sec-label">Trust</div><nav class="nav" id="nav2"></nav></div>
-    <div class="side-foot">Vision preview · sample data<br>Fit is the agents&#39; view. Right to Win is yours.</div>
+    <div class="side-foot">Vision preview · sample data<br>Fit is the agents&#39; view. RTW is yours.</div>
   </aside>
   <main class="main">
     <div class="masthead">
@@ -262,9 +292,9 @@
         <div class="lens" onclick="toggleLens(event)"><span class="li">GL</span><b id="lensLabel">Growth Lead</b><span class="caret">▾</span></div>
         <div class="lens-menu" id="lensMenu">
           <div class="lm-h">Switch lens · same engine</div>
-          <button onclick="setLens('Growth Lead',true,event)"><span><b>Growth Lead</b><small>Geography portfolio · gate · triggers</small></span><span class="tag on">active</span></button>
-          <button onclick="setLens('Presales Engineer',false,event)"><span><b>Presales Engineer</b><small>Technical fit, one account deep</small></span><span class="tag">soon</span></button>
-          <button onclick="setLens('Business Analyst',false,event)"><span><b>Business Analyst</b><small>Value case · org &amp; stakeholders</small></span><span class="tag">soon</span></button>
+          <button onclick="setLens('Growth Lead',true,event)"><span><b>Growth Lead</b><small>Portfolio · gate · triggers</small></span><span class="tag on">active</span></button>
+          <button onclick="setLens('Presales Engineer',false,event)"><span><b>Presales Engineer</b><small>Technical fit · proposals</small></span><span class="tag">soon</span></button>
+          <button onclick="setLens('Business Analyst',false,event)"><span><b>Business Analyst</b><small>Value case · org</small></span><span class="tag">soon</span></button>
         </div>
       </div>
     </div>
@@ -273,20 +303,22 @@
 </div>
 
 <script>
-/* ============ MODEL ============ */
+/* ============ CONFIG (all editable in-tool; versioned in production) ============ */
 const AXES=[
  {key:"problem",label:"Problem fit"},{key:"value",label:"Value lever"},{key:"ready",label:"Readiness"},
  {key:"constr",label:"Constraints fit"},{key:"signal",label:"Signal strength"}];
 const RTW_DIMS=[
- {key:"rel",label:"Relationships & access",q:"Do we know the buying committee — and do they take our calls?"},
- {key:"cred",label:"Credentials & references",q:"Have we demonstrably done this, in or near their industry?"},
- {key:"del",label:"Delivery capability",q:"Can we staff this pursuit and delivery without robbing another?"},
- {key:"comp",label:"Competitive position",q:"Against the incumbent and likely rivals, do we have an edge?"},
- {key:"comm",label:"Commercial position",q:"Can we price to win and still make the margin bar?"}];
+ {key:"rel",label:"Relationships & access",q:"Do we know the buying committee — and do they take our calls?",exp:90},
+ {key:"cred",label:"Credentials & references",q:"Have we demonstrably done this, in or near their industry?",exp:365},
+ {key:"del",label:"Delivery capability",q:"Can we staff this without robbing another pursuit?",exp:90},
+ {key:"comp",label:"Competitive position",q:"Against the incumbent and rivals, do we have an edge?",exp:180},
+ {key:"comm",label:"Commercial position",q:"Can we price to win and still make margin?",exp:180}];
 const DEFAULT_W={problem:35,value:20,ready:20,constr:10,signal:15};
 const DEFAULT_T={accept:70,review:55,rtw:60};
 let WEIGHTS={...DEFAULT_W}, THRESHOLD={...DEFAULT_T};
 const TRIGGER_BUDGET=5;
+const STAGES=["Qualify","Develop","Propose","Negotiate","Close"];
+const STAGE_PROB={Qualify:.2,Develop:.4,Propose:.6,Negotiate:.8};
 
 const KITS={
  "ADV-1":{name:"Operating Model Redesign",line:"Advisory",tags:["operating model","post-merger","cost-out"],levers:["cost↓","risk↓"],disq:["No exec mandate for change"]},
@@ -296,13 +328,21 @@ const KITS={
  "TEC-3":{name:"AI Document Intelligence",line:"Technology",tags:["document processing","compliance","claims"],levers:["cost↓","time↓","compliance"],disq:["Regulated data not yet scoped"]},
 };
 
-/* setup = the inside knowledge agents cannot find. An account is not scored until setup.complete. */
+const TEAM=[{name:"A. Rao",cap:2,active:1},{name:"J. Okafor",cap:2,active:1},{name:"M. Fischer",cap:2,active:0}];
+
+/* rtwAge = days since you last affirmed each dimension. Past its window → stale. */
 const ACCOUNTS=[
  {id:"meridian",name:"Meridian Logistics",industry:"Transportation & Logistics",size:"5,000 emp · $1.2B",region:"North America",owner:"A. Rao",value:2.4,tam:11,
   setup:{complete:true,play:"none",engagements:[],incumbents:["Regional SI holds AMS contract"],
    relationships:[{who:"VP Supply Chain",strength:"warm",note:"met at industry summit"}],
    notes:"Lost a 2023 analytics bid to price. New CIO changes the picture."},
-  rtw:{rel:2,cred:5,del:4,comp:4,comm:3},
+  rtw:{rel:2,cred:5,del:4,comp:4,comm:3},rtwAge:{rel:20,cred:400,del:30,comp:40,comm:40},
+  rtp:[{item:"MSA / vendor registration",st:"ok",src:"agent"},{item:"SOC2 Type II",st:"ok",src:"agent"},{item:"US delivery entity",st:"ok",src:"user"}],
+  journal:[
+   {d:"Jul 21",src:"agent",txt:"New CIO appointed (ex-FedEx digital). Materiality: high."},
+   {d:"Jul 14",src:"agent",txt:"6 data-engineering roles posted across two hubs."},
+   {d:"Jun 02",src:"you",txt:"VP Supply Chain intro at summit — friendly, no budget authority."},
+   {d:"Mar 10",src:"crm",txt:"2023 lost bid record imported: analytics RFP, lost on price to regional SI."}],
   problems:["Manual capacity planning","Fragmented data across 4 systems","No demand forecasting"],
   devs:[
    {d:"Jul 21",type:"lead",mat:"high",t:"New CIO appointed from ex-FedEx digital org",trig:"Send CIO a modernization POV within 2 weeks of onboarding"},
@@ -310,119 +350,165 @@ const ACCOUNTS=[
    {d:"Jun 30",type:"risk",mat:"med",t:"Legacy WMS vendor announced 2027 end-of-life",trig:"Offer migration-risk assessment workshop"}],
   matches:[
    {kit:"TEC-1",s:{problem:92,value:74,ready:62,constr:86,signal:90},disq:[],
-    ev:{problem:"3 of 3 account problems map to kit tags (legacy systems, data silos)",value:"Cost↓ + time↓ levers match WMS end-of-life urgency",ready:"New CIO under 90 days — direction set, team forming",constr:"Budget band and stack match; AMS incumbent does not block migration work",signal:"3 live developments incl. vendor EOL — strongest in portfolio"}},
+    ev:{problem:"3 of 3 account problems map to kit tags",value:"Cost↓ + time↓ match WMS end-of-life urgency",ready:"New CIO under 90 days — team forming",constr:"Budget and stack match; AMS incumbent does not block migration",signal:"3 live developments incl. vendor EOL"}},
    {kit:"TEC-2",s:{problem:78,value:88,ready:55,constr:70,signal:76},disq:[],
-    ev:{problem:"Forecasting maps to 1 of 3 tagged problems",value:"Revenue↑ + cost↓ both apply to capacity planning",ready:"Needs the data foundation first — sequence after TEC-1",constr:"Feasible post-migration",signal:"Hiring signals support data ambition"}},
+    ev:{problem:"Forecasting maps to 1 of 3 problems",value:"Revenue↑ + cost↓ apply to capacity planning",ready:"Needs data foundation first",constr:"Feasible post-migration",signal:"Hiring supports data ambition"}},
    {kit:"ADV-1",s:{problem:48,value:60,ready:70,constr:78,signal:42},disq:[],
-    ev:{problem:"Weak overlap — problems are technical, not operating-model",value:"Some cost-lever relevance",ready:"Org stable",constr:"No blockers",signal:"No advisory-specific triggers"}}]},
+    ev:{problem:"Weak overlap — problems are technical",value:"Some cost-lever relevance",ready:"Org stable",constr:"No blockers",signal:"No advisory triggers"}}]},
  {id:"corepoint",name:"Corepoint Health",industry:"Healthcare Providers",size:"8,000 emp · $2.4B",region:"North America",owner:"J. Okafor",value:3.1,tam:15,
   setup:{complete:true,play:"active",engagements:[{kit:"ADV-1",label:"Ops diagnostic",year:"2025",outcome:"delivered, referenceable"}],
    incumbents:["Big-4 firm holds tax & audit only"],
    relationships:[{who:"COO",strength:"strong",note:"sponsor of 2025 diagnostic"},{who:"Head of Claims Ops",strength:"warm",note:"workshop participant"}],
    notes:"Whitespace: all technology kits. COO owns the cost-out mandate."},
-  rtw:{rel:5,cred:4,del:4,comp:4,comm:4},
+  rtw:{rel:5,cred:4,del:4,comp:4,comm:4},rtwAge:{rel:40,cred:60,del:20,comp:50,comm:50},
+  rtp:[{item:"HIPAA BAA readiness",st:"ok",src:"user"},{item:"SOC2 Type II",st:"ok",src:"agent"},{item:"Healthcare vendor empanelment",st:"ok",src:"agent"}],
+  journal:[
+   {d:"Jul 18",src:"agent",txt:"State regulator opened documentation audit. Materiality: high."},
+   {d:"Jun 03",src:"linkedin",txt:"COO posting repeatedly about merger integration workload."},
+   {d:"Apr 12",src:"you",txt:"Met COO — positive, wants a follow-up on claims automation."},
+   {d:"Feb 20",src:"crm",txt:"2025 ops diagnostic closed: delivered, referenceable, COO sponsor."}],
   problems:["Paper-heavy claims processing","Post-merger operating model gaps","Compliance reporting load"],
   devs:[
    {d:"Jul 18",type:"risk",mat:"high",t:"State regulator opened documentation audit",trig:"Lead with compliance-automation angle while audit is live"},
    {d:"Jul 02",type:"fin",mat:"high",t:"Board mandated 12% cost-out over 18 months",trig:"Position claims automation against the cost-out target"},
-   {d:"Jun 12",type:"lead",mat:"med",t:"Merger integration office stood up under COO",trig:"Brief COO office on post-merger operating model kit"}],
+   {d:"Jun 12",type:"lead",mat:"med",t:"Merger integration office stood up under COO",trig:"Brief COO office on operating model kit"}],
   matches:[
    {kit:"TEC-3",s:{problem:90,value:84,ready:68,constr:52,signal:82},disq:["HIPAA / data-residency scoping required before any build"],
-    ev:{problem:"Claims + compliance problems map directly to kit tags",value:"Cost↓ lever hits the 12% board mandate",ready:"Analytics team exists; automation experience thin",constr:"Regulated-data scoping unresolved — capped",signal:"Live audit + cost mandate are active triggers"}},
+    ev:{problem:"Claims + compliance map directly to kit tags",value:"Cost↓ hits the 12% mandate",ready:"Analytics team exists; automation thin",constr:"Regulated-data scoping unresolved — capped",signal:"Live audit + cost mandate"}},
    {kit:"ADV-1",s:{problem:82,value:76,ready:74,constr:72,signal:66},disq:[],
-    ev:{problem:"Post-merger gaps map to operating-model tags",value:"Cost↓ + risk↓ levers apply",ready:"Integration office is a ready buyer",constr:"No blockers",signal:"Integration office stand-up is fresh"}}]},
+    ev:{problem:"Post-merger gaps map to operating-model tags",value:"Cost↓ + risk↓ apply",ready:"Integration office is a ready buyer",constr:"No blockers",signal:"Integration office stand-up fresh"}}]},
  {id:"helios",name:"Helios Manufacturing",industry:"Industrial Manufacturing",size:"3,000 emp · $780M",region:"APAC",owner:"A. Rao",value:1.2,tam:6,
   setup:{complete:true,play:"past",engagements:[{kit:"ADV-2",label:"GTM study (SEA)",year:"2024",outcome:"delivered, follow-on lost to budget"}],
    incumbents:["Global SI runs the ERP migration"],
    relationships:[{who:"Founder-CEO",strength:"warm",note:"direct sponsor of 2024 study"},{who:"CFO",strength:"cold",note:"blocked the 2024 follow-on"}],
-   notes:"CEO decides fast when the case is growth-framed. CFO is the friction point."},
-  rtw:{rel:3,cred:4,del:3,comp:3,comm:3},
+   notes:"CEO decides fast when growth-framed. CFO is the friction point."},
+  rtw:{rel:3,cred:4,del:3,comp:3,comm:3},rtwAge:{rel:30,cred:90,del:30,comp:60,comm:60},
+  rtp:[{item:"Local entity — Vietnam / Indonesia",st:"missing",src:"user"},{item:"MSA renewal",st:"ok",src:"agent"}],
+  journal:[
+   {d:"Jul 10",src:"agent",txt:"Expansion into Vietnam and Indonesia announced."},
+   {d:"May 15",src:"you",txt:"CEO replied warmly to congratulations note. Door open."}],
   problems:["Go-to-market for new regions","Data trapped in on-prem ERP"],
   devs:[
-   {d:"Jul 10",type:"fin",mat:"high",t:"Announced expansion into Vietnam and Indonesia",trig:"Offer market-entry GTM workshop before entry plans harden"},
+   {d:"Jul 10",type:"fin",mat:"high",t:"Announced expansion into Vietnam and Indonesia",trig:"Offer market-entry GTM workshop before plans harden"},
    {d:"Jun 20",type:"tech",mat:"med",t:"ERP cloud migration kicked off with SI partner",trig:"Time data-layer conversation to migration milestones"}],
   matches:[
    {kit:"ADV-2",s:{problem:84,value:78,ready:82,constr:68,signal:62},disq:[],
-    ev:{problem:"Market entry is the account's stated priority",value:"Revenue↑ lever matches expansion",ready:"Founder-led — decisions land fast",constr:"Advisory budget unconfirmed (CFO history)",signal:"Expansion announcement recent, single-source"}},
+    ev:{problem:"Market entry is the stated priority",value:"Revenue↑ matches expansion",ready:"Founder-led — fast decisions",constr:"Advisory budget unconfirmed (CFO history)",signal:"Announcement recent, single-source"}},
    {kit:"TEC-1",s:{problem:70,value:58,ready:48,constr:40,signal:56},disq:["Mid-migration with another vendor"],
-    ev:{problem:"ERP data problem maps to kit",value:"Cost lever partial",ready:"Migration mid-flight",constr:"Incumbent SI holds the work — hard disqualifier",signal:"Migration activity visible"}}]},
+    ev:{problem:"ERP data problem maps to kit",value:"Partial cost lever",ready:"Migration mid-flight",constr:"Incumbent SI holds the work",signal:"Migration visible"}}]},
  {id:"cascade",name:"Cascade Biotech",industry:"Life Sciences",size:"2,200 emp · $640M",region:"North America",owner:"J. Okafor",value:2.7,tam:9,
   setup:{complete:false,play:"",engagements:[],incumbents:[],relationships:[],notes:""},
-  rtw:{rel:3,cred:4,del:3,comp:4,comm:4},
+  rtw:{rel:3,cred:4,del:3,comp:4,comm:4},rtwAge:{rel:0,cred:0,del:0,comp:0,comm:0},
+  rtp:[{item:"GxP quality certification",st:"ok",src:"agent"},{item:"MSA / vendor registration",st:"ok",src:"agent"}],
+  journal:[{d:"Jul 19",src:"agent",txt:"$300M Series D closed for pipeline expansion."}],
   problems:["Trial data scattered across CROs","Manual regulatory document prep"],
   devs:[
    {d:"Jul 19",type:"fin",mat:"high",t:"Closed $300M Series D for pipeline expansion",trig:"Budget window open — brief within the quarter"},
    {d:"Jul 05",type:"lead",mat:"med",t:"Posted VP Data & Digital role",trig:"Engage hiring exec; offer interim data-strategy support"}],
   matches:[
    {kit:"TEC-3",s:{problem:88,value:80,ready:64,constr:74,signal:84},disq:[],
-    ev:{problem:"Regulatory document prep maps to document-intelligence tags",value:"Time↓ lever critical on FDA timeline",ready:"No VP Data yet — champion seat empty",constr:"Funding fresh; GxP compliance manageable",signal:"Funding + hiring are strong paired triggers"}},
+    ev:{problem:"Regulatory document prep maps to kit tags",value:"Time↓ critical on FDA timeline",ready:"No VP Data yet — champion seat empty",constr:"Funding fresh; GxP manageable",signal:"Funding + hiring paired triggers"}},
    {kit:"TEC-1",s:{problem:74,value:66,ready:60,constr:72,signal:70},disq:[],
-    ev:{problem:"CRO data scatter maps to data-silo tags",value:"Cost + time levers apply",ready:"Same champion gap",constr:"No blockers",signal:"Same funding trigger"}}]},
+    ev:{problem:"CRO data scatter maps to data-silo tags",value:"Cost + time apply",ready:"Same champion gap",constr:"No blockers",signal:"Same funding trigger"}}]},
  {id:"aurora",name:"Aurora Energy",industry:"Utilities",size:"9,500 emp · $5.2B",region:"EMEA",owner:"M. Fischer",value:2.0,tam:14,
-  setup:{complete:true,play:"none",engagements:[],incumbents:["Two entrenched engineering consultancies"],
-   relationships:[],notes:"No warm path in. Strong kit fit but we are unknown to this buyer."},
-  rtw:{rel:1,cred:3,del:4,comp:2,comm:3},
+  setup:{complete:true,play:"none",engagements:[],incumbents:["Two entrenched engineering consultancies"],relationships:[],
+   notes:"No warm path in. Strong kit fit but we are unknown to this buyer."},
+  rtw:{rel:1,cred:3,del:4,comp:2,comm:3},rtwAge:{rel:20,cred:60,del:20,comp:30,comm:30},
+  rtp:[{item:"EU data-processing addendum",st:"ok",src:"agent"},{item:"Utility framework registration",st:"ok",src:"user"}],
+  journal:[{d:"Jul 16",src:"agent",txt:"First Chief Data Officer appointed."},{d:"Jun 25",src:"agent",txt:"Regulator set new grid-efficiency targets."}],
   problems:["Legacy SCADA data silos","No predictive maintenance"],
   devs:[
    {d:"Jul 16",type:"lead",mat:"high",t:"First Chief Data Officer appointed",trig:"CDO listening tour is the entry window — request intro"},
-   {d:"Jun 25",type:"risk",mat:"med",t:"Regulator set new grid-efficiency targets",trig:"Publish POV linking forecasting to the efficiency targets"}],
+   {d:"Jun 25",type:"risk",mat:"med",t:"Regulator set new grid-efficiency targets",trig:"Publish POV linking forecasting to targets"}],
   matches:[
    {kit:"TEC-2",s:{problem:82,value:86,ready:58,constr:66,signal:74},disq:[],
-    ev:{problem:"Predictive maintenance maps to forecasting tags",value:"Cost↓ + compliance levers hit regulator targets",ready:"CDO new; data org immature below exec",constr:"OT/IT split complicates access",signal:"CDO appointment + regulator push"}},
+    ev:{problem:"Predictive maintenance maps to forecasting tags",value:"Cost↓ + compliance hit regulator targets",ready:"CDO new; org immature below exec",constr:"OT/IT split complicates access",signal:"CDO + regulator push"}},
    {kit:"TEC-1",s:{problem:76,value:64,ready:56,constr:70,signal:68},disq:[],
     ev:{problem:"SCADA silos map to data-silo tags",value:"Cost lever applies",ready:"Same maturity gap",constr:"No blockers",signal:"Same triggers"}}]},
  {id:"northwind",name:"Northwind Retail",industry:"Retail",size:"12,000 emp · $4.1B",region:"EMEA",owner:"M. Fischer",value:1.8,tam:12,
   setup:{complete:true,play:"none",engagements:[],incumbents:[],relationships:[],notes:"AI talk without an owner. Watch, do not chase."},
-  rtw:{rel:2,cred:3,del:3,comp:3,comm:2},
+  rtw:{rel:2,cred:3,del:3,comp:3,comm:2},rtwAge:{rel:40,cred:60,del:40,comp:60,comm:60},
+  rtp:[{item:"MSA / vendor registration",st:"ok",src:"agent"}],
+  journal:[{d:"Jul 08",src:"agent",txt:"CEO public AI-first statement — no owner, no budget attached."}],
   problems:["Wants AI, no data infrastructure","Unclear executive sponsor"],
   devs:[
-   {d:"Jul 08",type:"lead",mat:"med",t:"CEO made public AI-first statement at retail summit",trig:"Monitor — statement without owner or budget is not yet a trigger"},
-   {d:"Jun 15",type:"fin",mat:"med",t:"FY budget cycle closed; next window Q1",trig:"Set re-engage reminder for budget window"}],
+   {d:"Jul 08",type:"lead",mat:"med",t:"CEO made public AI-first statement",trig:"Monitor — statement without owner or budget is not a trigger"},
+   {d:"Jun 15",type:"fin",mat:"med",t:"FY budget closed; next window Q1",trig:"Set re-engage reminder for budget window"}],
   matches:[
    {kit:"TEC-2",s:{problem:72,value:76,ready:30,constr:38,signal:44},disq:["No executive sponsor identified","Data foundation not in place"],
-    ev:{problem:"AI ambition maps to forecasting tags on paper",value:"Levers would apply if foundations existed",ready:"No data owner, no infrastructure — lowest in portfolio",constr:"Budget closed this FY",signal:"One public statement; nothing structural"}},
+    ev:{problem:"AI ambition maps on paper",value:"Levers would apply if foundations existed",ready:"No data owner, no infrastructure",constr:"Budget closed",signal:"One statement, nothing structural"}},
    {kit:"TEC-1",s:{problem:68,value:58,ready:36,constr:42,signal:46},disq:["Budget cycle closed — no funding this FY"],
-    ev:{problem:"Foundation gap maps to modernization tags",value:"Partial",ready:"Same readiness gap",constr:"Same budget block",signal:"Same weak signal"}}]},
+    ev:{problem:"Foundation gap maps to modernization",value:"Partial",ready:"Same gap",constr:"Same block",signal:"Same weak signal"}}]},
  {id:"beacon",name:"Beacon Media",industry:"Media & Entertainment",size:"1,400 emp · $320M",region:"North America",owner:"A. Rao",value:0.9,tam:4,
-  setup:{complete:true,play:"none",engagements:[],incumbents:[],relationships:[{who:"Head of Ad Product",strength:"warm",note:"ex-colleague of A. Rao"}],notes:"Small but fast-moving. Entry could reference-build for media vertical."},
-  rtw:{rel:3,cred:2,del:4,comp:3,comm:3},
+  setup:{complete:true,play:"none",engagements:[],incumbents:[],relationships:[{who:"Head of Ad Product",strength:"warm",note:"ex-colleague of A. Rao"}],notes:"Small but fast. Entry could reference-build media vertical."},
+  rtw:{rel:3,cred:2,del:4,comp:3,comm:3},rtwAge:{rel:30,cred:60,del:20,comp:40,comm:40},
+  rtp:[{item:"MSA / vendor registration",st:"ok",src:"agent"}],
+  journal:[{d:"Jul 12",src:"agent",txt:"New CEO issued data-first internal memo."}],
   problems:["No audience segmentation","Fragmented ad data"],
   devs:[
    {d:"Jul 12",type:"lead",mat:"high",t:"New CEO issued data-first internal memo",trig:"Request exec briefing while mandate is fresh"},
    {d:"Jun 28",type:"fin",mat:"med",t:"Q2 ad revenue missed by 8%",trig:"Frame segmentation as revenue-recovery play"}],
   matches:[
    {kit:"TEC-2",s:{problem:66,value:70,ready:46,constr:58,signal:60},disq:[],
-    ev:{problem:"Segmentation partially maps to forecasting tags",value:"Revenue↑ lever matches ad miss",ready:"Two-person analytics team — thin",constr:"Deal size small for kit effort band",signal:"CEO memo fresh but unproven"}},
+    ev:{problem:"Segmentation partially maps",value:"Revenue↑ matches ad miss",ready:"Two-person analytics team",constr:"Deal small for kit effort band",signal:"CEO memo fresh, unproven"}},
    {kit:"ADV-2",s:{problem:60,value:64,ready:62,constr:64,signal:52},disq:[],
     ev:{problem:"Growth problem partially maps",value:"Revenue lever applies",ready:"Leadership open",constr:"Budget modest",signal:"Same memo"}}]},
  {id:"vantage",name:"Vantage Financial",industry:"Financial Services",size:"20,000 emp · $9B",region:"North America",owner:"J. Okafor",value:4.5,tam:22,
-  setup:{complete:true,play:"none",engagements:[],incumbents:["Big-4 advisory on multi-year retainer"],relationships:[],notes:"Park until renewal window minus 6 months."},
-  rtw:{rel:1,cred:3,del:3,comp:1,comm:2},
+  setup:{complete:true,play:"none",engagements:[],incumbents:["Big-4 advisory on multi-year retainer"],relationships:[],notes:"Park until renewal minus 6 months."},
+  rtw:{rel:1,cred:3,del:3,comp:1,comm:2},rtwAge:{rel:60,cred:60,del:60,comp:60,comm:60},
+  rtp:[{item:"Financial-services empanelment",st:"missing",src:"agent"}],
+  journal:[{d:"Jul 03",src:"agent",txt:"Big-4 incumbent renewed multi-year."}],
   problems:["Well-served by incumbents","High switching cost"],
   devs:[
-   {d:"Jul 03",type:"fin",mat:"med",t:"Renewed multi-year engagement with Big-4 incumbent",trig:"Park account — revisit at renewal minus 6 months"},
-   {d:"Jun 10",type:"risk",mat:"med",t:"Enterprise procurement freeze extended to Q4",trig:"No action — freeze blocks any new vendor"}],
+   {d:"Jul 03",type:"fin",mat:"med",t:"Renewed multi-year Big-4 engagement",trig:"Park — revisit at renewal minus 6 months"},
+   {d:"Jun 10",type:"risk",mat:"med",t:"Procurement freeze extended to Q4",trig:"No action — freeze blocks new vendors"}],
   matches:[
    {kit:"ADV-1",s:{problem:50,value:46,ready:64,constr:28,signal:24},disq:["Entrenched incumbent advisor","Procurement freeze in effect"],
-    ev:{problem:"No open problem the incumbent is not covering",value:"No urgent lever",ready:"Mature org — could absorb work",constr:"Freeze + incumbent = double block",signal:"Both developments are negative triggers"}}]},
+    ev:{problem:"No open problem the incumbent is not covering",value:"No urgent lever",ready:"Mature org",constr:"Freeze + incumbent",signal:"Negative triggers"}}]},
 ];
+
+const PURSUITS=[
+ {id:"p1",acct:"meridian",stage:"Develop",kit:"TEC-1",owner:"A. Rao",
+  next:[{t:"Send CIO modernization POV",due:"Jul 28",done:false},{t:"Book migration-risk workshop",due:"Aug 04",done:false},{t:"Draft phased pilot scope",due:"Aug 12",done:false}],
+  meetings:[{d:"Jul 29",t:"Intro briefing — CIO",kind:"up"},{d:"Jul 15",t:"Head of Data intro call",kind:"past",note:"Confirmed 4-system fragmentation. Budget owner is CIO. Wants a phased plan, allergic to big-bang."}],
+  proposal:"Not started",
+  battle:{comp:"Global SI (AMS incumbent)",their:"Already on the ground; will price aggressively",ours:"Migration specialism, zero-downtime references; their AMS revenue is a conflict of interest",watch:"They may bundle migration into the AMS renewal"}},
+ {id:"p2",acct:"corepoint",stage:"Propose",kit:"TEC-3",owner:"J. Okafor",
+  next:[{t:"HIPAA scoping session with compliance",due:"Jul 24",done:true},{t:"Submit proposal v2",due:"Aug 01",done:false},{t:"Line up Juno Health reference call",due:"Aug 05",done:false}],
+  meetings:[{d:"Aug 01",t:"Proposal walkthrough — COO office",kind:"up"},{d:"Jul 17",t:"Claims ops workshop",kind:"past",note:"40k docs/month, 7% error rate. COO wants audit-ready by Q4. Integration office will co-own."}],
+  proposal:"v2 in internal review · due Aug 01",
+  battle:{comp:"Big-4 incumbent (tax & audit)",their:"Board relationships; brand safety",ours:"We hold the COO and a delivered diagnostic; purpose-built claims AI vs generalists",watch:"Expect a strategy-first delay play to buy time"}}];
+
+const WINLOSS=[
+ {acct:"Trident Insurance",kit:"TEC-3",res:"won",value:2.2,date:"May 2026",reason:"Champion + backtest pilot beat two rivals",lesson:"Pilot-first converts skeptical evaluators"},
+ {acct:"Omni Retail Group",kit:"TEC-2",res:"lost",value:1.6,date:"Apr 2026",reason:"Incumbent bundled forecasting for free",lesson:"Check incumbent bundling risk in the constraints axis"},
+ {acct:"Polar Freight",kit:"TEC-1",res:"lost",value:2.0,date:"Feb 2026",reason:"Champion exited mid-pursuit; no second sponsor",lesson:"Champion-exit must stale the RTW relationships score immediately"},
+ {acct:"Juno Health",kit:"ADV-1",res:"won",value:1.4,date:"Jan 2026",reason:"Outcome-linked fees closed the trust gap",lesson:"Fee structure is a competitive weapon vs Big-4"}];
+
+const LIBRARY=[
+ {type:"CASE",title:"Zero-downtime WMS migration — logistics client",kits:"TEC-1",ind:"Logistics",used:"Meridian pursuit · CIO POV"},
+ {type:"CASE",title:"Claims automation: 62% cycle-time cut — insurer",kits:"TEC-3",ind:"Insurance / Health",used:"Corepoint proposal v2"},
+ {type:"CRED",title:"ISO 27001 + SOC2 Type II certificates",kits:"All",ind:"—",used:"RTP checks, security questionnaires"},
+ {type:"PROP",title:"Forecasting pilot proposal — Trident (won)",kits:"TEC-2, TEC-3",ind:"Insurance",used:"Reusable template"},
+ {type:"REF",title:"COO, Juno Health — willing reference",kits:"ADV-1",ind:"Healthcare",used:"Corepoint targeting"},
+ {type:"BATTLE",title:"Battlecard: Big-4 strategy-first delay play",kits:"All advisory",ind:"—",used:"Corepoint pursuit"}];
 
 const PERSONA_LIB={
  Technology:[
-  {role:"Chief Information Officer",rel:"Champion",init:"CIO",care:"Modernization roadmap, board optics on tech debt, not being the exec who owned a failed migration.",objection:"We have been burned by big-bang transformations before.",proof:"Reference: phased 14-month migration at a comparable firm, zero-downtime cutover.",angle:"De-risk the cutover with a proven, phased playbook — value shipped every 90 days.",channel:"Executive briefing, peer reference call"},
-  {role:"Head of Data & Analytics",rel:"Economic buyer",init:"HD",care:"Data quality, time-to-insight, and building a platform rather than accumulating point tools.",objection:"Another vendor selling a foundation we will re-do in 3 years.",proof:"Architecture review artifact + 5-year total-cost model vs. status quo.",angle:"A unified data layer every future use case rides on — theirs to own, not rent.",channel:"Technical workshop"},
-  {role:"VP Engineering",rel:"Technical evaluator",init:"VE",care:"Integration effort, team bandwidth, and whether the vendor engineers are real.",objection:"My team will end up doing the hard parts anyway.",proof:"Named delivery team CVs + a scoped 4-week pilot with exit criteria.",angle:"Delivery that augments the team — pilot first, commitment after.",channel:"Pilot engagement"},
-  {role:"Chief Financial Officer",rel:"Budget gatekeeper",init:"CFO",care:"ROI, payback period, avoiding another stalled multi-year program on the books.",objection:"Capex on data never shows the promised return.",proof:"Costed business case, sub-12-month payback, kill-gate at month 4.",angle:"A quantified case with an exit ramp — risk bounded by design.",channel:"1:1 with business case"}],
+  {role:"Chief Information Officer",rel:"Champion",init:"CIO",care:"Modernization roadmap, board optics, not owning a failed migration.",objection:"We have been burned by big-bang transformations.",proof:"Phased 14-month migration reference, zero-downtime cutover.",angle:"De-risk the cutover — value shipped every 90 days.",channel:"Executive briefing"},
+  {role:"Head of Data & Analytics",rel:"Economic buyer",init:"HD",care:"Data quality, time-to-insight, platform not point tools.",objection:"Another vendor foundation we will re-do in 3 years.",proof:"Architecture review + 5-year cost model.",angle:"A data layer they own, not rent.",channel:"Technical workshop"},
+  {role:"VP Engineering",rel:"Technical evaluator",init:"VE",care:"Integration effort, team bandwidth, real engineers.",objection:"My team ends up doing the hard parts.",proof:"Named team CVs + 4-week pilot with exit criteria.",angle:"Pilot first, commitment after.",channel:"Pilot"},
+  {role:"Chief Financial Officer",rel:"Budget gatekeeper",init:"CFO",care:"ROI, payback, no stalled programs.",objection:"Data capex never returns what is promised.",proof:"Sub-12-month payback case, kill-gate at month 4.",angle:"Bounded risk by design.",channel:"1:1 business case"}],
  Advisory:[
-  {role:"Chief Operating Officer",rel:"Champion",init:"COO",care:"Operating-model friction, integration deadlines, delivery certainty under board scrutiny.",objection:"Consultants diagnose and leave; my team holds the mess.",proof:"Outcome-linked fees + named operators who stay through implementation.",angle:"A faster path to an integrated operating model, with skin in the game.",channel:"Executive briefing"},
-  {role:"Head of Strategy",rel:"Economic buyer",init:"HS",care:"Growth levers, market-entry sequencing, defensible logic the board will accept.",objection:"We can build this deck ourselves.",proof:"Proprietary market data + entry playbooks from adjacent industries.",angle:"Not a deck — a sequenced entry plan with the data to defend it.",channel:"Working session"},
-  {role:"Chief Financial Officer",rel:"Budget gatekeeper",init:"CFO",care:"Hitting the board cost target without operational disruption.",objection:"Every cost program overpromises year-one savings.",proof:"Value case tied to the specific mandate, conservative and stretch scenarios.",angle:"A case built on their numbers, not benchmark hand-waving.",channel:"1:1 with business case"},
-  {role:"Divisional GM",rel:"User buyer",init:"GM",care:"Whether the redesign survives contact with the front line.",objection:"Head office designs, we suffer.",proof:"Co-design workshops with their operators from week one.",angle:"Change designed with the people who run it, not done to them.",channel:"Field workshop"}],
+  {role:"Chief Operating Officer",rel:"Champion",init:"COO",care:"Operating friction, integration deadlines, delivery certainty.",objection:"Consultants diagnose and leave.",proof:"Outcome-linked fees + operators who stay.",angle:"Skin in the game.",channel:"Executive briefing"},
+  {role:"Head of Strategy",rel:"Economic buyer",init:"HS",care:"Growth levers the board will accept.",objection:"We can build this deck ourselves.",proof:"Proprietary data + adjacent-industry playbooks.",angle:"A plan with data to defend it.",channel:"Working session"},
+  {role:"Chief Financial Officer",rel:"Budget gatekeeper",init:"CFO",care:"Cost target without disruption.",objection:"Cost programs overpromise year one.",proof:"Their numbers, conservative and stretch scenarios.",angle:"No benchmark hand-waving.",channel:"1:1 business case"},
+  {role:"Divisional GM",rel:"User buyer",init:"GM",care:"Survival at the front line.",objection:"Head office designs, we suffer.",proof:"Co-design with their operators from week one.",angle:"Change made with, not done to.",channel:"Field workshop"}],
  Hybrid:[
-  {role:"Chief Data Officer",rel:"Champion",init:"CDO",care:"Turning data assets into visible decision advantage in year one.",objection:"I need a win in 2 quarters, not a platform in 2 years.",proof:"90-day first-forecast milestone from a comparable engagement.",angle:"From raw data to a live forecast on a metric they report.",channel:"Executive briefing"},
-  {role:"Head of Operations",rel:"Economic buyer",init:"HO",care:"Forecast accuracy translating into planning wins.",objection:"Our planners beat models here.",proof:"Backtest on their own history: model vs. planner, side by side.",angle:"Forecasting proven on their data before commitment.",channel:"Backtest pilot"},
-  {role:"VP Engineering",rel:"Technical evaluator",init:"VE",care:"Model maintainability, pipeline reliability, no orphaned notebooks.",objection:"Data scientists ship prototypes, we babysit forever.",proof:"Production MLOps reference architecture + handover plan.",angle:"Production-grade ML with an ownership handover.",channel:"Architecture review"},
-  {role:"Chief Financial Officer",rel:"Budget gatekeeper",init:"CFO",care:"ROI on an AI bet when peers have burned money on hype.",objection:"Show one AI project here that returned its cost.",proof:"Value tied to one metric, measured monthly, kill-switch clause.",angle:"An AI bet with bounded downside and a measurable line to value.",channel:"1:1 with business case"}],
+  {role:"Chief Data Officer",rel:"Champion",init:"CDO",care:"Visible decision advantage in year one.",objection:"I need a win in 2 quarters.",proof:"90-day first-forecast milestone reference.",angle:"A forecast on a metric they report.",channel:"Executive briefing"},
+  {role:"Head of Operations",rel:"Economic buyer",init:"HO",care:"Accuracy into planning wins.",objection:"Our planners beat models.",proof:"Backtest on their history, side by side.",angle:"Proven on their data first.",channel:"Backtest pilot"},
+  {role:"VP Engineering",rel:"Technical evaluator",init:"VE",care:"Maintainability, no orphaned notebooks.",objection:"We babysit prototypes forever.",proof:"MLOps reference architecture + handover.",angle:"Production-grade with ownership transfer.",channel:"Architecture review"},
+  {role:"Chief Financial Officer",rel:"Budget gatekeeper",init:"CFO",care:"ROI when peers burned money on AI.",objection:"Show one AI project that returned cost.",proof:"One metric, monthly, kill-switch clause.",angle:"Bounded downside, measurable value.",channel:"1:1 business case"}],
 };
 
 /* ============ SCORING ============ */
@@ -430,28 +516,37 @@ function kitScore(s){const w=WEIGHTS,t=w.problem+w.value+w.ready+w.constr+w.sign
 function bestMatch(a){return a.matches.map(m=>({...m,score:kitScore(m.s)})).sort((x,y)=>y.score-x.score)[0];}
 function hasHardDisq(a){const h=/sponsor|incumbent|budget|freeze|funding|vendor/i;return a.matches.some(m=>m.disq.some(d=>h.test(d)));}
 function rtwScore(a){const r=a.rtw;return Math.round((r.rel+r.cred+r.del+r.comp+r.comm)/5*20);}
+function staleDims(a){return RTW_DIMS.filter(d=>(a.rtwAge[d.key]||0)>d.exp).map(d=>d.key);}
+function rtpFail(a){return (a.rtp||[]).some(x=>x.st!=="ok");}
 function verdict(a){
- if(!a.setup.complete)return{v:"setup",top:null,rtw:null};
- const top=bestMatch(a),hard=hasHardDisq(a),rtw=rtwScore(a);
- if(hard&&top.score<THRESHOLD.accept)return{v:"reject",top,hard,rtw};
- if(top.score>=THRESHOLD.accept&&!hard)return rtw>=THRESHOLD.rtw?{v:"accept",top,hard,rtw}:{v:"build",top,hard,rtw};
- if(top.score>=THRESHOLD.review)return{v:"review",top,hard,rtw};
- return{v:"reject",top,hard,rtw};}
-function gateCounts(){const c={accept:0,build:0,review:0,reject:0,setup:0};ACCOUNTS.forEach(a=>c[verdict(a).v]++);return c;}
-const VLABEL={accept:"Pursue",build:"Build RTW",review:"Review",reject:"Pass",setup:"Setup pending"};
-const VCOLOR={accept:"var(--green)",build:"var(--blue)",review:"var(--amber)",reject:"var(--red)",setup:"var(--muted)"};
+ if(!a.setup.complete)return{v:"setup",top:null,rtw:null,stale:[]};
+ const top=bestMatch(a),hard=hasHardDisq(a),rtw=rtwScore(a),stale=staleDims(a);
+ if(hard&&top.score<THRESHOLD.accept)return{v:"reject",top,hard,rtw,stale};
+ if(top.score>=THRESHOLD.review&&rtpFail(a))return{v:"rtp",top,hard,rtw,stale};
+ if(top.score>=THRESHOLD.accept&&!hard){
+  if(rtw<THRESHOLD.rtw)return{v:"build",top,hard,rtw,stale};
+  if(stale.length)return{v:"review",top,hard,rtw,stale,staleHold:true};
+  return{v:"accept",top,hard,rtw,stale};}
+ if(top.score>=THRESHOLD.review)return{v:"review",top,hard,rtw,stale};
+ return{v:"reject",top,hard,rtw,stale};}
+function gateCounts(){const c={accept:0,build:0,rtp:0,review:0,reject:0,setup:0};ACCOUNTS.forEach(a=>c[verdict(a).v]++);return c;}
+const VLABEL={accept:"Pursue",build:"Build RTW",rtp:"Build RTP",review:"Review",reject:"Pass",setup:"Setup pending"};
+const VCOLOR={accept:"var(--green)",build:"var(--blue)",rtp:"var(--accent)",review:"var(--amber)",reject:"var(--red)",setup:"var(--muted)"};
 function bandColor(n){return n>=THRESHOLD.accept?"var(--green)":n>=THRESHOLD.review?"var(--amber)":"var(--faint)";}
 function motionOf(a){return a.setup.play==="active"||a.setup.play==="past"?"cross":"new";}
+function dimLabel(k){return RTW_DIMS.find(d=>d.key===k).label;}
 function explain(a,v){const k=v.top?KITS[v.top.kit].name:"";
- if(v.v==="accept")return `Recommend <b>pursue</b>. ${k} clears the fit bar (${THRESHOLD.accept}) with no hard disqualifier, and your right-to-win (${v.rtw}) clears the ${THRESHOLD.rtw} bar. Fit says the problem is real; your RTW says the win is realistic.`;
- if(v.v==="build")return `<b>Strong fit, weak hand.</b> ${k} clears the fit bar, but your right-to-win (${v.rtw}) is below ${THRESHOLD.rtw}. Recommend <b>building the right to win before committing a pursuit slot</b>: warm an entry relationship, line up a reference, or partner to cover the gap — then re-assess. Chasing now converts a good opportunity into a likely loss.`;
- if(v.v==="review")return `Recommend <b>human review</b>. ${k} lands in the qualified band (${THRESHOLD.review}–${THRESHOLD.accept})${v.hard?" and a hard disqualifier is flagged":""}. RTW ${v.rtw}. The weak axes are what to pressure-test before spending a slot.`;
- return `Recommend <b>pass</b>. ${v.hard?`A hard disqualifier (sponsor / budget / incumbent / vendor) blocks the pursuit regardless of fit.`:`Best fit ${k} scores ${v.top.score}, below the review bar (${THRESHOLD.review}).`} Finite effort goes further elsewhere.`;}
+ if(v.v==="accept")return `Recommend <b>pursue</b>. ${k} clears the fit bar, eligibility (RTP) is clean, and your right-to-win (${v.rtw}) clears ${THRESHOLD.rtw}. All three questions answered: real, allowed, winnable.`;
+ if(v.v==="build")return `<b>Strong fit, weak hand.</b> Fit clears the bar but your right-to-win (${v.rtw}) is below ${THRESHOLD.rtw}. Build the hand before spending a slot: warm a relationship, line up a reference, or partner. Chasing now turns a good opportunity into a likely loss.`;
+ if(v.v==="rtp")return `<b>Not yet eligible.</b> Fit is there, but a right-to-participate item is missing (see checklist). Fix eligibility first — it is usually cheaper and faster than building relationships.`;
+ if(v.v==="review"&&v.staleHold)return `<b>Held for re-affirmation.</b> This would be a Pursue, but your ${v.stale.map(dimLabel).join(", ").toLowerCase()} input${v.stale.length>1?"s are":" is"} past ${v.stale.length>1?"their":"its"} shelf life. Re-affirm (one click if unchanged) to restore the verdict. Stale judgment is not allowed to green-light a pursuit.`;
+ if(v.v==="review")return `Recommend <b>human review</b>. ${k} lands in the qualified band${v.hard?" and a hard disqualifier is flagged":""}. RTW ${v.rtw}. Pressure-test the weak axes before committing a slot.`;
+ return `Recommend <b>pass</b>. ${v.hard?"A hard disqualifier blocks this regardless of fit.":`Best fit scores ${v.top.score}, below the review bar.`} Finite effort goes further elsewhere.`;}
 
-/* ============ STATE / SHELL ============ */
+/* ============ SHELL ============ */
 let state={view:"overview",geo:"All",acct:null,tab:"intake"};
 const content=document.getElementById("content");
-const NAV=[{k:"overview",t:"Overview"},{k:"setup",t:"Account Setup"},{k:"portfolio",t:"Target Portfolio"},{k:"registry",t:"Solution Kits"}];
+const NAV=[{k:"overview",t:"Overview"},{k:"setup",t:"Account Setup"},{k:"portfolio",t:"Target Portfolio"},{k:"pursuits",t:"Pursuits"},{k:"library",t:"Library"},{k:"insights",t:"Insights"},{k:"registry",t:"Solution Kits"}];
 const NAV2=[{k:"methodology",t:"Methodology"},{k:"governance",t:"Governance & Data"}];
 function pendingCount(){return ACCOUNTS.filter(a=>!a.setup.complete).length;}
 function renderNav(){
@@ -461,7 +556,7 @@ function go(v){state.view=v;state.acct=null;render();}
 function setCrumb(h){document.getElementById("crumb").innerHTML=h;}
 function toggleLens(e){e.stopPropagation();document.getElementById("lensMenu").classList.toggle("open");}
 function setLens(name,active,e){e.stopPropagation();document.getElementById("lensMenu").classList.remove("open");
- if(!active){toast(name+" lens — same engine, different default views and agents. Ships after the Growth Lead core.");return;}
+ if(!active){toast(name+" lens ships after the Growth Lead core.");return;}
  document.getElementById("lensLabel").textContent=name;}
 document.addEventListener("click",()=>document.getElementById("lensMenu").classList.remove("open"));
 let _toast;
@@ -472,69 +567,70 @@ function geoButtons(){return `<div class="geo">${GEOS.map(g=>`<button class="${s
 function setGeo(g){state.geo=g;render();}
 function render(){renderNav();
  if(state.acct)return renderDetail();
- ({overview:renderOverview,setup:renderSetup,portfolio:renderPortfolio,registry:renderRegistry,methodology:renderMethodology,governance:renderGovernance})[state.view]();}
+ ({overview:renderOverview,setup:renderSetup,portfolio:renderPortfolio,pursuits:renderPursuits,library:renderLibrary,insights:renderInsights,registry:renderRegistry,methodology:renderMethodology,governance:renderGovernance})[state.view]();}
 
 /* ============ OVERVIEW ============ */
-function dismissDev(aid,idx){const a=ACCOUNTS.find(x=>x.id===aid);a.devs[idx].dismissed=true;render();toast("Dismissed. Logged for materiality tuning — repeated dismissals of this signal type raise its bar.");}
+function dismissDev(aid,idx){const a=ACCOUNTS.find(x=>x.id===aid);a.devs[idx].dismissed=true;render();toast("Dismissed. Logged for materiality tuning.");}
 function renderOverview(){
  setCrumb('<b>Overview</b> · '+state.geo);
  const accts=geoAccounts().filter(a=>a.setup.complete);
  const pending=geoAccounts().filter(a=>!a.setup.complete);
  const scored=accts.map(a=>({a,v:verdict(a)}));
- const c={accept:0,build:0,review:0,reject:0};scored.forEach(x=>c[x.v.v]++);
- const pipeline=scored.filter(x=>x.v.v==="accept"||x.v.v==="review").reduce((s,x)=>s+x.a.value,0);
+ const c={accept:0,build:0,rtp:0,review:0,reject:0};scored.forEach(x=>c[x.v.v]++);
+ const pipeline=scored.filter(x=>["accept","review"].includes(x.v.v)).reduce((s,x)=>s+x.a.value,0);
  const allDevs=accts.flatMap(a=>a.devs.map((d,i)=>({...d,acct:a,idx:i}))).filter(d=>!d.dismissed).sort((x,y)=>y.d.localeCompare(x.d));
- const high=allDevs.filter(d=>d.mat==="high");
- const med=allDevs.filter(d=>d.mat==="med");
+ const high=allDevs.filter(d=>d.mat==="high"),med=allDevs.filter(d=>d.mat==="med");
  const shown=high.slice(0,TRIGGER_BUDGET);
- const tot=Math.max(c.accept+c.build+c.review+c.reject,1);
+ const cap=TEAM.reduce((s,t)=>s+t.cap,0),used=TEAM.reduce((s,t)=>s+t.active,0);
+ const tot=Math.max(c.accept+c.build+c.rtp+c.review+c.reject,1);
  content.innerHTML=`
   <div class="topbar"><div><h2>Overview</h2><p>${accts.length} active accounts · ${new Set(accts.map(a=>a.industry)).size} industries</p></div>${geoButtons()}</div>
-  ${pending.length?`<div class="banner">⚠ <span><b>${pending.length} account${pending.length>1?'s':''} awaiting setup</b> — agents are paused for ${pending.map(p=>p.name).join(", ")} until you provide the inside knowledge (existing play, relationships, incumbents). No score without your input.</span><span class="whylink" onclick="go('setup')">Complete setup →</span></div>`:''}
+  ${pending.length?`<div class="banner">⚠ <span><b>${pending.length} account awaiting setup</b> — agents paused for ${pending.map(p=>p.name).join(", ")} until you provide inside knowledge. No score without your input.</span><span class="whylink" onclick="go('setup')">Complete setup →</span></div>`:''}
   <div class="kpis">
-   <div class="kpi"><div class="l">Qualified pipeline</div><div class="n">$${pipeline.toFixed(1)}M</div><div class="d">${c.accept} pursue · ${c.review} in review</div></div>
-   <div class="kpi"><div class="l">Build right-to-win</div><div class="n">${c.build}</div><div class="d">good fit, weak hand — groundwork first</div></div>
+   <div class="kpi"><div class="l">Qualified pipeline</div><div class="n">$${pipeline.toFixed(1)}M</div><div class="d">${c.accept} pursue · ${c.review} review</div></div>
+   <div class="kpi"><div class="l">Pursuit capacity</div><div class="n">${used}<span style="font-size:13px;color:var(--faint)"> / ${cap}</span></div><div class="d">slots in use · ${cap-used} free</div></div>
    <div class="kpi"><div class="l">Triggers this week</div><div class="n">${shown.length}<span style="font-size:13px;color:var(--faint)"> / ${TRIGGER_BUDGET}</span></div><div class="d">${med.length} lower-materiality → Friday digest</div></div>
-   <div class="kpi"><div class="l">Awaiting your input</div><div class="n">${pending.length+c.review}</div><div class="d">${pending.length} setup · ${c.review} review decisions</div></div>
+   <div class="kpi"><div class="l">Awaiting your input</div><div class="n">${pending.length+c.review}</div><div class="d">${pending.length} setup · ${c.review} review / re-affirm</div></div>
   </div>
   <div class="statline">
    <span class="seg"><span class="sw" style="background:var(--green)"></span>Pursue <b>${c.accept}</b></span>
    <span class="seg"><span class="sw" style="background:var(--blue)"></span>Build RTW <b>${c.build}</b></span>
+   <span class="seg"><span class="sw" style="background:var(--accent)"></span>Build RTP <b>${c.rtp}</b></span>
    <span class="seg"><span class="sw" style="background:var(--amber)"></span>Review <b>${c.review}</b></span>
    <span class="seg"><span class="sw" style="background:var(--red)"></span>Pass <b>${c.reject}</b></span>
-   <span style="flex:1;min-width:120px;height:7px;background:var(--line-2);border-radius:4px;overflow:hidden;display:flex">
-    <i style="width:${c.accept/tot*100}%;background:var(--green)"></i><i style="width:${c.build/tot*100}%;background:var(--blue)"></i><i style="width:${c.review/tot*100}%;background:var(--amber)"></i><i style="width:${c.reject/tot*100}%;background:var(--red)"></i></span>
-   <span class="why">fit × right-to-win · methodology explains how</span>
+   <span style="flex:1;min-width:110px;height:7px;background:var(--line-2);border-radius:4px;overflow:hidden;display:flex">
+    <i style="width:${c.accept/tot*100}%;background:var(--green)"></i><i style="width:${c.build/tot*100}%;background:var(--blue)"></i><i style="width:${c.rtp/tot*100}%;background:var(--accent)"></i><i style="width:${c.review/tot*100}%;background:var(--amber)"></i><i style="width:${c.reject/tot*100}%;background:var(--red)"></i></span>
+   <span class="why">fit → eligibility → right to win</span>
   </div>
   <div class="cols">
-   <div class="card"><div class="ch">Triggers <span class="sub">high-materiality only · budget ${TRIGGER_BUDGET}/week · rest goes to digest</span></div>
+   <div class="card"><div class="ch">Triggers <span class="sub">high-materiality · budget ${TRIGGER_BUDGET}/week</span></div>
     ${shown.map(d=>`
      <div class="dev"><span class="dt">${d.d}</span><span class="dk ${d.type}"></span>
       <div class="db"><b onclick="open_('${d.acct.id}')">${d.acct.name}</b> <span class="mat high">HIGH</span><p>${d.t}</p>
-      <span class="act" onclick="toast('v1 stub — prepared reachout: ${d.trig.replace(/'/g,"\\'")}')">→ ${d.trig}</span><span class="dismiss" onclick="dismissDev('${d.acct.id}',${d.idx})">dismiss</span></div></div>`).join("")||'<div class="empty">No live triggers. Silence is the default — signal is the exception.</div>'}
-    ${med.length?`<div style="padding:11px 16px;font-size:12px;color:var(--faint);border-top:1px solid var(--line-2)">+ ${med.length} medium-materiality development${med.length>1?'s':''} held for the weekly digest — not worth interrupting you now.</div>`:''}
+      <span class="act" onclick="toast('v1 stub — prepared reachout: ${d.trig.replace(/'/g,"\\'")}')">→ ${d.trig}</span><span class="dismiss" onclick="dismissDev('${d.acct.id}',${d.idx})">dismiss</span></div></div>`).join("")||'<div class="empty">No live triggers. Silence is the default.</div>'}
+    ${med.length?`<div style="padding:11px 16px;font-size:12px;color:var(--faint);border-top:1px solid var(--line-2)">+ ${med.length} medium-materiality held for the weekly digest.</div>`:''}
    </div>
    <div class="card"><div class="ch">Top opportunities <span class="sub">past the gate, by value</span></div>
     <table><thead><tr><th>Account</th><th>Motion</th><th>Fit</th><th>RTW</th><th>Gate</th><th>Value</th></tr></thead><tbody>
-    ${scored.filter(x=>x.v.v==="accept"||x.v.v==="review").sort((a,b)=>b.a.value-a.a.value).slice(0,6).map(({a,v})=>`
+    ${scored.filter(x=>["accept","review"].includes(x.v.v)).sort((a,b)=>b.a.value-a.a.value).slice(0,6).map(({a,v})=>`
      <tr class="row" onclick="open_('${a.id}')"><td><div class="co"><b>${a.name}</b><small>${a.industry}</small></div></td>
      <td><span class="motion ${motionOf(a)}">${motionOf(a)==="cross"?"cross-sell":"new"}</span></td>
      <td><span class="b-score">${v.top.score}</span></td><td><span class="b-score">${v.rtw}</span></td>
      <td><span class="pill ${v.v}"><span class="pd"></span>${VLABEL[v.v]}</span></td>
-     <td class="val">$${a.value.toFixed(1)}M</td></tr>`).join("")||'<tr><td colspan="6" class="empty">No qualified accounts in this geography yet.</td></tr>'}
+     <td class="val">$${a.value.toFixed(1)}M</td></tr>`).join("")||'<tr><td colspan="6" class="empty">No qualified accounts here yet.</td></tr>'}
     </tbody></table>
    </div>
   </div>`;
 }
 
-/* ============ ACCOUNT SETUP ============ */
-function setupProgress(a){let n=0,tot=4;if(a.setup.play)n++;if(a.setup.relationships.length)n++;if(a.setup.incumbents.length)n++;if(a.setup.notes)n++;return Math.round(n/tot*100);}
+/* ============ SETUP ============ */
+function setupProgress(a){let n=0;if(a.setup.play)n++;if(a.setup.relationships.length)n++;if(a.setup.incumbents.length)n++;if(a.setup.notes)n++;return Math.round(n/4*100);}
 let setupOpen=null;
 function renderSetup(){
  setCrumb('<b>Account Setup</b>');
- const strengths={strong:"rel-strong",warm:"rel-warm",cold:"rel-cold"};
+ const strengths={strong:"rel-strong",warm:"rel-warm",cooling:"rel-cooling",cold:"rel-cold"};
  content.innerHTML=`
-  <div class="topbar"><div><h2>Account Setup</h2><p>The tool works bottom-up: before agents score anything, you supply what the internet cannot — existing plays, work already delivered, relationships, incumbents, history. Accounts without completed setup are <b>not scored</b> and consume no attention.</p></div></div>
+  <div class="topbar"><div><h2>Account Setup</h2><p>Bottom-up: you supply what the internet cannot — plays, relationships, incumbents, history. Agents pre-draft the rest. Unset accounts are not scored.</p></div></div>
   <div class="card">
    ${ACCOUNTS.map(a=>`
     <div class="setup-row" onclick="toggleSetup('${a.id}')">
@@ -548,29 +644,28 @@ function renderSetup(){
       <div class="fgrid">
        <div>
         <div class="field"><label>Existing play</label>
-         <select onchange="setPlay('${a.id}',this.value)"><option value="" ${!a.setup.play?'selected':''}>— select —</option><option value="none" ${a.setup.play==='none'?'selected':''}>Prospect — no history</option><option value="past" ${a.setup.play==='past'?'selected':''}>Past client</option><option value="active" ${a.setup.play==='active'?'selected':''}>Active engagement</option></select></div>
-        <div class="field"><label>Work already delivered</label>
-         ${a.setup.engagements.length?`<div class="chips">${a.setup.engagements.map(e=>`<span class="chip">${e.label} · ${e.year} · ${e.outcome}</span>`).join("")}</div>`:`<input placeholder="e.g. Ops diagnostic, 2025, delivered" onchange="toast('v1 stub — engagement recorded')">`}</div>
-        <div class="field"><label>Known incumbents / vendor landscape</label>
-         ${a.setup.incumbents.length?`<div class="chips">${a.setup.incumbents.map(x=>`<span class="chip">${x}</span>`).join("")}</div>`:`<input placeholder="e.g. Big-4 firm on retainer" onchange="toast('v1 stub — incumbent recorded')">`}</div>
+         <select onchange="setPlay('${a.id}',this.value)"><option value="" ${!a.setup.play?'selected':''}>— select —</option><option value="none" ${a.setup.play==='none'?'selected':''}>Prospect</option><option value="past" ${a.setup.play==='past'?'selected':''}>Past client</option><option value="active" ${a.setup.play==='active'?'selected':''}>Active engagement</option></select></div>
+        <div class="field"><label>Work delivered</label>
+         ${a.setup.engagements.length?`<div class="chips">${a.setup.engagements.map(e=>`<span class="chip">${e.label} · ${e.year} · ${e.outcome}</span>`).join("")}</div>`:`<input placeholder="e.g. Ops diagnostic, 2025, delivered" onchange="toast('v1 stub — recorded')">`}</div>
+        <div class="field"><label>Incumbents / vendor landscape</label>
+         ${a.setup.incumbents.length?`<div class="chips">${a.setup.incumbents.map(x=>`<span class="chip">${x}</span>`).join("")}</div>`:`<input placeholder="e.g. Big-4 on retainer" onchange="toast('v1 stub — recorded')">`}</div>
        </div>
        <div>
-        <div class="field"><label>Relationships — who do we actually know?</label>
-         ${a.setup.relationships.length?`<div class="chips">${a.setup.relationships.map(r=>`<span class="chip ${strengths[r.strength]}">${r.who} · ${r.strength}${r.note?" — "+r.note:""}</span>`).join("")}</div>`:`<input placeholder="e.g. COO — strong — sponsored 2025 work" onchange="toast('v1 stub — relationship recorded')">`}</div>
-        <div class="field"><label>History & context the agents can never find</label>
-         <textarea placeholder="Lost bids, pricing history, politics, champions who left…" onchange="toast('v1 stub — notes saved')">${a.setup.notes}</textarea></div>
-        ${!a.setup.complete?`<button class="btn" onclick="completeSetup('${a.id}',event)">Mark setup complete — activate account</button>
-         <p class="hint">On activation: watcher agents start tracking, fit-mapping runs, and the account enters the portfolio with your RTW inputs applied.</p>`:`<p class="hint">Setup complete — edits here re-feed the fit engine and your RTW assessment on the Gate tab.</p>`}
+        <div class="field"><label>Relationships</label>
+         ${a.setup.relationships.length?`<div class="chips">${a.setup.relationships.map(r=>`<span class="chip ${strengths[r.strength]}">${r.who} · ${r.strength}${r.note?" — "+r.note:""}</span>`).join("")}</div>`:`<input placeholder="e.g. COO — strong — sponsored 2025 work" onchange="toast('v1 stub — recorded')">`}</div>
+        <div class="field"><label>History the agents cannot find</label>
+         <textarea placeholder="Lost bids, pricing history, politics…" onchange="toast('v1 stub — saved')">${a.setup.notes}</textarea></div>
+        ${!a.setup.complete?`<button class="btn" onclick="completeSetup('${a.id}',event)">Mark complete — activate account</button>`:`<p class="hint">Setup complete. Edits append to the account journal.</p>`}
        </div>
       </div></div>`:''}`).join("")}
   </div>`;
 }
 function toggleSetup(id){setupOpen=setupOpen===id?null:id;renderSetup();}
-function setPlay(id,val){const a=ACCOUNTS.find(x=>x.id===id);a.setup.play=val;toast("Existing play set — this drives the cross-sell vs new-account motion.");}
+function setPlay(id,val){ACCOUNTS.find(x=>x.id===id).setup.play=val;toast("Existing play set — drives cross-sell vs new-account motion.");}
 function completeSetup(id,e){e.stopPropagation();const a=ACCOUNTS.find(x=>x.id===id);
- if(!a.setup.play){toast("Select the existing play first — the one field the engine cannot proceed without.");return;}
+ if(!a.setup.play){toast("Select the existing play first.");return;}
  a.setup.complete=true;setupOpen=null;render();
- toast(a.name+" activated — watchers tracking, fit mapped, scored into the portfolio. Review its Right to Win on the Gate tab.");}
+ toast(a.name+" activated — watchers on, fit mapped, scored into the portfolio.");}
 
 /* ============ PORTFOLIO ============ */
 let pfilter="all";
@@ -578,40 +673,130 @@ function renderPortfolio(){
  setCrumb('<b>Target Portfolio</b> · '+state.geo);
  const accts=geoAccounts();
  const scored=accts.map(a=>({a,v:verdict(a)})).sort((x,y)=>(y.v.top?y.v.top.score:-1)-(x.v.top?x.v.top.score:-1));
- const c={accept:0,build:0,review:0,reject:0,setup:0};scored.forEach(x=>c[x.v.v]++);
+ const c={accept:0,build:0,rtp:0,review:0,reject:0,setup:0};scored.forEach(x=>c[x.v.v]++);
  const shown=scored.filter(x=>pfilter==="all"||x.v.v===pfilter);
  content.innerHTML=`
-  <div class="topbar"><div><h2>Target Portfolio</h2><p>${accts.length} accounts · fit is agent-scored, right-to-win is yours</p></div>${geoButtons()}</div>
+  <div class="topbar"><div><h2>Target Portfolio</h2><p>Three questions per account: real (fit) · allowed (RTP) · winnable (RTW)</p></div>${geoButtons()}</div>
   <div class="filters">
    <button class="${pfilter==='all'?'active':''}" onclick="setF('all')">All ${scored.length}</button>
    <button class="${pfilter==='accept'?'active':''}" onclick="setF('accept')">Pursue ${c.accept}</button>
    <button class="${pfilter==='build'?'active':''}" onclick="setF('build')">Build RTW ${c.build}</button>
+   <button class="${pfilter==='rtp'?'active':''}" onclick="setF('rtp')">Build RTP ${c.rtp}</button>
    <button class="${pfilter==='review'?'active':''}" onclick="setF('review')">Review ${c.review}</button>
    <button class="${pfilter==='reject'?'active':''}" onclick="setF('reject')">Pass ${c.reject}</button>
    ${c.setup?`<button class="${pfilter==='setup'?'active':''}" onclick="setF('setup')">Setup ${c.setup}</button>`:''}
   </div>
   <div class="card"><table>
-   <thead><tr><th>Account</th><th>Motion</th><th>Best-fit kit</th><th>Fit</th><th>RTW (yours)</th><th>Gate</th><th>Value</th><th>Owner</th></tr></thead>
+   <thead><tr><th>Account</th><th>Motion</th><th>Best-fit kit</th><th>Fit</th><th>RTW</th><th>Gate</th><th>Value</th></tr></thead>
    <tbody>${shown.map(({a,v})=>`
     <tr class="row" onclick="open_('${a.id}')">
      <td><div class="co"><b>${a.name}</b><small>${a.industry} · ${a.region}</small></div></td>
      <td>${a.setup.complete?`<span class="motion ${motionOf(a)}">${motionOf(a)==="cross"?"cross-sell":"new"}</span>`:'<span class="muted">—</span>'}</td>
      <td>${v.top?KITS[v.top.kit].name:'<span class="muted">not scored</span>'}</td>
      <td>${v.top?`<div class="score-cell"><div class="bar"><i style="width:${v.top.score}%;background:${bandColor(v.top.score)}"></i></div><span class="b-score">${v.top.score}</span></div>`:'—'}</td>
-     <td>${v.rtw!==null?`<div class="score-cell"><div class="bar"><i style="width:${v.rtw}%;background:${v.rtw>=THRESHOLD.rtw?'var(--green)':'var(--blue)'}"></i></div><span class="b-score">${v.rtw}</span></div>`:'—'}</td>
+     <td>${v.rtw!==null?`<span class="b-score">${v.rtw}</span>${v.stale.length?'<span class="stale-tag">STALE</span>':''}`:'—'}</td>
      <td><span class="pill ${v.v}"><span class="pd"></span>${VLABEL[v.v]}</span></td>
-     <td class="val">$${a.value.toFixed(1)}M</td><td><small>${a.owner}</small></td>
-    </tr>`).join("")||'<tr><td colspan="8" class="empty">No accounts match this filter.</td></tr>'}</tbody>
+     <td class="val">$${a.value.toFixed(1)}M</td>
+    </tr>`).join("")||'<tr><td colspan="7" class="empty">No accounts match.</td></tr>'}</tbody>
   </table></div>
-  <p class="hint"><b>Pursue</b> = fit and right-to-win both clear their bars. <b>Build RTW</b> = the market fit is real but your hand is weak — invest in relationships/references before spending a pursuit slot. Setup-pending accounts are unscored by design.</p>`;
+  <p class="hint"><b>STALE</b> = a right-to-win input is past its shelf life; the account holds at Review until you re-affirm it on the Gate tab.</p>`;
 }
 function setF(f){pfilter=f;renderPortfolio();}
+
+/* ============ PURSUITS ============ */
+function renderPursuits(){
+ setCrumb('<b>Pursuits</b>');
+ const cap=TEAM.reduce((s,t)=>s+t.cap,0),used=TEAM.reduce((s,t)=>s+t.active,0);
+ content.innerHTML=`
+  <div class="topbar"><div><h2>Pursuit Workspace</h2><p>What happens after "Pursue": stages, next steps, meetings, proposals, battlecards.</p></div></div>
+  <div class="cols" style="grid-template-columns:.62fr 1.38fr">
+   <div>
+    <div class="block"><h3>Capacity <span class="sub">slots are the scarce resource</span></h3>
+     ${TEAM.map(t=>`<div class="kv"><span>${t.name}</span><b>${t.active} / ${t.cap} slots</b></div>`).join("")}
+     <p class="hint">${cap-used} slot${cap-used!==1?'s':''} free. The gate ranks opportunities against this — "Pursue" competes for a slot, it doesn&#39;t just pass a bar.</p></div>
+    <div class="block" style="margin-top:14px"><h3>Waiting on a slot</h3>
+     <p style="font-size:12.5px" class="muted">None — pipeline and capacity are balanced this week.</p></div>
+   </div>
+   <div>
+   ${PURSUITS.map(p=>{const a=ACCOUNTS.find(x=>x.id===p.acct);const si=STAGES.indexOf(p.stage);return `
+    <div class="card" style="margin-bottom:14px"><div class="ch"><span>${a.name} — ${KITS[p.kit].name}</span><span class="sub">$${a.value.toFixed(1)}M · ${p.owner} · <span class="whylink" onclick="open_('${a.id}')">open account →</span></span></div>
+     <div class="cb">
+      <div class="stagebar">${STAGES.map((s,i)=>`<div class="sg ${i<si?'done':i===si?'cur':''}"><div class="cir">${i<si?'✓':i+1}</div><div class="lb">${s}</div></div>`).join("")}</div>
+      <div class="grid2" style="margin-top:14px">
+       <div>
+        <h3 style="font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Next steps</h3>
+        ${p.next.map((n,i)=>`<div class="task ${n.done?'done':''}" onclick="toggleTask('${p.id}',${i})"><span class="cb">${n.done?'✓':''}</span><span>${n.t}</span><span class="due">${n.due}</span></div>`).join("")}
+        <h3 style="font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin:14px 0 8px">Meetings</h3>
+        ${p.meetings.map(m=>m.kind==="up"
+         ?`<div class="task"><span style="color:var(--accent);font-weight:700">▸</span><span><b style="color:var(--ink)">${m.t}</b> · ${m.d}</span><button class="btn sm ghost" style="margin-left:auto" onclick="event.stopPropagation();toast('v1 stub — prep pack: committee bios, journal recap, battlecard, talking points, live triggers')">Prep pack</button></div>`
+         :`<div class="task" style="cursor:default"><span style="color:var(--faint)">✓</span><span><b style="color:var(--ink)">${m.t}</b> · ${m.d}<br><small class="muted">${m.note}</small></span></div>`).join("")}
+        <div class="kv" style="margin-top:10px"><span>Proposal</span><b>${p.proposal}</b></div>
+       </div>
+       <div>
+        <h3 style="font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Battlecard — ${p.battle.comp}</h3>
+        <div class="kv"><span>Their strengths</span><b style="max-width:60%">${p.battle.their}</b></div>
+        <div class="kv"><span>Our counters</span><b style="max-width:60%">${p.battle.ours}</b></div>
+        <div class="kv"><span>Watch for</span><b style="max-width:60%">${p.battle.watch}</b></div>
+        <p class="hint">Battlecard entries are editable and journal-backed like everything else.</p>
+       </div>
+      </div>
+     </div></div>`;}).join("")}
+   </div>
+  </div>`;
+}
+function toggleTask(pid,i){const p=PURSUITS.find(x=>x.id===pid);p.next[i].done=!p.next[i].done;renderPursuits();}
+
+/* ============ LIBRARY ============ */
+function renderLibrary(){
+ setCrumb('<b>Library</b>');
+ content.innerHTML=`
+  <div class="topbar"><div><h2>Collateral Library</h2><p>Case studies, credentials, references, past proposals, battlecards. Feeds proposals, RTP checks and the credentials dimension of RTW.</p></div></div>
+  <div class="card">
+   ${LIBRARY.map(l=>`<div class="lib"><div class="ic">${l.type}</div>
+    <div style="flex:1"><b>${l.title}</b><small>Kits: ${l.kits} · Industry: ${l.ind}</small></div>
+    <small class="muted" style="white-space:nowrap">${l.used}</small></div>`).join("")}
+  </div>
+  <p class="hint">In production this is searchable and agent-indexed: the proposal agent pulls the closest case studies automatically, and a missing reference for a live pursuit raises a task, not a surprise.</p>`;
+}
+
+/* ============ INSIGHTS ============ */
+function renderInsights(){
+ setCrumb('<b>Insights</b>');
+ const scored=ACCOUNTS.filter(a=>a.setup.complete).map(a=>({a,v:verdict(a)}));
+ const qual=scored.filter(x=>["accept","review","build","rtp"].includes(x.v.v)).length;
+ const won=WINLOSS.filter(w=>w.res==="won").length;
+ const forecast=PURSUITS.reduce((s,p)=>{const a=ACCOUNTS.find(x=>x.id===p.acct);return s+a.value*(STAGE_PROB[p.stage]||.3);},0);
+ const raw=PURSUITS.reduce((s,p)=>s+ACCOUNTS.find(x=>x.id===p.acct).value,0);
+ const fun=[["Accounts scanned",ACCOUNTS.length],["Setup complete",ACCOUNTS.filter(a=>a.setup.complete).length],["Past the gate",qual],["Active pursuits",PURSUITS.length],["Historical win rate",won+" of "+WINLOSS.length]];
+ const mx=ACCOUNTS.length;
+ content.innerHTML=`
+  <div class="topbar"><div><h2>Insights</h2><p>Forecast, funnel, and the win/loss log that recalibrates the engine.</p></div></div>
+  <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
+   <div class="kpi"><div class="l">Weighted forecast</div><div class="n">$${forecast.toFixed(1)}M</div><div class="d">$${raw.toFixed(1)}M unweighted · stage-probability weighted</div></div>
+   <div class="kpi"><div class="l">Win rate (12 mo)</div><div class="n">${Math.round(won/WINLOSS.length*100)}%</div><div class="d">${won} won · ${WINLOSS.length-won} lost</div></div>
+   <div class="kpi"><div class="l">Avg. won deal</div><div class="n">$${(WINLOSS.filter(w=>w.res==="won").reduce((s,w)=>s+w.value,0)/won).toFixed(1)}M</div><div class="d">estimation audit vs sized value: −8%</div></div>
+  </div>
+  <div class="cols" style="grid-template-columns:.8fr 1.2fr">
+   <div class="block"><h3>Funnel</h3><div class="funl">
+    ${fun.map(([t,n])=>`<div class="fr"><div class="t"><span>${t}</span><b>${n}</b></div><div class="track"><i style="width:${typeof n==="number"?Math.round(n/mx*100):50}%"></i></div></div>`).join("")}
+   </div></div>
+   <div class="card"><div class="ch">Win / loss log <span class="sub">every close feeds recalibration</span></div>
+    <table><thead><tr><th>Account</th><th>Kit</th><th>Result</th><th>Why</th></tr></thead><tbody>
+     ${WINLOSS.map(w=>`<tr><td><div class="co"><b>${w.acct}</b><small>${w.date} · $${w.value}M</small></div></td><td>${w.kit}</td>
+      <td><span class="pill ${w.res}"><span class="pd"></span>${w.res}</span></td><td style="font-size:12.5px">${w.reason}</td></tr>`).join("")}
+    </tbody></table>
+   </div>
+  </div>
+  <div class="block" style="margin-top:14px"><h3>What the engine learned <span class="sub">from losses — applied as suggestions, approved by you</span></h3>
+   ${WINLOSS.filter(w=>w.res==="lost").map(w=>`<div class="kv"><span>${w.acct}</span><b style="max-width:70%;font-weight:500;color:var(--body)">${w.lesson}</b></div>`).join("")}
+   <p class="hint">Quarterly recalibration reviews these against gate weights and rubric. Nothing self-modifies — the engine proposes, you approve.</p></div>`;
+}
 
 /* ============ REGISTRY ============ */
 function renderRegistry(){
  setCrumb('<b>Solution Kits</b>');
  content.innerHTML=`
-  <div class="topbar"><div><h2>Solution Kit Registry</h2><p>The supply side. Kits and account problems share one taxonomy — matching is their intersection, and every kit&#39;s <b>disqualifiers</b> guard against forced fits.</p></div></div>
+  <div class="topbar"><div><h2>Solution Kit Registry</h2><p>Kits and problems share one taxonomy. Disqualifiers guard against forced fits.</p></div></div>
   ${Object.entries(KITS).map(([id,k])=>{
    const used=ACCOUNTS.filter(a=>a.matches.some(m=>m.kit===id));
    return `<div class="card" style="margin-bottom:12px"><div class="ch">${k.name} <span class="sub">${id} · ${k.line}</span></div>
@@ -619,14 +804,13 @@ function renderRegistry(){
      <div><div class="sec-label" style="margin:0 0 6px">Problem tags</div><div class="chips">${k.tags.map(t=>`<span class="chip">${t}</span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">Value levers</div><div class="chips">${k.levers.map(t=>`<span class="chip">${t}</span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">Disqualifiers</div><div class="chips">${k.disq.map(t=>`<span class="chip" style="border-color:#f0d4dc;color:var(--red);background:#fdf4f7">${t}</span>`).join("")}</div></div>
-     <div><div class="sec-label" style="margin:0 0 6px">In portfolio</div><p style="font-size:12.5px">${used.length?used.map(a=>`<span class="whylink" onclick="open_('${a.id}')">${a.name}</span>`).join(" · "):'<span class="muted">no current match</span>'}</p></div>
-    </div></div>`;}).join("")}
-  <p class="hint">The full registry object also carries trigger signals, prerequisites, outcome benchmarks, effort/deal-size bands and <b>kit adjacencies</b> (which kits historically follow which — the engine behind cross-sell suggestions). Versioned; every decision records the version it was scored against.</p>`;
+     <div><div class="sec-label" style="margin:0 0 6px">In portfolio</div><p style="font-size:12.5px">${used.length?used.map(a=>`<span class="whylink" onclick="open_('${a.id}')">${a.name}</span>`).join(" · "):'<span class="muted">no match</span>'}</p></div>
+    </div></div>`;}).join("")}`;
 }
 
 /* ============ ACCOUNT DETAIL ============ */
 function open_(id){state.acct=ACCOUNTS.find(a=>a.id===id);state.tab="intake";render();}
-const TABS=[{k:"intake",t:"Intake",n:1},{k:"fit",t:"Fit-Mapping",n:2},{k:"gate",t:"Gate & Right to Win",n:3},{k:"target",t:"Targeting",n:4},{k:"activate",t:"Activation",n:5}];
+const TABS=[{k:"intake",t:"Journal & Intake",n:1},{k:"fit",t:"Fit-Mapping",n:2},{k:"gate",t:"Gate · RTP · RTW",n:3},{k:"target",t:"Targeting",n:4},{k:"activate",t:"Activation",n:5}];
 function renderDetail(){
  const a=state.acct,v=verdict(a);
  setCrumb(`<span class="lnk" onclick="go('portfolio')">Portfolio</span> · <b>${a.name}</b>`);
@@ -634,7 +818,7 @@ function renderDetail(){
   content.innerHTML=`<button class="back" onclick="go('portfolio')">← Target Portfolio</button>
    <div class="topbar"><div><h2>${a.name}</h2><p>${a.industry} · ${a.size} · ${a.region}</p></div>
     <span class="pill setup" style="font-size:12.5px;padding:6px 14px"><span class="pd"></span>Setup pending</span></div>
-   <div class="banner">⚠ <span><b>This account is not scored.</b> Agents have collected external intelligence, but the engine will not score or rank until you provide the inside knowledge — existing play, relationships, incumbents, history. That is deliberate: a score built only on what the internet knows would be confidently wrong.</span><span class="whylink" onclick="go('setup')">Complete setup →</span></div>
+   <div class="banner">⚠ <span><b>Not scored.</b> The engine waits for your inside knowledge — a score built only on public data would be confidently wrong.</span><span class="whylink" onclick="go('setup')">Complete setup →</span></div>
    <div class="block"><h3>What the watchers have so far</h3>
     ${a.devs.map(d=>`<div class="dev" style="padding:11px 0"><span class="dt">${d.d}</span><span class="dk ${d.type}"></span><div class="db"><p style="color:var(--ink);font-weight:600">${d.t} <span class="mat ${d.mat}">${d.mat.toUpperCase()}</span></p><p class="muted" style="font-size:12px">${d.trig}</p></div></div>`).join("")}
    </div>`;
@@ -652,53 +836,76 @@ function tab(k){state.tab=k;renderTabsBar();renderTab();}
 
 function renderTab(){
  const a=state.acct,body=document.getElementById("tabbody");
- const strengths={strong:"rel-strong",warm:"rel-warm",cold:"rel-cold"};
+ const strengths={strong:"rel-strong",warm:"rel-warm",cooling:"rel-cooling",cold:"rel-cold"};
  if(state.tab==="intake"){
   body.innerHTML=`<div class="grid2">
-   <div class="block"><h3>Firmographics</h3>
-    <div class="kv"><span>Industry</span><b>${a.industry}</b></div><div class="kv"><span>Size</span><b>${a.size}</b></div>
-    <div class="kv"><span>Region</span><b>${a.region}</b></div><div class="kv"><span>Est. deal value</span><b>$${a.value.toFixed(1)}M</b></div>
-    <div class="kv"><span>Addressable spend</span><b>$${a.tam}M</b></div>
-    <h3 style="margin-top:18px">Inferred problems <span class="sub">tagged to the shared taxonomy</span></h3>
-    <div class="chips">${a.problems.map(p=>`<span class="chip">${p}</span>`).join("")}</div>
-    <h3 style="margin-top:18px">Inside knowledge <span class="sub">yours — from Account Setup</span></h3>
-    <div class="kv"><span>Existing play</span><b>${a.setup.play==="active"?"Active client":a.setup.play==="past"?"Past client":"Prospect"}</b></div>
-    ${a.setup.engagements.length?`<div class="kv"><span>Delivered</span><b>${a.setup.engagements.map(e=>e.label+" ("+e.year+")").join(", ")}</b></div>`:''}
-    ${a.setup.incumbents.length?`<div class="kv"><span>Incumbents</span><b>${a.setup.incumbents.join("; ")}</b></div>`:''}
-    ${a.setup.relationships.length?`<div style="padding:8px 0"><div class="chips">${a.setup.relationships.map(r=>`<span class="chip ${strengths[r.strength]}">${r.who} · ${r.strength}</span>`).join("")}</div></div>`:''}
-    ${a.setup.notes?`<p class="hint" style="margin-top:6px"><b>Notes:</b> ${a.setup.notes}</p>`:''}
+   <div class="block"><h3>Account journal <span class="sub">append-only · every entry dated &amp; sourced</span></h3>
+    <div class="jrnl">${a.journal.map(j=>`<div class="jent ${j.src}"><div class="jh"><span class="src">${j.src}</span> · ${j.d}</div><p>${j.txt}</p></div>`).join("")}</div>
+    <div class="jadd"><input id="jin" placeholder="Log anything — a meeting, a rumor, a door closing…"><button class="btn sm" onclick="addJournal('${a.id}')">Log</button></div>
+    ${a.id==="corepoint"&&!a.proposal&&!a._played?`<button class="btn ghost sm" style="margin-top:10px" onclick="playScenario()">▶ Play scenario: log &ldquo;not getting meetings with the COO anymore&rdquo;</button>`:''}
+    ${a.proposal?`<div class="prop"><b>State renderer proposal</b><p>${a.proposal.why}</p>
+      <p><b>${dimLabel(a.proposal.dim)}: ${a.proposal.from} → ${a.proposal.to}</b> — your call, not the machine&#39;s.</p>
+      <button class="btn sm" onclick="acceptProp()">Confirm change</button> <button class="btn ghost sm" onclick="rejectProp()">Dismiss</button></div>`:''}
    </div>
-   <div class="block"><h3>Development timeline <span class="sub">materiality decides what interrupts you</span></h3>
-    ${a.devs.map(d=>`<div class="dev" style="padding:12px 0"><span class="dt">${d.d}</span><span class="dk ${d.type}"></span>
-     <div class="db"><p style="color:var(--ink);font-weight:600">${d.t} <span class="mat ${d.mat}">${d.mat.toUpperCase()}</span></p>
-     <span class="act" onclick="toast('v1 stub — prepared action: ${d.trig.replace(/'/g,"\\'")}')">→ ${d.trig}</span></div></div>`).join("")}
+   <div>
+    <div class="block"><h3>Current state <span class="sub">rendered from the journal</span></h3>
+     <div class="kv"><span>Existing play</span><b>${a.setup.play==="active"?"Active client":a.setup.play==="past"?"Past client":"Prospect"}</b></div>
+     ${a.setup.engagements.length?`<div class="kv"><span>Delivered</span><b>${a.setup.engagements.map(e=>e.label+" ("+e.year+")").join(", ")}</b></div>`:''}
+     ${a.setup.incumbents.length?`<div class="kv"><span>Incumbents</span><b>${a.setup.incumbents.join("; ")}</b></div>`:''}
+     <div class="kv"><span>Est. deal / addressable</span><b>$${a.value.toFixed(1)}M / $${a.tam}M</b></div>
+     ${a.setup.relationships.length?`<div style="padding:8px 0"><div class="chips">${a.setup.relationships.map(r=>`<span class="chip ${strengths[r.strength]}">${r.who} · ${r.strength}</span>`).join("")}</div></div>`:''}
+     ${a.setup.notes?`<p class="hint"><b>Notes:</b> ${a.setup.notes}</p>`:''}
+     <h3 style="margin-top:14px">Inferred problems</h3><div class="chips">${a.problems.map(p=>`<span class="chip">${p}</span>`).join("")}</div>
+    </div>
+    <div class="block" style="margin-top:14px"><h3>Developments <span class="sub">materiality decides what interrupts</span></h3>
+     ${a.devs.map(d=>`<div class="dev" style="padding:10px 0"><span class="dt">${d.d}</span><span class="dk ${d.type}"></span>
+      <div class="db"><p style="color:var(--ink);font-weight:600">${d.t} <span class="mat ${d.mat}">${d.mat.toUpperCase()}</span></p></div></div>`).join("")}
+    </div>
    </div></div>`;
  }
  else if(state.tab==="fit"){
   const rows=a.matches.map(m=>({...m,score:kitScore(m.s)})).sort((x,y)=>y.score-x.score);
-  body.innerHTML=`<div class="block"><h3>Problem ↔ Kit fit map <span class="sub"><span class="whylink" onclick="go('methodology')">how are these scored? →</span></span></h3>
+  body.innerHTML=`<div class="block"><h3>Problem ↔ Kit fit map <span class="sub"><span class="whylink" onclick="go('methodology')">how scored? →</span></span></h3>
    <table class="matrix">
     <thead><tr><th style="text-align:left">Solution kit</th>${AXES.map(x=>`<th>${x.label}</th>`).join("")}<th style="text-align:right">Fit</th></tr></thead>
     <tbody>${rows.map(m=>`<tr>
      <td class="kit">${KITS[m.kit].name}<small>${KITS[m.kit].line}${m.disq.length?` · <span style="color:var(--red)">${m.disq.length} disqualifier(s)</span>`:''}</small></td>
      ${AXES.map(x=>`<td><span class="mcell">${m.s[x.key]}<i style="background:${bandColor(m.s[x.key])}"></i></span></td>`).join("")}
      <td class="rowscore" style="color:${bandColor(m.score)}">${m.score}</td></tr>
-     <tr><td colspan="7" style="padding:0 8px 12px;text-align:left">
-      <div class="evid"><b>Evidence:</b> ${AXES.map(x=>`<b>${x.label}</b> — ${m.ev[x.key]}`).join(" · ")}</div></td></tr>`).join("")}</tbody>
-   </table>
-   <p class="hint">Fit is the agents&#39; view of the market: does their problem match our kit? It deliberately says nothing about whether <b>we</b> would win — that is your Right to Win on the next tab. Color = threshold band only.</p></div>`;
+     <tr><td colspan="7" style="padding:0 8px 12px;text-align:left"><div class="evid"><b>Evidence:</b> ${AXES.map(x=>`<b>${x.label}</b> — ${m.ev[x.key]}`).join(" · ")}</div></td></tr>`).join("")}</tbody>
+   </table></div>`;
  }
  else if(state.tab==="gate")renderGate();
  else if(state.tab==="target")renderTargeting();
  else if(state.tab==="activate")renderActivation();
 }
 
-/* ---- GATE + RTW ---- */
+/* journal interactions */
+function addJournal(id){const a=ACCOUNTS.find(x=>x.id===id);const el=document.getElementById("jin");
+ if(!el.value.trim())return;
+ a.journal.unshift({d:"Jul 25",src:"you",txt:el.value.trim()});el.value="";renderTab();
+ toast("Logged. State renderer will link it to prior entries and propose updates (v1 stub for free text).");}
+function playScenario(){const a=ACCOUNTS.find(x=>x.id==="corepoint");
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Not getting meetings with the COO anymore — two attempts since June went unanswered."});
+ a._played=true;
+ a.proposal={dim:"rel",from:a.rtw.rel,to:2,why:"Links to Apr 12 (&ldquo;met COO — positive&rdquo;) and Jun 03 (LinkedIn: COO absorbed by merger integration). Access is degrading; likely bandwidth, not rejection. Suggested angle: enter through the integration office instead."};
+ renderTab();toast("Journal updated. The renderer linked 3 entries and raised a proposal — your call.");}
+function acceptProp(){const a=state.acct;
+ a.rtw[a.proposal.dim]=a.proposal.to;a.rtwAge[a.proposal.dim]=0;
+ const rel=a.setup.relationships.find(r=>r.who==="COO");if(rel)rel.strength="cooling";
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Confirmed renderer proposal: relationships 5 → 2. COO marked cooling."});
+ a.proposal=null;renderTab();
+ toast("Confirmed. RTW updated, COO marked cooling, gate re-scored. A trigger was raised: approach via integration office.");}
+function rejectProp(){const a=state.acct;
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Dismissed renderer proposal — keeping relationships at "+a.proposal.from+"."});
+ a.proposal=null;renderTab();toast("Dismissed and logged.");}
+
+/* ---- GATE ---- */
 let baseCounts=null;
 function quadSvg(fit,rtw){
- const x=40+(fit/100)*200, y=170-(rtw/100)*140;
- const tx=40+(THRESHOLD.accept/100)*200, ty=170-(THRESHOLD.rtw/100)*140;
- return `<svg class="quad" width="270" height="200" viewBox="0 0 270 200">
+ const x=40+(fit/100)*200,y=170-(rtw/100)*140;
+ const tx=40+(THRESHOLD.accept/100)*200,ty=170-(THRESHOLD.rtw/100)*140;
+ return `<svg width="270" height="200" viewBox="0 0 270 200" style="display:block;margin:6px auto">
   <rect x="40" y="30" width="200" height="140" fill="none" stroke="#e8e6ea"/>
   <line x1="${tx}" y1="30" x2="${tx}" y2="170" stroke="#d8d5dc" stroke-dasharray="4 3"/>
   <line x1="40" y1="${ty}" x2="240" y2="${ty}" stroke="#d8d5dc" stroke-dasharray="4 3"/>
@@ -706,34 +913,37 @@ function quadSvg(fit,rtw){
   <text x="${(tx+240)/2}" y="${(ty+170)/2+4}" text-anchor="middle" font-size="10" fill="#3265aa" font-weight="700">BUILD RTW</text>
   <text x="${(40+tx)/2}" y="${(30+ty)/2}" text-anchor="middle" font-size="10" fill="#b9791a" font-weight="700">NURTURE</text>
   <text x="${(40+tx)/2}" y="${(ty+170)/2+4}" text-anchor="middle" font-size="10" fill="#a6a2ad" font-weight="700">PASS</text>
-  <circle cx="${x}" cy="${y}" r="7" fill="#43224d"/>
-  <circle cx="${x}" cy="${y}" r="11" fill="none" stroke="#43224d" stroke-opacity=".3"/>
+  <circle cx="${x}" cy="${y}" r="7" fill="#43224d"/><circle cx="${x}" cy="${y}" r="11" fill="none" stroke="#43224d" stroke-opacity=".3"/>
   <text x="140" y="192" text-anchor="middle" font-size="10.5" fill="#7a7681">Fit (agents) →</text>
-  <text x="18" y="100" text-anchor="middle" font-size="10.5" fill="#7a7681" transform="rotate(-90 18 100)">Right to Win (you) →</text>
- </svg>`;}
+  <text x="18" y="100" text-anchor="middle" font-size="10.5" fill="#7a7681" transform="rotate(-90 18 100)">Right to Win (you) →</text></svg>`;}
 function renderGate(){
  const a=state.acct,body=document.getElementById("tabbody");
  baseCounts=gateCounts();
  body.innerHTML=`<div class="gate-wrap">
   <div>
    <div class="verdict" id="vBox"></div>
-   <div class="block" style="margin-top:14px"><h3>Fit score contribution by axis <span class="sub">agents&#39; side of the decision</span></h3><div id="axisBars"></div></div>
+   <div class="block" style="margin-top:14px"><h3>Right to Participate <span class="sub">eligibility — factual, agent-verifiable</span></h3>
+    <div id="rtpBox">${(a.rtp||[]).map(r=>`<div class="rtpitem"><span>${r.item}</span><span class="tag">${r.src}</span><span class="st ${r.st}">${r.st==="ok"?"✓ verified":r.st==="pending"?"◌ pending":"✕ missing"}</span></div>`).join("")}</div>
+   </div>
+   <div class="block" style="margin-top:14px"><h3>Fit contribution by axis</h3><div id="axisBars"></div></div>
    <div class="block" style="margin-top:14px" id="disqBox"></div>
   </div>
   <div>
-   <div class="block rtw"><h3>Right to Win — your assessment <span class="sub">agents never set these</span></h3>
-    <div id="rtwSliders">${RTW_DIMS.map(d=>`
-     <label style="font-size:12px;color:var(--muted);margin:12px 0 2px;display:flex;justify-content:space-between">${d.label} <span class="wv" style="font-family:var(--mono);color:var(--ink);font-weight:700" id="r-${d.key}">${a.rtw[d.key]}/5</span></label>
-     <div style="font-size:11px;color:var(--faint);margin-bottom:4px">${d.q}</div>
-     <input type="range" min="1" max="5" value="${a.rtw[d.key]}" oninput="setRtw('${d.key}',this.value)">`).join("")}</div>
+   <div class="block rtw"><h3>Right to Win — yours <span class="sub">each input has a shelf life</span></h3>
+    <div id="rtwSliders">${RTW_DIMS.map(d=>{const stale=(a.rtwAge[d.key]||0)>d.exp;return `
+     <label style="font-size:12px;color:var(--muted);margin:12px 0 2px;display:flex;justify-content:space-between" class="${stale?'':''}">
+      <span>${d.label}${stale?'<span class="stale-tag">STALE '+a.rtwAge[d.key]+'d</span><span class="reaffirm" onclick="reaffirm(\''+d.key+'\')">re-affirm</span>':''}</span>
+      <span class="wv" id="r-${d.key}">${a.rtw[d.key]}/5</span></label>
+     <div style="font-size:11px;color:var(--faint);margin-bottom:4px">${d.q} <span class="muted">· expires ${d.exp}d</span></div>
+     <input type="range" min="1" max="5" value="${a.rtw[d.key]}" class="${stale?'stale':''}" oninput="setRtw('${d.key}',this.value)">`;}).join("")}</div>
     <div id="quadBox" style="margin-top:10px"></div>
    </div>
-   <div class="block weights" style="margin-top:14px"><h3>Gate parameters <span class="sub">portfolio-wide</span></h3>
+   <div class="block weights" style="margin-top:14px"><h3>Gate parameters <span class="sub">portfolio-wide · versioned</span></h3>
     <div id="sliders">${AXES.map(x=>`<label>${x.label} <span class="wv" id="w-${x.key}">${WEIGHTS[x.key]}</span></label><input type="range" min="0" max="50" value="${WEIGHTS[x.key]}" oninput="setW('${x.key}',this.value)">`).join("")}</div>
     <div class="thresh">
-     <label>Fit bar (accept) <span class="wv" id="thAcceptV">${THRESHOLD.accept}</span></label><input type="range" min="50" max="90" value="${THRESHOLD.accept}" oninput="setThresh('accept',this.value)">
+     <label>Fit bar <span class="wv" id="thAcceptV">${THRESHOLD.accept}</span></label><input type="range" min="50" max="90" value="${THRESHOLD.accept}" oninput="setThresh('accept',this.value)">
      <label>Review bar <span class="wv" id="thReviewV">${THRESHOLD.review}</span></label><input type="range" min="40" max="80" value="${THRESHOLD.review}" oninput="setThresh('review',this.value)">
-     <label>Right-to-win bar <span class="wv" id="thRtwV">${THRESHOLD.rtw}</span></label><input type="range" min="40" max="80" value="${THRESHOLD.rtw}" oninput="setThresh('rtw',this.value)">
+     <label>RTW bar <span class="wv" id="thRtwV">${THRESHOLD.rtw}</span></label><input type="range" min="40" max="80" value="${THRESHOLD.rtw}" oninput="setThresh('rtw',this.value)">
     </div>
     <button class="reset" onclick="resetGate()">Reset to defaults</button>
    </div>
@@ -745,26 +955,28 @@ function refreshGate(){
  const box=document.getElementById("vBox");if(!box)return;
  box.innerHTML=`<div class="vh"><span class="big" style="color:${VCOLOR[v.v]}">${VLABEL[v.v]}</span>
   <span class="pill ${v.v}"><span class="pd"></span>fit ${top.score}/${THRESHOLD.accept} · rtw ${v.rtw}/${THRESHOLD.rtw}</span></div>
-  <div class="sc">best fit: <b>${KITS[top.kit].name}</b> · motion: ${motionOf(a)==="cross"?"cross-sell":"new account"}</div>
-  <p>${explain(a,v)}</p>
-  <div class="impact" id="impact"></div>`;
+  <div class="sc">best fit: <b>${KITS[top.kit].name}</b> · ${motionOf(a)==="cross"?"cross-sell":"new account"}</div>
+  <p>${explain(a,v)}</p><div class="impact" id="impact"></div>`;
  const w=WEIGHTS,t=w.problem+w.value+w.ready+w.constr+w.signal;
  document.getElementById("axisBars").innerHTML=AXES.map(x=>{const c=Math.round(top.s[x.key]*w[x.key]/t);
   return `<div class="axis"><div class="top"><b>${x.label}</b><span class="v">${top.s[x.key]} × ${w[x.key]} → +${c}</span></div><div class="track"><i style="width:${top.s[x.key]}%"></i></div></div>`;}).join("");
  const allDisq=[...new Set(a.matches.flatMap(m=>m.disq))];
  document.getElementById("disqBox").innerHTML=allDisq.length
-  ?`<h3 style="color:var(--red)">Disqualifiers flagged <span class="sub">override the score — by design</span></h3><div class="disq">${allDisq.map(d=>`<div class="d">⚠ ${d}</div>`).join("")}</div>`
-  :`<h3 style="color:var(--green)">No disqualifiers <span class="sub">no hard blocks against any matched kit</span></h3>`;
+  ?`<h3 style="color:var(--red)">Disqualifiers <span class="sub">override the score — by design</span></h3><div class="disq">${allDisq.map(d=>`<div class="d">⚠ ${d}</div>`).join("")}</div>`
+  :`<h3 style="color:var(--green)">No disqualifiers</h3>`;
  document.getElementById("quadBox").innerHTML=quadSvg(top.score,v.rtw);
  const now=gateCounts();
  const delta=k=>{const d=now[k]-baseCounts[k];return d===0?"":` (${d>0?"+":""}${d})`;};
- document.getElementById("impact").innerHTML=`<b>Portfolio impact:</b> Pursue ${now.accept}${delta("accept")} · Build RTW ${now.build}${delta("build")} · Review ${now.review}${delta("review")} · Pass ${now.reject}${delta("reject")} <span class="muted">— across all active accounts</span>`;
+ document.getElementById("impact").innerHTML=`<b>Portfolio impact:</b> Pursue ${now.accept}${delta("accept")} · Build RTW ${now.build}${delta("build")} · Build RTP ${now.rtp}${delta("rtp")} · Review ${now.review}${delta("review")} · Pass ${now.reject}${delta("reject")}`;
  const hp=document.getElementById("hdrPill");if(hp){hp.className="pill "+v.v;hp.innerHTML=`<span class="pd"></span>${VLABEL[v.v]} · fit ${top.score} · rtw ${v.rtw}`;}
 }
-function setRtw(k,val){state.acct.rtw[k]=+val;const el=document.getElementById("r-"+k);if(el)el.textContent=val+"/5";refreshGate();}
+function reaffirm(k){const a=state.acct;a.rtwAge[k]=0;
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Re-affirmed "+dimLabel(k).toLowerCase()+" at "+a.rtw[k]+"/5."});
+ renderGate();toast(dimLabel(k)+" re-affirmed — clock reset, verdict restored if it was held.");}
+function setRtw(k,val){state.acct.rtw[k]=+val;state.acct.rtwAge[k]=0;const el=document.getElementById("r-"+k);if(el)el.textContent=val+"/5";refreshGate();}
 function setW(k,val){WEIGHTS[k]=+val;const el=document.getElementById("w-"+k);if(el)el.textContent=val;refreshGate();}
 function setThresh(k,val){THRESHOLD[k]=+val;const map={accept:"thAcceptV",review:"thReviewV",rtw:"thRtwV"};const el=document.getElementById(map[k]);if(el)el.textContent=val;refreshGate();}
-function resetGate(){WEIGHTS={...DEFAULT_W};THRESHOLD={...DEFAULT_T};renderGate();toast("Gate parameters reset to defaults (v1.0). RTW inputs are yours and were not touched.");}
+function resetGate(){WEIGHTS={...DEFAULT_W};THRESHOLD={...DEFAULT_T};renderGate();toast("Parameters reset to v1.0. Your RTW inputs were not touched.");}
 
 /* ---- TARGETING ---- */
 function renderTargeting(){
@@ -772,18 +984,17 @@ function renderTargeting(){
  const ps=PERSONA_LIB[KITS[bestMatch(a).kit].line]||PERSONA_LIB.Technology;
  const known=a.setup.relationships;
  body.innerHTML=`
-  <div class="block" style="margin-bottom:14px"><h3>Buying committee <span class="sub">personas below · your known relationships overlaid</span></h3>
-   <p style="font-size:13px">For <b style="color:var(--ink)">${KITS[bestMatch(a).kit].name}</b> at ${a.name}: open with the <b style="color:var(--green)">champion</b>, arm them for the <b style="color:var(--amber)">budget gatekeeper</b>, neutralize the technical evaluator early with proof.
-   ${known.length?`You already hold: ${known.map(r=>`<b style="color:var(--ink)">${r.who}</b> (${r.strength})`).join(", ")} — start there.`:`<b style="color:var(--red)">You hold no mapped relationships here</b> — consistent with the low relationships score in your RTW; that is the first gap to close.`}</p></div>
+  <div class="block" style="margin-bottom:14px"><h3>Buying committee <span class="sub">LinkedIn connector keeps this current in production</span></h3>
+   <p style="font-size:13px">Open with the <b style="color:var(--green)">champion</b>, arm them for the <b style="color:var(--amber)">gatekeeper</b>, neutralize the evaluator with proof.
+   ${known.length?`You hold: ${known.map(r=>`<b style="color:var(--ink)">${r.who}</b> (${r.strength})`).join(", ")}.`:`<b style="color:var(--red)">No mapped relationships</b> — the first RTW gap to close.`}</p></div>
   <div class="grid2">${ps.map(p=>`
    <div class="persona"><div class="ph"><div class="av">${p.init}</div><div><div class="pr">${p.role}</div>
     <span class="rel ${p.rel==='Champion'?'champ':p.rel==='Budget gatekeeper'?'gate':''}">${p.rel}</span></div></div>
-    <div class="lab">What they care about</div><p>${p.care}</p>
+    <div class="lab">Cares about</div><p>${p.care}</p>
     <div class="lab">Likely objection</div><p>&ldquo;${p.objection}&rdquo;</p>
     <div class="lab">Proof that lands</div><p>${p.proof}</p>
-    <div class="lab">Messaging angle · best channel</div><p>${p.angle} <span class="muted">— ${p.channel}</span></p>
-   </div>`).join("")}</div>
-  <p class="hint">Personas derive from the best-fit kit&#39;s service line; your Account Setup relationships overlay them. In production, enrichment + CRM replace archetypes with named people.</p>`;
+    <div class="lab">Angle · channel</div><p>${p.angle} <span class="muted">— ${p.channel}</span></p>
+   </div>`).join("")}</div>`;
 }
 
 /* ---- ACTIVATION ---- */
@@ -791,25 +1002,25 @@ function renderActivation(){
  const a=state.acct,body=document.getElementById("tabbody"),top=bestMatch(a),kit=KITS[top.kit].name;
  const actionable=a.devs.filter(d=>d.mat==="high"&&!d.dismissed);
  body.innerHTML=`
-  ${actionable.length?`<div class="block" style="margin-bottom:14px"><h3>Why now <span class="sub">campaigns are trigger-born, not calendar-born</span></h3>
+  ${actionable.length?`<div class="block" style="margin-bottom:14px"><h3>Why now <span class="sub">campaigns are trigger-born</span></h3>
    ${actionable.map(d=>`<div class="dev" style="padding:10px 0"><span class="dt">${d.d}</span><span class="dk ${d.type}"></span><div class="db"><p style="color:var(--ink);font-weight:600">${d.t}</p><p class="muted" style="font-size:12px">${d.trig}</p></div></div>`).join("")}</div>`
-  :`<div class="banner" style="margin-bottom:14px">◦ <span>No high-materiality trigger is live for this account right now. The engine deliberately suggests <b>no outreach</b> — contacting without a reason spends relationship capital for nothing. Watchers stay on duty.</span></div>`}
+  :`<div class="banner" style="margin-bottom:14px">◦ <span>No high-materiality trigger live. The engine recommends <b>no outreach</b> — contact without a reason spends relationship capital for nothing.</span></div>`}
   <div class="grid2" style="grid-template-columns:1.25fr .75fr">
-   <div>${a.problems.slice(0,2).map((p,i)=>{const d=a.devs[i%a.devs.length];return `
+   <div>${a.problems.slice(0,2).map((p,i)=>{const d=a.devs[i%a.devs.length];const st=i===0?"approved — queued":"draft — awaiting approval";return `
     <div class="camp"><div class="chd"><div><div class="ct">Campaign ${i+1} — counter &ldquo;${p.toLowerCase()}&rdquo;</div>
-     <div class="cmeta">anchored on: ${d.t.toLowerCase()}</div></div><span class="tag">draft — needs approval</span></div>
+     <div class="cmeta">anchored on: ${d.t.toLowerCase()}</div></div><span class="tag ${i===0?'on':''}">${st}</span></div>
      <div class="cgrid">
-      <div class="cg"><div class="lab">Objective</div><p>Secure a problem-framing session with the ${i===0?"champion":"economic buyer"} inside 30 days.</p></div>
-      <div class="cg"><div class="lab">Audience & channel</div><p>${i===0?"Exec sponsor + problem owner · executive briefing":"Function heads · targeted workshop"}</p></div>
-      <div class="cg"><div class="lab">Success metric</div><p>${i===0?"Briefing booked; champion co-frames the problem":"Workshop held; requirements co-authored"}</p></div>
+      <div class="cg"><div class="lab">Objective</div><p>Problem-framing session with the ${i===0?"champion":"economic buyer"} inside 30 days.</p></div>
+      <div class="cg"><div class="lab">Audience · channel</div><p>${i===0?"Exec sponsor · executive briefing":"Function heads · workshop"}</p></div>
+      <div class="cg"><div class="lab">Success metric</div><p>${i===0?"Briefing booked, problem co-framed":"Workshop held, requirements co-authored"}</p></div>
      </div>
-     <div class="hook">&ldquo;Position ${kit} against the cost of ${p.toLowerCase()} — opening with ${d.t.toLowerCase()}, which makes the conversation timely rather than cold.&rdquo;</div>
-    </div>`;}).join("")}</div>
+     <div class="hook">&ldquo;Position ${kit} against ${p.toLowerCase()} — opening with ${d.t.toLowerCase()}.&rdquo;</div>
+    </div>`;}).join("")}
+    <p class="hint"><b>Contact governor:</b> one approved campaign runs at a time per account. Campaign 2 queues until Campaign 1 completes or is stopped.</p></div>
    <div class="block"><h3>Thought-leadership angles <span class="sub">relevance-gated</span></h3>
-    <div class="tl-item"><b>${a.industry}: the compounding cost of ${a.problems[0].toLowerCase()}</b><small>Data-led POV · aimed at the champion · supports Campaign 1</small></div>
-    <div class="tl-item"><b>A field guide to ${kit.toLowerCase()} in ${a.industry.toLowerCase()}</b><small>Practitioner guide · aimed at the technical evaluator</small></div>
-    <div class="tl-item"><b>From &ldquo;${a.devs[0].t.toLowerCase()}&rdquo; to measurable outcomes</b><small>Trigger-linked · timed to the development window</small></div>
-    <p class="hint">Every angle ties to a live problem or development — the quality gate against generic content. The <b>contact governor</b> also applies: if another campaign is active on this account, these queue rather than stack.</p>
+    <div class="tl-item"><b>${a.industry}: the compounding cost of ${a.problems[0].toLowerCase()}</b><small>POV · champion · supports Campaign 1</small></div>
+    <div class="tl-item"><b>A field guide to ${kit.toLowerCase()}</b><small>Practitioner guide · technical evaluator</small></div>
+    <div class="tl-item"><b>From &ldquo;${a.devs[0].t.toLowerCase()}&rdquo; to outcomes</b><small>Trigger-linked · timed to the window</small></div>
    </div>
   </div>`;
 }
@@ -818,34 +1029,24 @@ function renderActivation(){
 function renderMethodology(){
  setCrumb('<b>Methodology</b>');
  content.innerHTML=`<div class="meth">
-  <div class="topbar"><div><h2>Methodology</h2><p>Where every number comes from — and which numbers the machine is not allowed to produce.</p></div></div>
-  <div class="block" style="margin-bottom:14px"><h3>The pipeline</h3>
-   <div class="step"><span class="sn">0</span><div><b>Account setup — human first</b><p>Before anything is scored you supply the inside knowledge agents cannot find: existing play, delivered work, relationships and their strength, incumbents, lost bids, politics. Accounts without completed setup are <b>not scored</b>. This is the bottom-up guarantee: the engine starts from your truth, not the internet&#39;s.</p></div></div>
-   <div class="step"><span class="sn">1</span><div><b>Sense — watcher agents</b><p>Per-account agents track external developments (news, filings, hiring, leadership, regulation) continuously. Each event is dated, typed, sourced.</p></div></div>
-   <div class="step"><span class="sn">2</span><div><b>Interpret & materiality</b><p>GenAI tags events to the canonical taxonomy and classifies materiality. Only high-materiality events become triggers; the rest wait in a weekly digest. Your dismissals retrain the bar — the alert-fatigue defense, formalized.</p></div></div>
-   <div class="step"><span class="sn">3</span><div><b>Fit-mapping — five axes</b><p>Each (account × kit) pair scores 0–100 per axis with recorded evidence. For existing clients the cross-sell miner also checks whitespace and kit adjacency.</p></div></div>
-   <div class="step"><span class="sn">4</span><div><b>Right to Win — yours alone</b><p>Five dimensions (relationships, credentials, delivery, competitive, commercial) scored 1–5 <b>by you</b>. Agents never set or adjust these. Fit asks &ldquo;is the opportunity real?&rdquo;; RTW asks &ldquo;can we win it?&rdquo; — different questions, different owners.</p></div></div>
-   <div class="step"><span class="sn">5</span><div><b>Gate — fit × RTW × disqualifiers</b><p>Four outcomes: <b>Pursue</b> (both bars cleared), <b>Build RTW</b> (fit real, hand weak — do groundwork, don&#39;t chase), <b>Review</b> (borderline fit — human call), <b>Pass</b>. Disqualifiers override everything.</p></div></div>
-   <div class="step"><span class="sn">6</span><div><b>Act & learn</b><p>Trigger-born campaigns, critic-reviewed, human-approved, contact-governed. Outcomes feed recalibration quarterly.</p></div></div>
+  <div class="topbar"><div><h2>Methodology</h2><p>Where every number comes from — and which numbers the machine may not produce.</p></div></div>
+  <div class="block" style="margin-bottom:14px"><h3>The loop</h3>
+   <div class="step"><span class="sn">0</span><div><b>Account setup — human first</b><p>You supply what agents cannot find: plays, relationships, incumbents, history. No setup, no score.</p></div></div>
+   <div class="step"><span class="sn">1</span><div><b>Journal — one stream of truth</b><p>Every input (yours, agents&#39;, connectors&#39;) is a dated, sourced entry. GenAI renders current state from the stream, links related entries, and proposes updates. Proposals touching judgment (RTW, relationship warmth) always wait for your confirmation.</p></div></div>
+   <div class="step"><span class="sn">2</span><div><b>Sense &amp; interpret</b><p>Watchers track developments; materiality decides what interrupts you. Trigger budget ${TRIGGER_BUDGET}/week, digest for the rest, dismiss-to-tune.</p></div></div>
+   <div class="step"><span class="sn">3</span><div><b>Fit — is it real?</b><p>Five agent-scored axes with evidence per (account × kit). Cross-sell adds whitespace + kit adjacency for existing clients.</p></div></div>
+   <div class="step"><span class="sn">4</span><div><b>RTP — are we allowed?</b><p>Eligibility checklist: empanelment, certifications, local presence. Factual, so agents verify most items. Fail → &ldquo;Build RTP&rdquo;, usually the cheapest fix.</p></div></div>
+   <div class="step"><span class="sn">5</span><div><b>RTW — can we win?</b><p>Five dimensions, scored 1–5 by you alone. Each has a shelf life (relationships 90d, credentials 365d…). Stale input holds a would-be Pursue at Review until re-affirmed — stale judgment cannot green-light a pursuit.</p></div></div>
+   <div class="step"><span class="sn">6</span><div><b>Gate — capacity-aware</b><p>Pursue / Build RTW / Build RTP / Review / Pass. Disqualifiers override. Pursue competes for a limited pursuit slot, not just a threshold.</p></div></div>
+   <div class="step"><span class="sn">7</span><div><b>Execute &amp; learn</b><p>Pursuit workspace (stages, tasks, meetings, battlecards), trigger-born campaigns under a contact governor, then win/loss capture that recalibrates weights — via proposals you approve.</p></div></div>
   </div>
-  <div class="block" style="margin-bottom:14px"><h3>Fit axes — agent-scored</h3>
-   <table class="rubric"><thead><tr><th>Axis</th><th>Question it answers</th><th>Primary inputs</th></tr></thead><tbody>
-    <tr><td>Problem fit</td><td>Do their tagged problems overlap this kit&#39;s tags?</td><td>Taxonomy overlap and centrality</td></tr>
-    <tr><td>Value lever</td><td>Does the kit&#39;s value mechanism match what they must move?</td><td>Mandates, earnings pressure, regulation</td></tr>
-    <tr><td>Readiness</td><td>Could they buy and absorb this within 2 quarters?</td><td>Sponsor, team maturity, prerequisites</td></tr>
-    <tr><td>Constraints fit</td><td>Do budget, stack, vendors, procurement allow it?</td><td>Budget cycle, incumbents, procurement</td></tr>
-    <tr><td>Signal strength</td><td>How strong and recent is external evidence of intent?</td><td>Count, recency, independence of developments</td></tr>
-   </tbody></table></div>
-  <div class="block" style="margin-bottom:14px"><h3>Right-to-Win dimensions — user-scored, never by agents</h3>
-   <table class="rubric"><thead><tr><th>Dimension</th><th>Question you answer (1–5)</th></tr></thead><tbody>
-    ${RTW_DIMS.map(d=>`<tr><td>${d.label}</td><td>${d.q}</td></tr>`).join("")}
+  <div class="block" style="margin-bottom:14px"><h3>Right-to-Win dimensions &amp; shelf lives</h3>
+   <table class="rubric"><thead><tr><th>Dimension</th><th>Question (1–5)</th><th>Expires</th></tr></thead><tbody>
+    ${RTW_DIMS.map(d=>`<tr><td>${d.label}</td><td>${d.q}</td><td>${d.exp} days</td></tr>`).join("")}
    </tbody></table>
-   <p class="hint">Why human-only: these depend on knowledge that is private (your bench, your pricing), relational (who trusts you) and political (what really happened last time). An agent estimating them would manufacture false confidence at the exact point the decision needs honesty.</p></div>
-  <div class="block" style="margin-bottom:14px"><h3>The formula</h3>
-   <div class="formula">fit(account, kit) = Σ(axis × weight) / Σweights &nbsp;&nbsp;[agents]<br>rtw(account) = mean(5 dims) × 20 &nbsp;&nbsp;[you]<br>gate: fit ≥ ${DEFAULT_T.accept} ∧ rtw ≥ ${DEFAULT_T.rtw} → Pursue · fit ≥ ${DEFAULT_T.accept} ∧ rtw &lt; ${DEFAULT_T.rtw} → Build RTW<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fit ${DEFAULT_T.review}–${DEFAULT_T.accept} → Review · else Pass · hard disqualifier overrides all</div>
-   <p class="hint">Weights and bars are portfolio-wide and versioned; axis scores in this preview are hand-set sample data following the rubric.</p></div>
-  <div class="block"><h3>Alert discipline — the fatigue defense</h3>
-   <p style="font-size:13px">Four mechanisms, because a trigger feed that cries wolf is worse than none: <b>materiality classification</b> (only high-materiality events interrupt; medium waits for the weekly digest), a <b>trigger budget</b> (max ${TRIGGER_BUDGET} surfaced per week — forced prioritization), <b>expiry</b> (triggers lapse with their window instead of accumulating), and <b>dismiss-to-tune</b> (your dismissals raise the bar for that signal type). Silence is the default; signal is the exception.</p></div>
+   <p class="hint">Expiry means loss of confidence, not loss of data. Events can stale an input early — a champion leaving flags relationships immediately.</p></div>
+  <div class="block"><h3>The formula</h3>
+   <div class="formula">fit = Σ(axis × weight)/Σweights [agents] · rtw = mean(5 dims)×20 [you]<br>gate: fit≥${DEFAULT_T.accept} ∧ rtp ok ∧ rtw≥${DEFAULT_T.rtw} ∧ fresh → Pursue<br>fit≥${DEFAULT_T.accept} ∧ rtw&lt;${DEFAULT_T.rtw} → Build RTW · rtp fail → Build RTP · stale → held at Review<br>disqualifier overrides all · Pursue competes for ${TEAM.reduce((s,t)=>s+t.cap,0)} capacity slots</div></div>
  </div>`;
 }
 
@@ -853,34 +1054,34 @@ function renderMethodology(){
 function renderGovernance(){
  setCrumb('<b>Governance & Data</b>');
  content.innerHTML=`
-  <div class="topbar"><div><h2>Governance & Data</h2><p>The rules the engine runs under — built into the product, not a PDF beside it.</p></div></div>
+  <div class="topbar"><div><h2>Governance & Data</h2><p>Built into the product, not a PDF beside it.</p></div></div>
   <div class="gov-grid gov">
    <div class="block"><h3>Architecture</h3><ul>
-    <li><b>Human-first bottom-up.</b> No account is scored without user-provided inside knowledge; agent intelligence layers on top of it, never instead of it.</li>
-    <li><b>One engine, three lenses.</b> Growth Lead, Presales, BA are configuration over the same store, registry and pipeline.</li>
-    <li><b>Versioned everything.</b> Kit registry, gate weights and thresholds are versioned; every decision records what it was computed against.</li>
-    <li><b>Graceful degradation.</b> Failed enrichment marks evidence stale rather than silently scoring on old data.</li>
+    <li><b>Journal is the source of truth.</b> All state is rendered from an append-only, sourced event stream. Edits are new entries; history survives.</li>
+    <li><b>Nothing hardcoded.</b> Weights, bars, shelf lives, trigger budgets, kits and taxonomy are editable config — versioned like everything else.</li>
+    <li><b>Connectors propose, never overwrite.</b> LinkedIn (org + posts) and CRM/Git imports write journal entries; conflicts wait for you.</li>
+    <li><b>One engine, three lenses.</b> Roles are configuration, not forks.</li>
    </ul></div>
    <div class="block"><h3>Data policy</h3><ul>
-    <li><b>Allowlisted sources.</b> Public filings, press, careers pages, licensed providers. No scraping behind logins, no personal social accounts.</li>
-    <li><b>Business-role data only.</b> Roles and business context, no sensitive personal data — GDPR/DPDP legitimate-interest basis.</li>
-    <li><b>Provenance mandatory.</b> Unsourced claims cannot enter scoring. User-provided inside knowledge is labeled as such and never presented as agent findings.</li>
-    <li><b>Retention & residency.</b> Evidence expires (default 12 months) unless refreshed; residency follows the deploying org.</li>
+    <li><b>Allowlisted sources.</b> Public filings, press, careers pages, licensed providers. LinkedIn via compliant/licensed access only — no scraping.</li>
+    <li><b>Business-role data only.</b> No sensitive personal data. GDPR/DPDP legitimate-interest basis.</li>
+    <li><b>Provenance mandatory.</b> Unsourced claims cannot enter scoring. Your inputs are labeled yours.</li>
+    <li><b>Retention.</b> Evidence expires (12 months default) unless refreshed.</li>
    </ul></div>
    <div class="block"><h3>Model governance</h3><ul>
-    <li><b>RTW is human-only.</b> Agents may not set, adjust or average the right-to-win inputs. The system fails loudly if RTW is missing rather than guessing.</li>
-    <li><b>Weights versioned & logged.</b> Parameter changes create a new version with author and timestamp.</li>
-    <li><b>Humans own verdicts.</b> Overrides are logged with reasons and feed recalibration.</li>
-    <li><b>Nothing auto-sends.</b> All outreach and content is draft-until-approved; the contact governor caps concurrent campaigns per account.</li>
+    <li><b>RTW is human-only,</b> with shelf lives. The system fails loudly when it is missing or stale — it never guesses.</li>
+    <li><b>Proposals, not actions.</b> GenAI may propose RTW changes from journal evidence; only you confirm.</li>
+    <li><b>Nothing auto-sends.</b> Draft-until-approved; contact governor caps campaigns per account.</li>
+    <li><b>Win/loss recalibration</b> quarterly — engine proposes weight changes, you approve.</li>
    </ul></div>
   </div>
-  <div class="card"><div class="ch">Decision audit trail <span class="sub">sample — immutable log</span></div>
+  <div class="card"><div class="ch">Decision audit trail <span class="sub">sample — immutable</span></div>
    <table><thead><tr><th>Timestamp</th><th>Account</th><th>Event</th><th>Detail</th><th>Actor</th></tr></thead><tbody>
     <tr><td class="val" style="font-weight:400">Jul 24 15:20</td><td>Aurora Energy</td><td><span class="pill build"><span class="pd"></span>Build RTW</span></td><td>fit 75 · rtw 52 (user) · weights v1.0</td><td>gate-agent</td></tr>
-    <tr><td class="val" style="font-weight:400">Jul 22 14:03</td><td>Meridian Logistics</td><td><span class="pill accept"><span class="pd"></span>Pursue</span></td><td>fit 82 · rtw 72 (user) · kit TEC-1 v3</td><td>gate-agent</td></tr>
-    <tr><td class="val" style="font-weight:400">Jul 22 11:37</td><td>Corepoint Health</td><td><span class="tag">rtw updated</span></td><td>relationships 4→5: "COO renewed sponsorship"</td><td>J. Okafor</td></tr>
-    <tr><td class="val" style="font-weight:400">Jul 21 09:41</td><td>Northwind Retail</td><td><span class="pill review"><span class="pd"></span>Override → Review</span></td><td>rep: "CEO statement worth one meeting" · logged</td><td>M. Fischer</td></tr>
-    <tr><td class="val" style="font-weight:400">Jul 20 17:12</td><td>—</td><td><span class="tag">weights v1.0</span></td><td>initial gate parameters approved</td><td>L. Fulara</td></tr>
+    <tr><td class="val" style="font-weight:400">Jul 23 10:04</td><td>Helios Manufacturing</td><td><span class="pill rtp"><span class="pd"></span>Build RTP</span></td><td>missing: local entity VN/ID · deadline linked</td><td>gate-agent</td></tr>
+    <tr><td class="val" style="font-weight:400">Jul 22 14:03</td><td>Meridian Logistics</td><td><span class="pill review"><span class="pd"></span>Held — stale RTW</span></td><td>credentials input 400d old · re-affirm requested</td><td>gate-agent</td></tr>
+    <tr><td class="val" style="font-weight:400">Jul 21 09:41</td><td>Northwind Retail</td><td><span class="pill review"><span class="pd"></span>Override → Review</span></td><td>rep: worth one meeting · logged</td><td>M. Fischer</td></tr>
+    <tr><td class="val" style="font-weight:400">Jul 20 17:12</td><td>—</td><td><span class="tag">weights v1.0</span></td><td>initial parameters approved</td><td>L. Fulara</td></tr>
    </tbody></table></div>`;
 }
 
