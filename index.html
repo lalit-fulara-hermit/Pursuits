@@ -18,20 +18,20 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:var(--bg);color:var(--body);font-family:var(--font);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
-  .app{display:grid;grid-template-columns:224px 1fr;min-height:100vh}
-  .side{background:var(--panel);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:20px}
+  .app{display:grid;grid-template-columns:224px 1fr;height:100vh;overflow:hidden}
+  .side{background:var(--panel);border-right:1px solid var(--line);padding:20px 14px;display:flex;flex-direction:column;gap:18px;overflow-y:auto}
   .brand{display:flex;align-items:center;gap:10px;padding:0 6px}
   .logo{width:28px;height:28px;border-radius:7px;background:var(--accent);display:grid;place-items:center;font-weight:800;color:#fff;font-size:14px}
   .brand h1{font-size:15px;font-weight:700;color:var(--ink)}
   .brand span{display:block;font-size:10.5px;color:var(--muted)}
-  .sec-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 6px 8px;font-weight:600}
-  .nav{display:flex;flex-direction:column;gap:1px}
+  .sec-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 6px 6px;font-weight:600}
+  .nav{display:flex;flex-direction:column;gap:1px;margin-bottom:10px}
   .nav a{color:var(--body);text-decoration:none;padding:7px 10px;border-radius:8px;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;border-left:2px solid transparent}
   .nav a:hover{background:var(--panel-2)}
   .nav a.active{background:var(--panel-2);color:var(--accent);font-weight:600;border-left-color:var(--accent);border-radius:0 8px 8px 0}
   .nav .badge{font-size:10px;background:#faf3e5;color:var(--amber);border-radius:12px;padding:1px 7px;font-weight:700}
   .side-foot{margin-top:auto;font-size:11px;color:var(--faint);border-top:1px solid var(--line);padding-top:14px;line-height:1.6}
-  .main{overflow:auto}
+  .main{overflow-y:auto;height:100%}
   .masthead{position:sticky;top:0;z-index:20;background:rgba(250,250,250,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:12px 30px;display:flex;justify-content:space-between;align-items:center}
   .crumb{font-size:13px;color:var(--muted)}
   .crumb b{color:var(--ink)}
@@ -137,6 +137,9 @@
   .chip.rel-warm{background:#faf3e5;border-color:#eee0bd;color:var(--amber)}
   .chip.rel-cooling{background:#fbeaef;border-color:#f0d4dc;color:var(--red)}
   .chip.rel-cold{background:var(--panel-2);color:var(--muted)}
+  .chip .x{margin-left:7px;cursor:pointer;color:var(--faint);font-weight:700}
+  .chip .x:hover{color:var(--red)}
+  .chip.click{cursor:pointer}
   .matrix{width:100%;border-collapse:collapse;font-size:12.5px}
   .matrix th{padding:9px 8px;text-transform:none;letter-spacing:0;font-size:11px;color:var(--muted)}
   .matrix td{padding:8px;border-bottom:1px solid var(--line-2);text-align:center}
@@ -176,6 +179,7 @@
   .btn{background:var(--accent);border:none;border-radius:8px;padding:9px 16px;font:inherit;font-size:13px;font-weight:600;color:#fff;cursor:pointer}
   .btn.sm{padding:5px 12px;font-size:12px}
   .btn.ghost{background:var(--panel);border:1px solid var(--line);color:var(--body)}
+  .btn.disabled{opacity:.45;cursor:not-allowed}
   .hint{font-size:11.5px;color:var(--muted);margin-top:10px;line-height:1.6}
   .hint b{color:var(--body)}
   .disq .d{display:flex;gap:9px;font-size:12.5px;color:var(--red);padding:8px 0;border-top:1px dashed #f0d4dc}
@@ -227,12 +231,10 @@
   .setup-row .st{margin-left:auto;display:flex;align-items:center;gap:10px}
   .prog{width:90px;height:6px;background:var(--line-2);border-radius:4px;overflow:hidden}
   .prog>i{display:block;height:100%;border-radius:4px;background:var(--green)}
-  .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
   .field{margin-bottom:12px}
   .field label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--faint);font-weight:700;margin-bottom:5px}
   .field input,.field textarea,.field select{width:100%;font:inherit;font-size:13px;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:9px 12px}
   .field textarea{resize:vertical;min-height:64px}
-  /* journal */
   .jrnl{border-left:2px solid var(--line);margin-left:6px;padding-left:16px}
   .jent{position:relative;padding:9px 0}
   .jent:before{content:"";position:absolute;left:-21px;top:15px;width:8px;height:8px;border-radius:50%;background:var(--faint)}
@@ -247,7 +249,6 @@
   .prop{border:1px solid #e9e0ee;background:#faf7fb;border-radius:10px;padding:14px;margin-top:12px}
   .prop b{color:var(--ink)}
   .prop p{font-size:12.5px;margin:6px 0 10px}
-  /* pursuit workspace */
   .stagebar{display:flex;margin:8px 0 4px}
   .stagebar .sg{flex:1;text-align:center;position:relative;padding:0 4px}
   .stagebar .sg .cir{width:24px;height:24px;border-radius:50%;background:var(--line-2);color:var(--muted);display:grid;place-items:center;margin:0 auto 6px;font-size:11px;font-weight:700}
@@ -273,6 +274,23 @@
   .lib .ic{width:34px;height:34px;border-radius:8px;background:var(--panel-2);border:1px solid var(--line);display:grid;place-items:center;font-size:10px;font-weight:800;color:var(--accent);flex-shrink:0}
   .lib b{color:var(--ink);font-weight:600;font-size:13px;display:block}
   .lib small{color:var(--muted);font-size:11.5px}
+  /* furnishing */
+  .fsec{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);margin-bottom:14px}
+  .fsec .fh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .fsec .fh .fn{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:11px;font-weight:700;flex-shrink:0}
+  .fsec .fh b{color:var(--ink);font-size:13.5px}
+  .fsec .fh small{color:var(--faint);font-size:11.5px;margin-left:auto}
+  .qitem{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line-2);font-size:12.5px}
+  .qitem:last-child{border-bottom:none}
+  .qitem .qi{flex:1}
+  .qitem .qi small{display:block;color:var(--faint);font-size:10.5px}
+  .ready{display:flex;flex-direction:column;gap:7px}
+  .ready .ri{display:flex;align-items:center;gap:9px;font-size:12.5px}
+  .ready .ri .rc{width:17px;height:17px;border-radius:50%;display:grid;place-items:center;font-size:10px;flex-shrink:0}
+  .ready .ri.ok .rc{background:#eaf5ee;color:var(--green)}
+  .ready .ri.no .rc{background:var(--line-2);color:var(--faint)}
+  .ready .ri.ok span{color:var(--body)} .ready .ri.no span{color:var(--muted)}
+  .draft{border:1.5px dashed #d9c9e2;background:#fbf9fc;border-radius:var(--radius);padding:18px;margin-bottom:14px}
   .muted{color:var(--muted)}
   .empty{padding:30px;text-align:center;color:var(--faint);font-size:13px}
 </style>
@@ -281,9 +299,9 @@
 <div class="app">
   <aside class="side">
     <div class="brand"><div class="logo">P</div><div><h1>Pursuits</h1><span>Growth Cockpit</span></div></div>
-    <div><div class="sec-label">Workspace</div><nav class="nav" id="nav"></nav></div>
+    <div id="navwrap" style="display:flex;flex-direction:column"></div>
     <div><div class="sec-label">Trust</div><nav class="nav" id="nav2"></nav></div>
-    <div class="side-foot">Vision preview · sample data<br>Fit is the agents&#39; view. RTW is yours.</div>
+    <div class="side-foot">Vision preview · sample data<br>Nothing is analyzed until it is furnished.</div>
   </aside>
   <main class="main">
     <div class="masthead">
@@ -303,7 +321,7 @@
 </div>
 
 <script>
-/* ============ CONFIG (all editable in-tool; versioned in production) ============ */
+/* ============ CONFIG ============ */
 const AXES=[
  {key:"problem",label:"Problem fit"},{key:"value",label:"Value lever"},{key:"ready",label:"Readiness"},
  {key:"constr",label:"Constraints fit"},{key:"signal",label:"Signal strength"}];
@@ -330,7 +348,6 @@ const KITS={
 
 const TEAM=[{name:"A. Rao",cap:2,active:1},{name:"J. Okafor",cap:2,active:1},{name:"M. Fischer",cap:2,active:0}];
 
-/* rtwAge = days since you last affirmed each dimension. Past its window → stale. */
 const ACCOUNTS=[
  {id:"meridian",name:"Meridian Logistics",industry:"Transportation & Logistics",size:"5,000 emp · $1.2B",region:"North America",owner:"A. Rao",value:2.4,tam:11,
   setup:{complete:true,play:"none",engagements:[],incumbents:["Regional SI holds AMS contract"],
@@ -338,11 +355,13 @@ const ACCOUNTS=[
    notes:"Lost a 2023 analytics bid to price. New CIO changes the picture."},
   rtw:{rel:2,cred:5,del:4,comp:4,comm:3},rtwAge:{rel:20,cred:400,del:30,comp:40,comm:40},
   rtp:[{item:"MSA / vendor registration",st:"ok",src:"agent"},{item:"SOC2 Type II",st:"ok",src:"agent"},{item:"US delivery entity",st:"ok",src:"user"}],
+  queue:[{sec:"Org structure",item:"CIO — Priya Nair, joined from FedEx digital (LinkedIn)",src:"agent",st:"approved"},
+         {sec:"Org structure",item:"Head of Data — reports to CIO, team of 12",src:"agent",st:"approved"}],
   journal:[
    {d:"Jul 21",src:"agent",txt:"New CIO appointed (ex-FedEx digital). Materiality: high."},
    {d:"Jul 14",src:"agent",txt:"6 data-engineering roles posted across two hubs."},
    {d:"Jun 02",src:"you",txt:"VP Supply Chain intro at summit — friendly, no budget authority."},
-   {d:"Mar 10",src:"crm",txt:"2023 lost bid record imported: analytics RFP, lost on price to regional SI."}],
+   {d:"Mar 10",src:"crm",txt:"2023 lost bid record imported: analytics RFP, lost on price."}],
   problems:["Manual capacity planning","Fragmented data across 4 systems","No demand forecasting"],
   devs:[
    {d:"Jul 21",type:"lead",mat:"high",t:"New CIO appointed from ex-FedEx digital org",trig:"Send CIO a modernization POV within 2 weeks of onboarding"},
@@ -362,6 +381,7 @@ const ACCOUNTS=[
    notes:"Whitespace: all technology kits. COO owns the cost-out mandate."},
   rtw:{rel:5,cred:4,del:4,comp:4,comm:4},rtwAge:{rel:40,cred:60,del:20,comp:50,comm:50},
   rtp:[{item:"HIPAA BAA readiness",st:"ok",src:"user"},{item:"SOC2 Type II",st:"ok",src:"agent"},{item:"Healthcare vendor empanelment",st:"ok",src:"agent"}],
+  queue:[{sec:"Org structure",item:"COO — leads merger integration office (LinkedIn)",src:"agent",st:"approved"}],
   journal:[
    {d:"Jul 18",src:"agent",txt:"State regulator opened documentation audit. Materiality: high."},
    {d:"Jun 03",src:"linkedin",txt:"COO posting repeatedly about merger integration workload."},
@@ -384,6 +404,7 @@ const ACCOUNTS=[
    notes:"CEO decides fast when growth-framed. CFO is the friction point."},
   rtw:{rel:3,cred:4,del:3,comp:3,comm:3},rtwAge:{rel:30,cred:90,del:30,comp:60,comm:60},
   rtp:[{item:"Local entity — Vietnam / Indonesia",st:"missing",src:"user"},{item:"MSA renewal",st:"ok",src:"agent"}],
+  queue:[],
   journal:[
    {d:"Jul 10",src:"agent",txt:"Expansion into Vietnam and Indonesia announced."},
    {d:"May 15",src:"you",txt:"CEO replied warmly to congratulations note. Door open."}],
@@ -398,8 +419,14 @@ const ACCOUNTS=[
     ev:{problem:"ERP data problem maps to kit",value:"Partial cost lever",ready:"Migration mid-flight",constr:"Incumbent SI holds the work",signal:"Migration visible"}}]},
  {id:"cascade",name:"Cascade Biotech",industry:"Life Sciences",size:"2,200 emp · $640M",region:"North America",owner:"J. Okafor",value:2.7,tam:9,
   setup:{complete:false,play:"",engagements:[],incumbents:[],relationships:[],notes:""},
+  rtwConfirmed:false,
   rtw:{rel:3,cred:4,del:3,comp:4,comm:4},rtwAge:{rel:0,cred:0,del:0,comp:0,comm:0},
   rtp:[{item:"GxP quality certification",st:"ok",src:"agent"},{item:"MSA / vendor registration",st:"ok",src:"agent"}],
+  queue:[
+   {sec:"Org structure",item:"CEO — founder-scientist, final decision maker (LinkedIn)",src:"agent",st:"proposed"},
+   {sec:"Org structure",item:"VP Data & Digital — vacant, role posted Jul 05 (careers page)",src:"agent",st:"proposed"},
+   {sec:"Context",item:"No incumbent advisory found in filings or press",src:"agent",st:"proposed"},
+   {sec:"Context",item:"$300M Series D closed Jul 19 — budget window open (filing)",src:"agent",st:"proposed"}],
   journal:[{d:"Jul 19",src:"agent",txt:"$300M Series D closed for pipeline expansion."}],
   problems:["Trial data scattered across CROs","Manual regulatory document prep"],
   devs:[
@@ -415,6 +442,7 @@ const ACCOUNTS=[
    notes:"No warm path in. Strong kit fit but we are unknown to this buyer."},
   rtw:{rel:1,cred:3,del:4,comp:2,comm:3},rtwAge:{rel:20,cred:60,del:20,comp:30,comm:30},
   rtp:[{item:"EU data-processing addendum",st:"ok",src:"agent"},{item:"Utility framework registration",st:"ok",src:"user"}],
+  queue:[],
   journal:[{d:"Jul 16",src:"agent",txt:"First Chief Data Officer appointed."},{d:"Jun 25",src:"agent",txt:"Regulator set new grid-efficiency targets."}],
   problems:["Legacy SCADA data silos","No predictive maintenance"],
   devs:[
@@ -429,6 +457,7 @@ const ACCOUNTS=[
   setup:{complete:true,play:"none",engagements:[],incumbents:[],relationships:[],notes:"AI talk without an owner. Watch, do not chase."},
   rtw:{rel:2,cred:3,del:3,comp:3,comm:2},rtwAge:{rel:40,cred:60,del:40,comp:60,comm:60},
   rtp:[{item:"MSA / vendor registration",st:"ok",src:"agent"}],
+  queue:[],
   journal:[{d:"Jul 08",src:"agent",txt:"CEO public AI-first statement — no owner, no budget attached."}],
   problems:["Wants AI, no data infrastructure","Unclear executive sponsor"],
   devs:[
@@ -443,6 +472,7 @@ const ACCOUNTS=[
   setup:{complete:true,play:"none",engagements:[],incumbents:[],relationships:[{who:"Head of Ad Product",strength:"warm",note:"ex-colleague of A. Rao"}],notes:"Small but fast. Entry could reference-build media vertical."},
   rtw:{rel:3,cred:2,del:4,comp:3,comm:3},rtwAge:{rel:30,cred:60,del:20,comp:40,comm:40},
   rtp:[{item:"MSA / vendor registration",st:"ok",src:"agent"}],
+  queue:[],
   journal:[{d:"Jul 12",src:"agent",txt:"New CEO issued data-first internal memo."}],
   problems:["No audience segmentation","Fragmented ad data"],
   devs:[
@@ -457,6 +487,7 @@ const ACCOUNTS=[
   setup:{complete:true,play:"none",engagements:[],incumbents:["Big-4 advisory on multi-year retainer"],relationships:[],notes:"Park until renewal minus 6 months."},
   rtw:{rel:1,cred:3,del:3,comp:1,comm:2},rtwAge:{rel:60,cred:60,del:60,comp:60,comm:60},
   rtp:[{item:"Financial-services empanelment",st:"missing",src:"agent"}],
+  queue:[],
   journal:[{d:"Jul 03",src:"agent",txt:"Big-4 incumbent renewed multi-year."}],
   problems:["Well-served by incumbents","High switching cost"],
   devs:[
@@ -466,6 +497,9 @@ const ACCOUNTS=[
    {kit:"ADV-1",s:{problem:50,value:46,ready:64,constr:28,signal:24},disq:["Entrenched incumbent advisor","Procurement freeze in effect"],
     ev:{problem:"No open problem the incumbent is not covering",value:"No urgent lever",ready:"Mature org",constr:"Freeze + incumbent",signal:"Negative triggers"}}]},
 ];
+/* normalize: furnished accounts default to confirmed baselines */
+ACCOUNTS.forEach(a=>{if(a.rtwConfirmed===undefined)a.rtwConfirmed=a.setup.complete;
+ if(a.setup.complete&&!a.setup.relationships.length)a._noRel=true;});
 
 const PURSUITS=[
  {id:"p1",acct:"meridian",stage:"Develop",kit:"TEC-1",owner:"A. Rao",
@@ -475,9 +509,9 @@ const PURSUITS=[
   battle:{comp:"Global SI (AMS incumbent)",their:"Already on the ground; will price aggressively",ours:"Migration specialism, zero-downtime references; their AMS revenue is a conflict of interest",watch:"They may bundle migration into the AMS renewal"}},
  {id:"p2",acct:"corepoint",stage:"Propose",kit:"TEC-3",owner:"J. Okafor",
   next:[{t:"HIPAA scoping session with compliance",due:"Jul 24",done:true},{t:"Submit proposal v2",due:"Aug 01",done:false},{t:"Line up Juno Health reference call",due:"Aug 05",done:false}],
-  meetings:[{d:"Aug 01",t:"Proposal walkthrough — COO office",kind:"up"},{d:"Jul 17",t:"Claims ops workshop",kind:"past",note:"40k docs/month, 7% error rate. COO wants audit-ready by Q4. Integration office will co-own."}],
+  meetings:[{d:"Aug 01",t:"Proposal walkthrough — COO office",kind:"up"},{d:"Jul 17",t:"Claims ops workshop",kind:"past",note:"40k docs/month, 7% error rate. COO wants audit-ready by Q4."}],
   proposal:"v2 in internal review · due Aug 01",
-  battle:{comp:"Big-4 incumbent (tax & audit)",their:"Board relationships; brand safety",ours:"We hold the COO and a delivered diagnostic; purpose-built claims AI vs generalists",watch:"Expect a strategy-first delay play to buy time"}}];
+  battle:{comp:"Big-4 incumbent (tax & audit)",their:"Board relationships; brand safety",ours:"We hold the COO and a delivered diagnostic; purpose-built claims AI vs generalists",watch:"Expect a strategy-first delay play"}}];
 
 const WINLOSS=[
  {acct:"Trident Insurance",kit:"TEC-3",res:"won",value:2.2,date:"May 2026",reason:"Champion + backtest pilot beat two rivals",lesson:"Pilot-first converts skeptical evaluators"},
@@ -530,29 +564,35 @@ function verdict(a){
  if(top.score>=THRESHOLD.review)return{v:"review",top,hard,rtw,stale};
  return{v:"reject",top,hard,rtw,stale};}
 function gateCounts(){const c={accept:0,build:0,rtp:0,review:0,reject:0,setup:0};ACCOUNTS.forEach(a=>c[verdict(a).v]++);return c;}
-const VLABEL={accept:"Pursue",build:"Build RTW",rtp:"Build RTP",review:"Review",reject:"Pass",setup:"Setup pending"};
+const VLABEL={accept:"Pursue",build:"Build RTW",rtp:"Build RTP",review:"Review",reject:"Pass",setup:"In furnishing"};
 const VCOLOR={accept:"var(--green)",build:"var(--blue)",rtp:"var(--accent)",review:"var(--amber)",reject:"var(--red)",setup:"var(--muted)"};
 function bandColor(n){return n>=THRESHOLD.accept?"var(--green)":n>=THRESHOLD.review?"var(--amber)":"var(--faint)";}
 function motionOf(a){return a.setup.play==="active"||a.setup.play==="past"?"cross":"new";}
 function dimLabel(k){return RTW_DIMS.find(d=>d.key===k).label;}
 function explain(a,v){const k=v.top?KITS[v.top.kit].name:"";
- if(v.v==="accept")return `Recommend <b>pursue</b>. ${k} clears the fit bar, eligibility (RTP) is clean, and your right-to-win (${v.rtw}) clears ${THRESHOLD.rtw}. All three questions answered: real, allowed, winnable.`;
- if(v.v==="build")return `<b>Strong fit, weak hand.</b> Fit clears the bar but your right-to-win (${v.rtw}) is below ${THRESHOLD.rtw}. Build the hand before spending a slot: warm a relationship, line up a reference, or partner. Chasing now turns a good opportunity into a likely loss.`;
- if(v.v==="rtp")return `<b>Not yet eligible.</b> Fit is there, but a right-to-participate item is missing (see checklist). Fix eligibility first — it is usually cheaper and faster than building relationships.`;
- if(v.v==="review"&&v.staleHold)return `<b>Held for re-affirmation.</b> This would be a Pursue, but your ${v.stale.map(dimLabel).join(", ").toLowerCase()} input${v.stale.length>1?"s are":" is"} past ${v.stale.length>1?"their":"its"} shelf life. Re-affirm (one click if unchanged) to restore the verdict. Stale judgment is not allowed to green-light a pursuit.`;
- if(v.v==="review")return `Recommend <b>human review</b>. ${k} lands in the qualified band${v.hard?" and a hard disqualifier is flagged":""}. RTW ${v.rtw}. Pressure-test the weak axes before committing a slot.`;
- return `Recommend <b>pass</b>. ${v.hard?"A hard disqualifier blocks this regardless of fit.":`Best fit scores ${v.top.score}, below the review bar.`} Finite effort goes further elsewhere.`;}
+ if(v.v==="accept")return `Recommend <b>pursue</b>. ${k} clears the fit bar, eligibility is clean, and your right-to-win (${v.rtw}) clears ${THRESHOLD.rtw}. Real, allowed, winnable.`;
+ if(v.v==="build")return `<b>Strong fit, weak hand.</b> Fit clears the bar but your right-to-win (${v.rtw}) is below ${THRESHOLD.rtw}. Build the hand first: warm a relationship, line up a reference, or partner.`;
+ if(v.v==="rtp")return `<b>Not yet eligible.</b> Fit is there, but a right-to-participate item is missing. Fix eligibility first — usually the cheapest gap to close.`;
+ if(v.v==="review"&&v.staleHold)return `<b>Held for re-affirmation.</b> Would be a Pursue, but your ${v.stale.map(dimLabel).join(", ").toLowerCase()} input is past its shelf life. Re-affirm to restore — stale judgment cannot green-light a pursuit.`;
+ if(v.v==="review")return `Recommend <b>human review</b>. ${k} lands in the qualified band${v.hard?" and a hard disqualifier is flagged":""}. RTW ${v.rtw}.`;
+ return `Recommend <b>pass</b>. ${v.hard?"A hard disqualifier blocks this regardless of fit.":`Best fit scores ${v.top.score}, below the review bar.`}`;}
 
 /* ============ SHELL ============ */
-let state={view:"overview",geo:"All",acct:null,tab:"intake"};
+let state={view:"overview",geo:"All",acct:null,tab:"intake",fid:null};
 const content=document.getElementById("content");
-const NAV=[{k:"overview",t:"Overview"},{k:"setup",t:"Account Setup"},{k:"portfolio",t:"Target Portfolio"},{k:"pursuits",t:"Pursuits"},{k:"library",t:"Library"},{k:"insights",t:"Insights"},{k:"registry",t:"Solution Kits"}];
+const NAVG=[
+ {label:"Start",items:[{k:"how",t:"How it works"}]},
+ {label:"1 · Furnish",items:[{k:"registry",t:"Solution Kits"},{k:"setup",t:"Account Setup"}]},
+ {label:"2 · Analyze",items:[{k:"overview",t:"Overview"},{k:"portfolio",t:"Target Portfolio"}]},
+ {label:"3 · Execute",items:[{k:"pursuits",t:"Pursuits"}]},
+ {label:"4 · Learn",items:[{k:"library",t:"Library"},{k:"insights",t:"Insights"}]}];
 const NAV2=[{k:"methodology",t:"Methodology"},{k:"governance",t:"Governance & Data"}];
 function pendingCount(){return ACCOUNTS.filter(a=>!a.setup.complete).length;}
 function renderNav(){
- document.getElementById("nav").innerHTML=NAV.map(n=>`<a class="${state.view===n.k&&!state.acct?'active':''}" onclick="go('${n.k}')"><span>${n.t}</span>${n.k==='setup'&&pendingCount()?`<span class="badge">${pendingCount()}</span>`:''}</a>`).join("");
+ document.getElementById("navwrap").innerHTML=NAVG.map(g=>`<div class="sec-label">${g.label}</div><nav class="nav">${
+  g.items.map(n=>`<a class="${(state.view===n.k||(state.view==="furnish"&&n.k==="setup"))&&!state.acct?'active':''}" onclick="go('${n.k}')"><span>${n.t}</span>${n.k==='setup'&&pendingCount()?`<span class="badge">${pendingCount()}</span>`:''}</a>`).join("")}</nav>`).join("");
  document.getElementById("nav2").innerHTML=NAV2.map(n=>`<a class="${state.view===n.k&&!state.acct?'active':''}" onclick="go('${n.k}')">${n.t}</a>`).join("");}
-function go(v){state.view=v;state.acct=null;render();}
+function go(v){state.view=v;state.acct=null;state.fid=null;render();}
 function setCrumb(h){document.getElementById("crumb").innerHTML=h;}
 function toggleLens(e){e.stopPropagation();document.getElementById("lensMenu").classList.toggle("open");}
 function setLens(name,active,e){e.stopPropagation();document.getElementById("lensMenu").classList.remove("open");
@@ -567,9 +607,29 @@ function geoButtons(){return `<div class="geo">${GEOS.map(g=>`<button class="${s
 function setGeo(g){state.geo=g;render();}
 function render(){renderNav();
  if(state.acct)return renderDetail();
- ({overview:renderOverview,setup:renderSetup,portfolio:renderPortfolio,pursuits:renderPursuits,library:renderLibrary,insights:renderInsights,registry:renderRegistry,methodology:renderMethodology,governance:renderGovernance})[state.view]();}
+ ({how:renderHow,overview:renderOverview,setup:renderSetup,furnish:renderFurnish,portfolio:renderPortfolio,pursuits:renderPursuits,library:renderLibrary,insights:renderInsights,registry:renderRegistry,methodology:renderMethodology,governance:renderGovernance})[state.view]();}
 
-/* ============ OVERVIEW ============ */
+/* ============ HOW IT WORKS ============ */
+function renderHow(){
+ setCrumb('<b>How it works</b>');
+ const steps=[
+  {n:1,t:"Furnish your solution kits",d:"The supply side. Upload a kit as PPT/PDF and let GenAI propose its tags, or build it by hand picking tags from the taxonomy. Nothing can match until a kit is approved.",go:"registry",l:"Solution Kits"},
+  {n:2,t:"Furnish your accounts",d:"The demand side. Agents pre-draft what they can find; you review their findings and add what they never could — plays, relationships, incumbents, history, eligibility, your Right-to-Win baseline. An account is invisible to analysis until furnishing is 100%.",go:"setup",l:"Account Setup"},
+  {n:3,t:"Read the portfolio",d:"Every furnished account is scored on three questions: is it real (fit, by agents), are we allowed (RTP), can we win (RTW, by you). The gate answers Pursue / Build RTW / Build RTP / Review / Pass — always with reasons.",go:"portfolio",l:"Target Portfolio"},
+  {n:4,t:"Act on triggers",d:"Watchers track developments. Only high-materiality events interrupt you, capped at "+TRIGGER_BUDGET+" per week; the rest waits in a digest. Each trigger carries a suggested next action.",go:"overview",l:"Overview"},
+  {n:5,t:"Run the pursuit",d:"A Pursue verdict competes for a capacity slot. The workspace tracks stages, next steps, meeting prep, proposals and battlecards.",go:"pursuits",l:"Pursuits"},
+  {n:6,t:"Close the loop",d:"Every win and loss is captured with reasons and lessons. The engine proposes recalibrations; you approve them. The tool gets sharper with every close.",go:"insights",l:"Insights"}];
+ content.innerHTML=`
+  <div class="topbar"><div><h2>How Pursuits works</h2><p>Bottom-up, zero to one: furnish first, analyze second, act third, learn always. Nothing is scored that you have not grounded.</p></div></div>
+  <div class="meth">
+   ${steps.map(s=>`<div class="fsec"><div class="fh"><span class="fn">${s.n}</span><b>${s.t}</b>
+     <small><span class="whylink" onclick="go('${s.go}')">open ${s.l} →</span></small></div>
+    <p style="font-size:13px">${s.d}</p></div>`).join("")}
+   <p class="hint">Two more pages back everything above: <span class="whylink" onclick="go('methodology')">Methodology</span> explains where every number comes from, and <span class="whylink" onclick="go('governance')">Governance &amp; Data</span> sets the rules the engine runs under.</p>
+  </div>`;
+}
+
+/* ============ OVERVIEW (furnished accounts only) ============ */
 function dismissDev(aid,idx){const a=ACCOUNTS.find(x=>x.id===aid);a.devs[idx].dismissed=true;render();toast("Dismissed. Logged for materiality tuning.");}
 function renderOverview(){
  setCrumb('<b>Overview</b> · '+state.geo);
@@ -584,13 +644,13 @@ function renderOverview(){
  const cap=TEAM.reduce((s,t)=>s+t.cap,0),used=TEAM.reduce((s,t)=>s+t.active,0);
  const tot=Math.max(c.accept+c.build+c.rtp+c.review+c.reject,1);
  content.innerHTML=`
-  <div class="topbar"><div><h2>Overview</h2><p>${accts.length} active accounts · ${new Set(accts.map(a=>a.industry)).size} industries</p></div>${geoButtons()}</div>
-  ${pending.length?`<div class="banner">⚠ <span><b>${pending.length} account awaiting setup</b> — agents paused for ${pending.map(p=>p.name).join(", ")} until you provide inside knowledge. No score without your input.</span><span class="whylink" onclick="go('setup')">Complete setup →</span></div>`:''}
+  <div class="topbar"><div><h2>Overview</h2><p>${accts.length} furnished accounts in analysis. ${pending.length?pending.length+" more in furnishing — invisible here until their basics are complete.":""}</p></div>${geoButtons()}</div>
+  ${pending.length?`<div class="banner">⚠ <span><b>Foundation first:</b> ${pending.map(p=>p.name).join(", ")} is still being furnished. It appears nowhere in analysis until you complete and approve its basics.</span><span class="whylink" onclick="go('setup')">Go to furnishing →</span></div>`:''}
   <div class="kpis">
    <div class="kpi"><div class="l">Qualified pipeline</div><div class="n">$${pipeline.toFixed(1)}M</div><div class="d">${c.accept} pursue · ${c.review} review</div></div>
    <div class="kpi"><div class="l">Pursuit capacity</div><div class="n">${used}<span style="font-size:13px;color:var(--faint)"> / ${cap}</span></div><div class="d">slots in use · ${cap-used} free</div></div>
-   <div class="kpi"><div class="l">Triggers this week</div><div class="n">${shown.length}<span style="font-size:13px;color:var(--faint)"> / ${TRIGGER_BUDGET}</span></div><div class="d">${med.length} lower-materiality → Friday digest</div></div>
-   <div class="kpi"><div class="l">Awaiting your input</div><div class="n">${pending.length+c.review}</div><div class="d">${pending.length} setup · ${c.review} review / re-affirm</div></div>
+   <div class="kpi"><div class="l">Triggers this week</div><div class="n">${shown.length}<span style="font-size:13px;color:var(--faint)"> / ${TRIGGER_BUDGET}</span></div><div class="d">${med.length} lower-materiality → digest</div></div>
+   <div class="kpi"><div class="l">Awaiting your input</div><div class="n">${pending.length+c.review}</div><div class="d">${pending.length} furnishing · ${c.review} review / re-affirm</div></div>
   </div>
   <div class="statline">
    <span class="seg"><span class="sw" style="background:var(--green)"></span>Pursue <b>${c.accept}</b></span>
@@ -617,66 +677,149 @@ function renderOverview(){
      <td><span class="motion ${motionOf(a)}">${motionOf(a)==="cross"?"cross-sell":"new"}</span></td>
      <td><span class="b-score">${v.top.score}</span></td><td><span class="b-score">${v.rtw}</span></td>
      <td><span class="pill ${v.v}"><span class="pd"></span>${VLABEL[v.v]}</span></td>
-     <td class="val">$${a.value.toFixed(1)}M</td></tr>`).join("")||'<tr><td colspan="6" class="empty">No qualified accounts here yet.</td></tr>'}
+     <td class="val">$${a.value.toFixed(1)}M</td></tr>`).join("")||'<tr><td colspan="6" class="empty">Nothing qualified yet.</td></tr>'}
     </tbody></table>
    </div>
   </div>`;
 }
 
-/* ============ SETUP ============ */
-function setupProgress(a){let n=0;if(a.setup.play)n++;if(a.setup.relationships.length)n++;if(a.setup.incumbents.length)n++;if(a.setup.notes)n++;return Math.round(n/4*100);}
-let setupOpen=null;
+/* ============ SETUP LIST ============ */
+function readiness(a){
+ return [
+  {t:"Existing play set",ok:!!a.setup.play},
+  {t:"Agent findings reviewed",ok:!a.queue.some(q=>q.st==="proposed")},
+  {t:"Relationships furnished (or confirmed none)",ok:a.setup.relationships.length>0||!!a._noRel},
+  {t:"History & context noted",ok:!!a.setup.notes},
+  {t:"Eligibility (RTP) reviewed",ok:!(a.rtp||[]).some(r=>r.st==="pending")},
+  {t:"Right-to-Win baseline confirmed by you",ok:!!a.rtwConfirmed}];}
+function readyPct(a){const c=readiness(a);return Math.round(c.filter(x=>x.ok).length/c.length*100);}
 function renderSetup(){
  setCrumb('<b>Account Setup</b>');
- const strengths={strong:"rel-strong",warm:"rel-warm",cooling:"rel-cooling",cold:"rel-cold"};
  content.innerHTML=`
-  <div class="topbar"><div><h2>Account Setup</h2><p>Bottom-up: you supply what the internet cannot — plays, relationships, incumbents, history. Agents pre-draft the rest. Unset accounts are not scored.</p></div></div>
+  <div class="topbar"><div><h2>Account Setup</h2><p>Step 1 of the flow. Agents pre-draft what they can find; you review it and add what they never could. An account enters analysis only when its furnishing is complete.</p></div></div>
   <div class="card">
    ${ACCOUNTS.map(a=>`
-    <div class="setup-row" onclick="toggleSetup('${a.id}')">
+    <div class="setup-row" onclick="openFurnish('${a.id}')">
      <div class="co"><b>${a.name}</b><small>${a.industry} · ${a.region} · owner ${a.owner}</small></div>
      <div class="st">
-      <span class="motion ${motionOf(a)}">${a.setup.play==="active"?"active client":a.setup.play==="past"?"past client":a.setup.play==="none"?"prospect":"—"}</span>
-      <div class="prog"><i style="width:${a.setup.complete?100:setupProgress(a)}%"></i></div>
-      ${a.setup.complete?'<span class="pill accept"><span class="pd"></span>Active</span>':'<span class="pill setup"><span class="pd"></span>Setup pending</span>'}
-     </div></div>
-    ${setupOpen===a.id?`<div style="padding:4px 16px 18px;border-bottom:1px solid var(--line-2)">
-      <div class="fgrid">
-       <div>
-        <div class="field"><label>Existing play</label>
-         <select onchange="setPlay('${a.id}',this.value)"><option value="" ${!a.setup.play?'selected':''}>— select —</option><option value="none" ${a.setup.play==='none'?'selected':''}>Prospect</option><option value="past" ${a.setup.play==='past'?'selected':''}>Past client</option><option value="active" ${a.setup.play==='active'?'selected':''}>Active engagement</option></select></div>
-        <div class="field"><label>Work delivered</label>
-         ${a.setup.engagements.length?`<div class="chips">${a.setup.engagements.map(e=>`<span class="chip">${e.label} · ${e.year} · ${e.outcome}</span>`).join("")}</div>`:`<input placeholder="e.g. Ops diagnostic, 2025, delivered" onchange="toast('v1 stub — recorded')">`}</div>
-        <div class="field"><label>Incumbents / vendor landscape</label>
-         ${a.setup.incumbents.length?`<div class="chips">${a.setup.incumbents.map(x=>`<span class="chip">${x}</span>`).join("")}</div>`:`<input placeholder="e.g. Big-4 on retainer" onchange="toast('v1 stub — recorded')">`}</div>
-       </div>
-       <div>
-        <div class="field"><label>Relationships</label>
-         ${a.setup.relationships.length?`<div class="chips">${a.setup.relationships.map(r=>`<span class="chip ${strengths[r.strength]}">${r.who} · ${r.strength}${r.note?" — "+r.note:""}</span>`).join("")}</div>`:`<input placeholder="e.g. COO — strong — sponsored 2025 work" onchange="toast('v1 stub — recorded')">`}</div>
-        <div class="field"><label>History the agents cannot find</label>
-         <textarea placeholder="Lost bids, pricing history, politics…" onchange="toast('v1 stub — saved')">${a.setup.notes}</textarea></div>
-        ${!a.setup.complete?`<button class="btn" onclick="completeSetup('${a.id}',event)">Mark complete — activate account</button>`:`<p class="hint">Setup complete. Edits append to the account journal.</p>`}
-       </div>
-      </div></div>`:''}`).join("")}
+      ${a.setup.play?`<span class="motion ${motionOf(a)}">${a.setup.play==="active"?"active client":a.setup.play==="past"?"past client":"prospect"}</span>`:'<span class="muted" style="font-size:11px">play not set</span>'}
+      <div class="prog"><i style="width:${readyPct(a)}%"></i></div>
+      ${a.setup.complete?'<span class="pill accept"><span class="pd"></span>In analysis</span>':`<span class="pill setup"><span class="pd"></span>Furnishing ${readyPct(a)}%</span>`}
+     </div></div>`).join("")}
+  </div>
+  <p class="hint">Click any account to open its furnishing page — also where you edit an active account&#39;s facts later. Every edit appends to the journal.</p>`;
+}
+
+/* ============ FURNISHING PAGE ============ */
+function openFurnish(id){state.view="furnish";state.fid=id;state.acct=null;render();}
+function fA(){return ACCOUNTS.find(a=>a.id===state.fid);}
+function renderFurnish(){
+ const a=fA();if(!a)return go('setup');
+ const strengths={strong:"rel-strong",warm:"rel-warm",cooling:"rel-cooling",cold:"rel-cold"};
+ const checks=readiness(a),pct=readyPct(a);
+ const props=a.queue.map((q,i)=>({...q,i})).filter(q=>q.st==="proposed");
+ const appr=a.queue.filter(q=>q.st==="approved");
+ setCrumb(`<span class="lnk" onclick="go('setup')">Account Setup</span> · <b>${a.name}</b>`);
+ content.innerHTML=`
+  <button class="back" onclick="go('setup')">← Account Setup</button>
+  <div class="topbar"><div><h2>Furnish: ${a.name}</h2><p>${a.industry} · ${a.size} · ${a.region}</p></div>
+   <div style="display:flex;align-items:center;gap:12px"><div class="prog" style="width:130px"><i style="width:${pct}%"></i></div>
+   ${a.setup.complete?'<span class="pill accept"><span class="pd"></span>In analysis</span>':`<span class="pill setup"><span class="pd"></span>${pct}% furnished</span>`}</div></div>
+  <div class="cols" style="grid-template-columns:.55fr 1.45fr">
+   <div>
+    <div class="block"><h3>Readiness</h3>
+     <div class="ready">${checks.map(c=>`<div class="ri ${c.ok?'ok':'no'}"><span class="rc">${c.ok?'✓':'○'}</span><span>${c.t}</span></div>`).join("")}</div>
+     ${a.setup.complete
+      ?`<p class="hint">Active — edits here append to the journal and re-feed the engine.</p>`
+      :`<button class="btn ${pct===100?'':'disabled'}" style="margin-top:14px;width:100%" onclick="activateAccount('${a.id}')">${pct===100?'Activate — enter analysis':'Complete all items to activate'}</button>`}
+    </div>
+    <div class="block" style="margin-top:14px"><h3>What agents found <span class="sub">approve or reject — nothing enters unreviewed</span></h3>
+     ${props.length?props.map(q=>`<div class="qitem"><div class="qi"><span style="color:var(--ink)">${q.item}</span><small>${q.sec} · found by agent</small></div>
+       <button class="btn sm" onclick="approveQ('${a.id}',${q.i})">Approve</button><button class="btn sm ghost" onclick="rejectQ('${a.id}',${q.i})">Reject</button></div>`).join("")
+      :'<p class="muted" style="font-size:12.5px">Nothing awaiting review.</p>'}
+     ${appr.length?`<p class="hint" style="margin-top:10px"><b>Approved:</b> ${appr.map(q=>q.item.split(" (")[0]).join(" · ")}</p>`:''}
+    </div>
+   </div>
+   <div>
+    <div class="fsec"><div class="fh"><span class="fn">1</span><b>Basics</b><small>simplest first</small></div>
+     <div class="field"><label>Existing play — drives cross-sell vs new-account motion</label>
+      <select onchange="setPlayF('${a.id}',this.value)"><option value="" ${!a.setup.play?'selected':''}>— select —</option><option value="none" ${a.setup.play==='none'?'selected':''}>Prospect — no history</option><option value="past" ${a.setup.play==='past'?'selected':''}>Past client</option><option value="active" ${a.setup.play==='active'?'selected':''}>Active engagement</option></select></div>
+     ${a.setup.engagements.length?`<div class="field"><label>Work delivered</label><div class="chips">${a.setup.engagements.map(e=>`<span class="chip">${e.label} · ${e.year} · ${e.outcome}</span>`).join("")}</div></div>`:''}
+    </div>
+    <div class="fsec"><div class="fh"><span class="fn">2</span><b>People — relationships you actually hold</b><small>click a chip to change strength · × to remove</small></div>
+     <div class="chips" style="margin-bottom:10px">
+      ${a.setup.relationships.map((r,i)=>`<span class="chip click ${strengths[r.strength]}" onclick="relCycle('${a.id}',${i})">${r.who} · ${r.strength}<span class="x" onclick="event.stopPropagation();relDel('${a.id}',${i})">×</span></span>`).join("")||'<span class="muted" style="font-size:12.5px">None recorded.</span>'}
+     </div>
+     <div class="jadd"><input id="relIn" placeholder="Name / role — e.g. CFO"><select id="relSt" style="font:inherit;font-size:12.5px;border:1px solid var(--line);border-radius:8px;padding:0 10px"><option>strong</option><option selected>warm</option><option>cooling</option><option>cold</option></select><button class="btn sm" onclick="relAdd('${a.id}')">Add</button></div>
+     ${!a.setup.relationships.length&&!a._noRel?`<button class="btn ghost sm" style="margin-top:10px" onclick="confirmNoRel('${a.id}')">Confirm: we hold no relationships here</button>`:''}
+    </div>
+    <div class="fsec"><div class="fh"><span class="fn">3</span><b>Context — the history agents can never find</b></div>
+     <div class="field"><label>Incumbents / vendor landscape</label>
+      ${a.setup.incumbents.length?`<div class="chips">${a.setup.incumbents.map(x=>`<span class="chip">${x}</span>`).join("")}</div>`:''}
+      <div class="jadd" style="margin-top:${a.setup.incumbents.length?'8px':'0'}"><input id="incIn" placeholder="e.g. Big-4 on retainer"><button class="btn sm" onclick="incAdd('${a.id}')">Add</button></div></div>
+     <div class="field"><label>History & politics — lost bids, pricing, champions who left</label>
+      <textarea id="notesIn" onchange="setNotesF('${a.id}',this.value)" placeholder="Free text — the journal keeps versions.">${a.setup.notes}</textarea></div>
+    </div>
+    <div class="fsec"><div class="fh"><span class="fn">4</span><b>Eligibility — Right to Participate</b><small>factual · agents verify most</small></div>
+     ${(a.rtp||[]).map(r=>`<div class="rtpitem"><span>${r.item}</span><span class="tag">${r.src}</span><span class="st ${r.st}">${r.st==="ok"?"✓ verified":r.st==="pending"?"◌ pending":"✕ missing"}</span></div>`).join("")}
+    </div>
+    <div class="fsec rtw"><div class="fh"><span class="fn">5</span><b>Right to Win — your baseline judgment</b><small>agents never set these</small></div>
+     ${RTW_DIMS.map(d=>`
+      <label style="font-size:12px;color:var(--muted);margin:10px 0 2px;display:flex;justify-content:space-between">${d.label}<span class="wv" style="font-family:var(--mono);color:var(--ink);font-weight:700" id="fb-${d.key}">${a.rtw[d.key]}/5</span></label>
+      <div style="font-size:11px;color:var(--faint);margin-bottom:4px">${d.q}</div>
+      <input type="range" min="1" max="5" value="${a.rtw[d.key]}" oninput="setRtwBase('${a.id}','${d.key}',this.value)">`).join("")}
+     ${a.rtwConfirmed?'<p class="hint">Baseline confirmed. Ongoing RTW (with shelf lives) lives on the account&#39;s Gate tab.</p>'
+      :`<button class="btn" style="margin-top:12px" onclick="confirmRtwBase('${a.id}')">Confirm baseline</button>`}
+    </div>
+   </div>
   </div>`;
 }
-function toggleSetup(id){setupOpen=setupOpen===id?null:id;renderSetup();}
-function setPlay(id,val){ACCOUNTS.find(x=>x.id===id).setup.play=val;toast("Existing play set — drives cross-sell vs new-account motion.");}
-function completeSetup(id,e){e.stopPropagation();const a=ACCOUNTS.find(x=>x.id===id);
- if(!a.setup.play){toast("Select the existing play first.");return;}
- a.setup.complete=true;setupOpen=null;render();
- toast(a.name+" activated — watchers on, fit mapped, scored into the portfolio.");}
+function approveQ(id,i){const a=ACCOUNTS.find(x=>x.id===id);a.queue[i].st="approved";
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Approved agent finding: "+a.queue[i].item});renderFurnish();toast("Approved — now part of account truth.");}
+function rejectQ(id,i){const a=ACCOUNTS.find(x=>x.id===id);const q=a.queue.splice(i,1)[0];
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Rejected agent finding: "+q.item});renderFurnish();toast("Rejected and logged — helps tune the agents.");}
+const REL_ORDER=["strong","warm","cooling","cold"];
+function relCycle(id,i){const a=ACCOUNTS.find(x=>x.id===id);const r=a.setup.relationships[i];
+ r.strength=REL_ORDER[(REL_ORDER.indexOf(r.strength)+1)%4];
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Relationship updated: "+r.who+" → "+r.strength});
+ render();toast(r.who+" → "+r.strength+". If this shifts your RTW, adjust the baseline below.");}
+function relDel(id,i){const a=ACCOUNTS.find(x=>x.id===id);const r=a.setup.relationships.splice(i,1)[0];
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Relationship removed: "+r.who});render();toast(r.who+" removed and logged.");}
+function relAdd(id){const a=ACCOUNTS.find(x=>x.id===id);const w=document.getElementById("relIn"),s=document.getElementById("relSt");
+ if(!w.value.trim())return;
+ a.setup.relationships.push({who:w.value.trim(),strength:s.value,note:""});a._noRel=false;
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Relationship added: "+w.value.trim()+" ("+s.value+")"});
+ render();toast("Added and logged.");}
+function confirmNoRel(id){const a=ACCOUNTS.find(x=>x.id===id);a._noRel=true;
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Confirmed: no relationships held at this account."});render();}
+function incAdd(id){const a=ACCOUNTS.find(x=>x.id===id);const el=document.getElementById("incIn");
+ if(!el.value.trim())return;a.setup.incumbents.push(el.value.trim());
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Incumbent noted: "+el.value.trim()});render();}
+function setPlayF(id,val){const a=ACCOUNTS.find(x=>x.id===id);a.setup.play=val;
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"Existing play set: "+(val||"—")});render();}
+function setNotesF(id,val){const a=ACCOUNTS.find(x=>x.id===id);a.setup.notes=val;
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"History/context updated."});render();}
+function setRtwBase(id,k,val){const a=ACCOUNTS.find(x=>x.id===id);a.rtw[k]=+val;a.rtwAge[k]=0;
+ const el=document.getElementById("fb-"+k);if(el)el.textContent=val+"/5";}
+function confirmRtwBase(id){const a=ACCOUNTS.find(x=>x.id===id);a.rtwConfirmed=true;
+ a.journal.unshift({d:"Jul 25",src:"you",txt:"RTW baseline confirmed: "+RTW_DIMS.map(d=>d.key+" "+a.rtw[d.key]).join(", ")});
+ render();toast("Baseline confirmed — shelf-life clocks start now.");}
+function activateAccount(id){const a=ACCOUNTS.find(x=>x.id===id);
+ if(readyPct(a)<100){toast("Not yet — complete the remaining readiness items first.");return;}
+ a.setup.complete=true;a.journal.unshift({d:"Jul 25",src:"you",txt:"Furnishing complete. Account activated for analysis."});
+ go('portfolio');toast(a.name+" is now in analysis — scored, ranked, watched.");}
 
-/* ============ PORTFOLIO ============ */
+/* ============ PORTFOLIO (furnished only) ============ */
 let pfilter="all";
 function renderPortfolio(){
  setCrumb('<b>Target Portfolio</b> · '+state.geo);
- const accts=geoAccounts();
- const scored=accts.map(a=>({a,v:verdict(a)})).sort((x,y)=>(y.v.top?y.v.top.score:-1)-(x.v.top?x.v.top.score:-1));
- const c={accept:0,build:0,rtp:0,review:0,reject:0,setup:0};scored.forEach(x=>c[x.v.v]++);
+ const accts=geoAccounts().filter(a=>a.setup.complete);
+ const hidden=geoAccounts().length-accts.length;
+ const scored=accts.map(a=>({a,v:verdict(a)})).sort((x,y)=>y.v.top.score-x.v.top.score);
+ const c={accept:0,build:0,rtp:0,review:0,reject:0};scored.forEach(x=>c[x.v.v]++);
  const shown=scored.filter(x=>pfilter==="all"||x.v.v===pfilter);
  content.innerHTML=`
-  <div class="topbar"><div><h2>Target Portfolio</h2><p>Three questions per account: real (fit) · allowed (RTP) · winnable (RTW)</p></div>${geoButtons()}</div>
+  <div class="topbar"><div><h2>Target Portfolio</h2><p>Three questions per account: real (fit) · allowed (RTP) · winnable (RTW)${hidden?` · ${hidden} account in furnishing is not shown`:''}</p></div>${geoButtons()}</div>
   <div class="filters">
    <button class="${pfilter==='all'?'active':''}" onclick="setF('all')">All ${scored.length}</button>
    <button class="${pfilter==='accept'?'active':''}" onclick="setF('accept')">Pursue ${c.accept}</button>
@@ -684,22 +827,20 @@ function renderPortfolio(){
    <button class="${pfilter==='rtp'?'active':''}" onclick="setF('rtp')">Build RTP ${c.rtp}</button>
    <button class="${pfilter==='review'?'active':''}" onclick="setF('review')">Review ${c.review}</button>
    <button class="${pfilter==='reject'?'active':''}" onclick="setF('reject')">Pass ${c.reject}</button>
-   ${c.setup?`<button class="${pfilter==='setup'?'active':''}" onclick="setF('setup')">Setup ${c.setup}</button>`:''}
   </div>
   <div class="card"><table>
    <thead><tr><th>Account</th><th>Motion</th><th>Best-fit kit</th><th>Fit</th><th>RTW</th><th>Gate</th><th>Value</th></tr></thead>
    <tbody>${shown.map(({a,v})=>`
     <tr class="row" onclick="open_('${a.id}')">
      <td><div class="co"><b>${a.name}</b><small>${a.industry} · ${a.region}</small></div></td>
-     <td>${a.setup.complete?`<span class="motion ${motionOf(a)}">${motionOf(a)==="cross"?"cross-sell":"new"}</span>`:'<span class="muted">—</span>'}</td>
-     <td>${v.top?KITS[v.top.kit].name:'<span class="muted">not scored</span>'}</td>
-     <td>${v.top?`<div class="score-cell"><div class="bar"><i style="width:${v.top.score}%;background:${bandColor(v.top.score)}"></i></div><span class="b-score">${v.top.score}</span></div>`:'—'}</td>
-     <td>${v.rtw!==null?`<span class="b-score">${v.rtw}</span>${v.stale.length?'<span class="stale-tag">STALE</span>':''}`:'—'}</td>
+     <td><span class="motion ${motionOf(a)}">${motionOf(a)==="cross"?"cross-sell":"new"}</span></td>
+     <td>${KITS[v.top.kit].name}</td>
+     <td><div class="score-cell"><div class="bar"><i style="width:${v.top.score}%;background:${bandColor(v.top.score)}"></i></div><span class="b-score">${v.top.score}</span></div></td>
+     <td><span class="b-score">${v.rtw}</span>${v.stale.length?'<span class="stale-tag">STALE</span>':''}</td>
      <td><span class="pill ${v.v}"><span class="pd"></span>${VLABEL[v.v]}</span></td>
      <td class="val">$${a.value.toFixed(1)}M</td>
     </tr>`).join("")||'<tr><td colspan="7" class="empty">No accounts match.</td></tr>'}</tbody>
-  </table></div>
-  <p class="hint"><b>STALE</b> = a right-to-win input is past its shelf life; the account holds at Review until you re-affirm it on the Gate tab.</p>`;
+  </table></div>`;
 }
 function setF(f){pfilter=f;renderPortfolio();}
 
@@ -708,15 +849,11 @@ function renderPursuits(){
  setCrumb('<b>Pursuits</b>');
  const cap=TEAM.reduce((s,t)=>s+t.cap,0),used=TEAM.reduce((s,t)=>s+t.active,0);
  content.innerHTML=`
-  <div class="topbar"><div><h2>Pursuit Workspace</h2><p>What happens after "Pursue": stages, next steps, meetings, proposals, battlecards.</p></div></div>
+  <div class="topbar"><div><h2>Pursuit Workspace</h2><p>After "Pursue": stages, next steps, meetings, proposals, battlecards.</p></div></div>
   <div class="cols" style="grid-template-columns:.62fr 1.38fr">
-   <div>
-    <div class="block"><h3>Capacity <span class="sub">slots are the scarce resource</span></h3>
+   <div><div class="block"><h3>Capacity <span class="sub">slots are the scarce resource</span></h3>
      ${TEAM.map(t=>`<div class="kv"><span>${t.name}</span><b>${t.active} / ${t.cap} slots</b></div>`).join("")}
-     <p class="hint">${cap-used} slot${cap-used!==1?'s':''} free. The gate ranks opportunities against this — "Pursue" competes for a slot, it doesn&#39;t just pass a bar.</p></div>
-    <div class="block" style="margin-top:14px"><h3>Waiting on a slot</h3>
-     <p style="font-size:12.5px" class="muted">None — pipeline and capacity are balanced this week.</p></div>
-   </div>
+     <p class="hint">${cap-used} slot${cap-used!==1?'s':''} free. "Pursue" competes for a slot, it doesn&#39;t just pass a bar.</p></div></div>
    <div>
    ${PURSUITS.map(p=>{const a=ACCOUNTS.find(x=>x.id===p.acct);const si=STAGES.indexOf(p.stage);return `
     <div class="card" style="margin-bottom:14px"><div class="ch"><span>${a.name} — ${KITS[p.kit].name}</span><span class="sub">$${a.value.toFixed(1)}M · ${p.owner} · <span class="whylink" onclick="open_('${a.id}')">open account →</span></span></div>
@@ -737,7 +874,6 @@ function renderPursuits(){
         <div class="kv"><span>Their strengths</span><b style="max-width:60%">${p.battle.their}</b></div>
         <div class="kv"><span>Our counters</span><b style="max-width:60%">${p.battle.ours}</b></div>
         <div class="kv"><span>Watch for</span><b style="max-width:60%">${p.battle.watch}</b></div>
-        <p class="hint">Battlecard entries are editable and journal-backed like everything else.</p>
        </div>
       </div>
      </div></div>`;}).join("")}
@@ -750,35 +886,36 @@ function toggleTask(pid,i){const p=PURSUITS.find(x=>x.id===pid);p.next[i].done=!
 function renderLibrary(){
  setCrumb('<b>Library</b>');
  content.innerHTML=`
-  <div class="topbar"><div><h2>Collateral Library</h2><p>Case studies, credentials, references, past proposals, battlecards. Feeds proposals, RTP checks and the credentials dimension of RTW.</p></div></div>
+  <div class="topbar"><div><h2>Collateral Library</h2><p>Case studies, credentials, references, proposals, battlecards — feeds proposals, RTP checks and the credentials side of RTW.</p></div></div>
   <div class="card">
    ${LIBRARY.map(l=>`<div class="lib"><div class="ic">${l.type}</div>
     <div style="flex:1"><b>${l.title}</b><small>Kits: ${l.kits} · Industry: ${l.ind}</small></div>
     <small class="muted" style="white-space:nowrap">${l.used}</small></div>`).join("")}
-  </div>
-  <p class="hint">In production this is searchable and agent-indexed: the proposal agent pulls the closest case studies automatically, and a missing reference for a live pursuit raises a task, not a surprise.</p>`;
+  </div>`;
 }
 
 /* ============ INSIGHTS ============ */
 function renderInsights(){
  setCrumb('<b>Insights</b>');
- const scored=ACCOUNTS.filter(a=>a.setup.complete).map(a=>({a,v:verdict(a)}));
+ const furnished=ACCOUNTS.filter(a=>a.setup.complete);
+ const scored=furnished.map(a=>({a,v:verdict(a)}));
  const qual=scored.filter(x=>["accept","review","build","rtp"].includes(x.v.v)).length;
  const won=WINLOSS.filter(w=>w.res==="won").length;
  const forecast=PURSUITS.reduce((s,p)=>{const a=ACCOUNTS.find(x=>x.id===p.acct);return s+a.value*(STAGE_PROB[p.stage]||.3);},0);
  const raw=PURSUITS.reduce((s,p)=>s+ACCOUNTS.find(x=>x.id===p.acct).value,0);
- const fun=[["Accounts scanned",ACCOUNTS.length],["Setup complete",ACCOUNTS.filter(a=>a.setup.complete).length],["Past the gate",qual],["Active pursuits",PURSUITS.length],["Historical win rate",won+" of "+WINLOSS.length]];
+ const fun=[["Accounts scanned",ACCOUNTS.length],["Furnished & in analysis",furnished.length],["Past the gate",qual],["Active pursuits",PURSUITS.length]];
  const mx=ACCOUNTS.length;
  content.innerHTML=`
   <div class="topbar"><div><h2>Insights</h2><p>Forecast, funnel, and the win/loss log that recalibrates the engine.</p></div></div>
   <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
-   <div class="kpi"><div class="l">Weighted forecast</div><div class="n">$${forecast.toFixed(1)}M</div><div class="d">$${raw.toFixed(1)}M unweighted · stage-probability weighted</div></div>
+   <div class="kpi"><div class="l">Weighted forecast</div><div class="n">$${forecast.toFixed(1)}M</div><div class="d">$${raw.toFixed(1)}M unweighted · stage-weighted</div></div>
    <div class="kpi"><div class="l">Win rate (12 mo)</div><div class="n">${Math.round(won/WINLOSS.length*100)}%</div><div class="d">${won} won · ${WINLOSS.length-won} lost</div></div>
-   <div class="kpi"><div class="l">Avg. won deal</div><div class="n">$${(WINLOSS.filter(w=>w.res==="won").reduce((s,w)=>s+w.value,0)/won).toFixed(1)}M</div><div class="d">estimation audit vs sized value: −8%</div></div>
+   <div class="kpi"><div class="l">Avg. won deal</div><div class="n">$${(WINLOSS.filter(w=>w.res==="won").reduce((s,w)=>s+w.value,0)/won).toFixed(1)}M</div><div class="d">sizing audit vs actual: −8%</div></div>
   </div>
   <div class="cols" style="grid-template-columns:.8fr 1.2fr">
    <div class="block"><h3>Funnel</h3><div class="funl">
-    ${fun.map(([t,n])=>`<div class="fr"><div class="t"><span>${t}</span><b>${n}</b></div><div class="track"><i style="width:${typeof n==="number"?Math.round(n/mx*100):50}%"></i></div></div>`).join("")}
+    ${fun.map(([t,n])=>`<div class="fr"><div class="t"><span>${t}</span><b>${n}</b></div><div class="track"><i style="width:${Math.round(n/mx*100)}%"></i></div></div>`).join("")}
+    <div class="fr"><div class="t"><span>Historical win rate</span><b>${won} of ${WINLOSS.length}</b></div><div class="track"><i style="width:${Math.round(won/WINLOSS.length*100)}%"></i></div></div>
    </div></div>
    <div class="card"><div class="ch">Win / loss log <span class="sub">every close feeds recalibration</span></div>
     <table><thead><tr><th>Account</th><th>Kit</th><th>Result</th><th>Why</th></tr></thead><tbody>
@@ -787,45 +924,107 @@ function renderInsights(){
     </tbody></table>
    </div>
   </div>
-  <div class="block" style="margin-top:14px"><h3>What the engine learned <span class="sub">from losses — applied as suggestions, approved by you</span></h3>
+  <div class="block" style="margin-top:14px"><h3>What the engine learned <span class="sub">from losses — applied as proposals you approve</span></h3>
    ${WINLOSS.filter(w=>w.res==="lost").map(w=>`<div class="kv"><span>${w.acct}</span><b style="max-width:70%;font-weight:500;color:var(--body)">${w.lesson}</b></div>`).join("")}
-   <p class="hint">Quarterly recalibration reviews these against gate weights and rubric. Nothing self-modifies — the engine proposes, you approve.</p></div>`;
+  </div>`;
 }
 
-/* ============ REGISTRY ============ */
+/* ============ REGISTRY + KIT FURNISHING ============ */
+let draftKit=null,manualKit=null;
+const TAXO=["legacy systems","data silos","cloud","forecasting","planning","inventory","document processing","compliance","claims","operating model","post-merger","cost-out","market entry","growth","pricing","customer segmentation","churn prediction","personalization"];
+const LEVER_OPTS=["revenue↑","cost↓","risk↓","time↓","compliance"];
 function renderRegistry(){
  setCrumb('<b>Solution Kits</b>');
  content.innerHTML=`
-  <div class="topbar"><div><h2>Solution Kit Registry</h2><p>Kits and problems share one taxonomy. Disqualifiers guard against forced fits.</p></div></div>
+  <div class="topbar"><div><h2>Solution Kit Registry</h2><p>The other half of the foundation. Furnish a kit either way — upload a PPT/PDF and approve what GenAI extracts, or build it by hand from the taxonomy. Nothing matches until approved.</p></div>
+   <div style="display:flex;gap:8px"><button class="btn" onclick="addKitDemo()">＋ Upload PPT / PDF</button><button class="btn ghost" onclick="startManualKit()">＋ Build manually</button></div></div>
+  ${manualKit?`<div class="draft">
+    <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);font-weight:700;margin-bottom:10px">New kit — built by hand · pick from the shared taxonomy</h3>
+    <div style="display:grid;grid-template-columns:2fr 1fr;gap:14px;margin-bottom:12px">
+     <div class="field" style="margin:0"><label>Kit name</label><input id="mkName" placeholder="e.g. Pricing Analytics Accelerator" value="${manualKit.name}"></div>
+     <div class="field" style="margin:0"><label>Service line</label><select id="mkLine"><option ${manualKit.line==='Advisory'?'selected':''}>Advisory</option><option ${manualKit.line==='Technology'?'selected':''}>Technology</option><option ${manualKit.line==='Hybrid'?'selected':''}>Hybrid</option></select></div>
+    </div>
+    <div class="sec-label" style="margin:0 0 6px">Problem tags — click to select (${manualKit.tags.length} picked)</div>
+    <div class="chips" style="margin-bottom:12px">${TAXO.map(t=>{const on=manualKit.tags.includes(t);return `<span class="chip click" style="${on?'background:#43224d;color:#fff;border-color:#43224d':''}" onclick="togglePick('tags','${t}')">${t}</span>`;}).join("")}</div>
+    <div class="sec-label" style="margin:0 0 6px">Value levers (${manualKit.levers.length} picked)</div>
+    <div class="chips" style="margin-bottom:12px">${LEVER_OPTS.map(t=>{const on=manualKit.levers.includes(t);return `<span class="chip click" style="${on?'background:#43224d;color:#fff;border-color:#43224d':''}" onclick="togglePick('levers','${t}')">${t}</span>`;}).join("")}</div>
+    <div class="sec-label" style="margin:0 0 6px">Disqualifiers — when NOT to sell this</div>
+    <div class="chips" style="margin-bottom:8px">${manualKit.disq.map((d,i)=>`<span class="chip" style="border-color:#f0d4dc;color:var(--red);background:#fdf4f7">${d}<span class="x" onclick="manualKit.disq.splice(${i},1);render()">×</span></span>`).join("")}</div>
+    <div class="jadd" style="margin-bottom:14px"><input id="mkDisq" placeholder="e.g. No exec sponsor for the change"><button class="btn sm ghost" onclick="addManualDisq()">Add</button></div>
+    <div style="display:flex;gap:8px">
+     <button class="btn" onclick="saveManualKit()">Approve — add to registry (v1)</button>
+     <button class="btn ghost" onclick="manualKit=null;render()">Discard</button>
+    </div>
+    <p class="hint">Both routes end the same place: an approved, versioned kit on the shared taxonomy. Upload is faster; manual gives you full control. You can also upload first and hand-trim the tags.</p>
+   </div>`:''}
+  ${draftKit?`<div class="draft">
+    <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);font-weight:700;margin-bottom:10px">Draft kit — extracted by GenAI from ${draftKit.srcFile} · nothing matches until you approve</h3>
+    <div class="kv"><span>Proposed name</span><b>${draftKit.name}</b></div>
+    <div class="kv"><span>Service line</span><b>${draftKit.line}</b></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px">
+     <div><div class="sec-label" style="margin:0 0 6px">Proposed problem tags</div><div class="chips">${draftKit.tags.map((t,i)=>`<span class="chip">${t}<span class="x" onclick="dropDraftTag('tags',${i})">×</span></span>`).join("")}</div></div>
+     <div><div class="sec-label" style="margin:0 0 6px">Proposed value levers</div><div class="chips">${draftKit.levers.map((t,i)=>`<span class="chip">${t}<span class="x" onclick="dropDraftTag('levers',${i})">×</span></span>`).join("")}</div></div>
+     <div><div class="sec-label" style="margin:0 0 6px">Proposed disqualifiers</div><div class="chips">${draftKit.disq.map((t,i)=>`<span class="chip" style="border-color:#f0d4dc;color:var(--red);background:#fdf4f7">${t}<span class="x" onclick="dropDraftTag('disq',${i})">×</span></span>`).join("")}</div></div>
+    </div>
+    <div style="margin-top:14px;display:flex;gap:8px">
+     <button class="btn" onclick="approveKit()">Approve — add to registry (v1)</button>
+     <button class="btn ghost" onclick="draftKit=null;render()">Discard</button>
+    </div>
+    <p class="hint">GenAI parsed ${draftKit.slides} slides and mapped language to the shared taxonomy. Remove any tag that overreaches — a kit that claims too much matches too much.</p>
+   </div>`:''}
   ${Object.entries(KITS).map(([id,k])=>{
-   const used=ACCOUNTS.filter(a=>a.matches.some(m=>m.kit===id));
-   return `<div class="card" style="margin-bottom:12px"><div class="ch">${k.name} <span class="sub">${id} · ${k.line}</span></div>
+   const used=ACCOUNTS.filter(a=>a.setup.complete&&a.matches.some(m=>m.kit===id));
+   return `<div class="card" style="margin-bottom:12px"><div class="ch">${k.name} <span class="sub">${id} · ${k.line}${k.fresh?" · "+k.fresh:""}</span></div>
     <div class="cb" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
      <div><div class="sec-label" style="margin:0 0 6px">Problem tags</div><div class="chips">${k.tags.map(t=>`<span class="chip">${t}</span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">Value levers</div><div class="chips">${k.levers.map(t=>`<span class="chip">${t}</span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">Disqualifiers</div><div class="chips">${k.disq.map(t=>`<span class="chip" style="border-color:#f0d4dc;color:var(--red);background:#fdf4f7">${t}</span>`).join("")}</div></div>
-     <div><div class="sec-label" style="margin:0 0 6px">In portfolio</div><p style="font-size:12.5px">${used.length?used.map(a=>`<span class="whylink" onclick="open_('${a.id}')">${a.name}</span>`).join(" · "):'<span class="muted">no match</span>'}</p></div>
+     <div><div class="sec-label" style="margin:0 0 6px">In portfolio</div><p style="font-size:12.5px">${used.length?used.map(a=>`<span class="whylink" onclick="open_('${a.id}')">${a.name}</span>`).join(" · "):'<span class="muted">no match yet</span>'}</p></div>
     </div></div>`;}).join("")}`;
 }
+function addKitDemo(){
+ manualKit=null;
+ draftKit={id:"HYB-1",srcFile:"Customer_Analytics_Suite.pdf",slides:34,
+  name:"Customer Analytics & Segmentation",line:"Hybrid",
+  tags:["customer segmentation","churn prediction","personalization"],
+  levers:["revenue↑"],disq:["No consented first-party customer data"]};
+ render();toast("Simulated upload — in production you drop the PPT/PDF and GenAI extracts this draft.");}
+function dropDraftTag(kind,i){draftKit[kind].splice(i,1);render();}
+function startManualKit(){draftKit=null;manualKit={name:"",line:"Advisory",tags:[],levers:[],disq:[]};render();}
+function togglePick(kind,t){
+ const nm=document.getElementById("mkName");if(nm)manualKit.name=nm.value;
+ const ln=document.getElementById("mkLine");if(ln)manualKit.line=ln.value;
+ const arr=manualKit[kind];const i=arr.indexOf(t);
+ if(i>=0)arr.splice(i,1);else arr.push(t);render();}
+function addManualDisq(){
+ const nm=document.getElementById("mkName");if(nm)manualKit.name=nm.value;
+ const el=document.getElementById("mkDisq");if(!el.value.trim())return;
+ manualKit.disq.push(el.value.trim());render();}
+function saveManualKit(){
+ const nm=document.getElementById("mkName");if(nm)manualKit.name=nm.value.trim();
+ const ln=document.getElementById("mkLine");if(ln)manualKit.line=ln.value;
+ if(!manualKit.name){toast("Give the kit a name first.");return;}
+ if(!manualKit.tags.length){toast("Pick at least one problem tag — matching needs a vocabulary.");return;}
+ const id="USR-"+(Object.keys(KITS).filter(k=>k.startsWith("USR")).length+1);
+ KITS[id]={name:manualKit.name,line:manualKit.line,tags:manualKit.tags,levers:manualKit.levers,disq:manualKit.disq,fresh:"v1 · built manually · Jul 25"};
+ const n=manualKit.name;manualKit=null;render();
+ toast(n+" added as v1. Watchers will look for its signals across furnished accounts.");}
+function approveKit(){
+ KITS[draftKit.id]={name:draftKit.name,line:draftKit.line,tags:draftKit.tags,levers:draftKit.levers,disq:draftKit.disq,fresh:"v1 · furnished from PDF · Jul 25"};
+ const n=draftKit.name;draftKit=null;render();
+ toast(n+" added as v1. Watchers will now look for its trigger signals across furnished accounts.");}
 
 /* ============ ACCOUNT DETAIL ============ */
-function open_(id){state.acct=ACCOUNTS.find(a=>a.id===id);state.tab="intake";render();}
+function open_(id){const a=ACCOUNTS.find(x=>x.id===id);
+ if(!a.setup.complete){openFurnish(id);return;}
+ state.acct=a;state.tab="intake";render();}
 const TABS=[{k:"intake",t:"Journal & Intake",n:1},{k:"fit",t:"Fit-Mapping",n:2},{k:"gate",t:"Gate · RTP · RTW",n:3},{k:"target",t:"Targeting",n:4},{k:"activate",t:"Activation",n:5}];
 function renderDetail(){
  const a=state.acct,v=verdict(a);
  setCrumb(`<span class="lnk" onclick="go('portfolio')">Portfolio</span> · <b>${a.name}</b>`);
- if(!a.setup.complete){
-  content.innerHTML=`<button class="back" onclick="go('portfolio')">← Target Portfolio</button>
-   <div class="topbar"><div><h2>${a.name}</h2><p>${a.industry} · ${a.size} · ${a.region}</p></div>
-    <span class="pill setup" style="font-size:12.5px;padding:6px 14px"><span class="pd"></span>Setup pending</span></div>
-   <div class="banner">⚠ <span><b>Not scored.</b> The engine waits for your inside knowledge — a score built only on public data would be confidently wrong.</span><span class="whylink" onclick="go('setup')">Complete setup →</span></div>
-   <div class="block"><h3>What the watchers have so far</h3>
-    ${a.devs.map(d=>`<div class="dev" style="padding:11px 0"><span class="dt">${d.d}</span><span class="dk ${d.type}"></span><div class="db"><p style="color:var(--ink);font-weight:600">${d.t} <span class="mat ${d.mat}">${d.mat.toUpperCase()}</span></p><p class="muted" style="font-size:12px">${d.trig}</p></div></div>`).join("")}
-   </div>`;
-  return;}
  content.innerHTML=`
   <button class="back" onclick="go('portfolio')">← Target Portfolio</button>
-  <div class="topbar"><div><h2>${a.name} <span class="motion ${motionOf(a)}" style="vertical-align:middle">${motionOf(a)==="cross"?"cross-sell":"new account"}</span></h2><p>${a.industry} · ${a.size} · ${a.region} · owner ${a.owner}</p></div>
+  <div class="topbar"><div><h2>${a.name} <span class="motion ${motionOf(a)}" style="vertical-align:middle">${motionOf(a)==="cross"?"cross-sell":"new account"}</span></h2><p>${a.industry} · ${a.size} · ${a.region} · owner ${a.owner} · <span class="whylink" onclick="openFurnish('${a.id}')">edit facts →</span></p></div>
    <span class="pill ${v.v}" id="hdrPill" style="font-size:12.5px;padding:6px 14px"><span class="pd"></span>${VLABEL[v.v]} · fit ${v.top.score} · rtw ${v.rtw}</span></div>
   <div class="tabs" id="tabsbar"></div>
   <div id="tabbody"></div>`;
@@ -839,7 +1038,7 @@ function renderTab(){
  const strengths={strong:"rel-strong",warm:"rel-warm",cooling:"rel-cooling",cold:"rel-cold"};
  if(state.tab==="intake"){
   body.innerHTML=`<div class="grid2">
-   <div class="block"><h3>Account journal <span class="sub">append-only · every entry dated &amp; sourced</span></h3>
+   <div class="block"><h3>Account journal <span class="sub">append-only · dated &amp; sourced</span></h3>
     <div class="jrnl">${a.journal.map(j=>`<div class="jent ${j.src}"><div class="jh"><span class="src">${j.src}</span> · ${j.d}</div><p>${j.txt}</p></div>`).join("")}</div>
     <div class="jadd"><input id="jin" placeholder="Log anything — a meeting, a rumor, a door closing…"><button class="btn sm" onclick="addJournal('${a.id}')">Log</button></div>
     ${a.id==="corepoint"&&!a.proposal&&!a._played?`<button class="btn ghost sm" style="margin-top:10px" onclick="playScenario()">▶ Play scenario: log &ldquo;not getting meetings with the COO anymore&rdquo;</button>`:''}
@@ -880,22 +1079,21 @@ function renderTab(){
  else if(state.tab==="activate")renderActivation();
 }
 
-/* journal interactions */
 function addJournal(id){const a=ACCOUNTS.find(x=>x.id===id);const el=document.getElementById("jin");
  if(!el.value.trim())return;
  a.journal.unshift({d:"Jul 25",src:"you",txt:el.value.trim()});el.value="";renderTab();
- toast("Logged. State renderer will link it to prior entries and propose updates (v1 stub for free text).");}
+ toast("Logged. State renderer will link it to prior entries and propose updates.");}
 function playScenario(){const a=ACCOUNTS.find(x=>x.id==="corepoint");
  a.journal.unshift({d:"Jul 25",src:"you",txt:"Not getting meetings with the COO anymore — two attempts since June went unanswered."});
  a._played=true;
- a.proposal={dim:"rel",from:a.rtw.rel,to:2,why:"Links to Apr 12 (&ldquo;met COO — positive&rdquo;) and Jun 03 (LinkedIn: COO absorbed by merger integration). Access is degrading; likely bandwidth, not rejection. Suggested angle: enter through the integration office instead."};
+ a.proposal={dim:"rel",from:a.rtw.rel,to:2,why:"Links to Apr 12 (&ldquo;met COO — positive&rdquo;) and Jun 03 (LinkedIn: COO absorbed by merger integration). Access is degrading; likely bandwidth, not rejection. Suggested angle: enter through the integration office."};
  renderTab();toast("Journal updated. The renderer linked 3 entries and raised a proposal — your call.");}
 function acceptProp(){const a=state.acct;
  a.rtw[a.proposal.dim]=a.proposal.to;a.rtwAge[a.proposal.dim]=0;
  const rel=a.setup.relationships.find(r=>r.who==="COO");if(rel)rel.strength="cooling";
  a.journal.unshift({d:"Jul 25",src:"you",txt:"Confirmed renderer proposal: relationships 5 → 2. COO marked cooling."});
  a.proposal=null;renderTab();
- toast("Confirmed. RTW updated, COO marked cooling, gate re-scored. A trigger was raised: approach via integration office.");}
+ toast("Confirmed. RTW updated, COO marked cooling, gate re-scored. Trigger raised: approach via integration office.");}
 function rejectProp(){const a=state.acct;
  a.journal.unshift({d:"Jul 25",src:"you",txt:"Dismissed renderer proposal — keeping relationships at "+a.proposal.from+"."});
  a.proposal=null;renderTab();toast("Dismissed and logged.");}
@@ -922,8 +1120,8 @@ function renderGate(){
  body.innerHTML=`<div class="gate-wrap">
   <div>
    <div class="verdict" id="vBox"></div>
-   <div class="block" style="margin-top:14px"><h3>Right to Participate <span class="sub">eligibility — factual, agent-verifiable</span></h3>
-    <div id="rtpBox">${(a.rtp||[]).map(r=>`<div class="rtpitem"><span>${r.item}</span><span class="tag">${r.src}</span><span class="st ${r.st}">${r.st==="ok"?"✓ verified":r.st==="pending"?"◌ pending":"✕ missing"}</span></div>`).join("")}</div>
+   <div class="block" style="margin-top:14px"><h3>Right to Participate <span class="sub">eligibility — factual</span></h3>
+    ${(a.rtp||[]).map(r=>`<div class="rtpitem"><span>${r.item}</span><span class="tag">${r.src}</span><span class="st ${r.st}">${r.st==="ok"?"✓ verified":r.st==="pending"?"◌ pending":"✕ missing"}</span></div>`).join("")}
    </div>
    <div class="block" style="margin-top:14px"><h3>Fit contribution by axis</h3><div id="axisBars"></div></div>
    <div class="block" style="margin-top:14px" id="disqBox"></div>
@@ -931,7 +1129,7 @@ function renderGate(){
   <div>
    <div class="block rtw"><h3>Right to Win — yours <span class="sub">each input has a shelf life</span></h3>
     <div id="rtwSliders">${RTW_DIMS.map(d=>{const stale=(a.rtwAge[d.key]||0)>d.exp;return `
-     <label style="font-size:12px;color:var(--muted);margin:12px 0 2px;display:flex;justify-content:space-between" class="${stale?'':''}">
+     <label style="font-size:12px;color:var(--muted);margin:12px 0 2px;display:flex;justify-content:space-between">
       <span>${d.label}${stale?'<span class="stale-tag">STALE '+a.rtwAge[d.key]+'d</span><span class="reaffirm" onclick="reaffirm(\''+d.key+'\')">re-affirm</span>':''}</span>
       <span class="wv" id="r-${d.key}">${a.rtw[d.key]}/5</span></label>
      <div style="font-size:11px;color:var(--faint);margin-bottom:4px">${d.q} <span class="muted">· expires ${d.exp}d</span></div>
@@ -972,7 +1170,7 @@ function refreshGate(){
 }
 function reaffirm(k){const a=state.acct;a.rtwAge[k]=0;
  a.journal.unshift({d:"Jul 25",src:"you",txt:"Re-affirmed "+dimLabel(k).toLowerCase()+" at "+a.rtw[k]+"/5."});
- renderGate();toast(dimLabel(k)+" re-affirmed — clock reset, verdict restored if it was held.");}
+ renderGate();toast(dimLabel(k)+" re-affirmed — clock reset.");}
 function setRtw(k,val){state.acct.rtw[k]=+val;state.acct.rtwAge[k]=0;const el=document.getElementById("r-"+k);if(el)el.textContent=val+"/5";refreshGate();}
 function setW(k,val){WEIGHTS[k]=+val;const el=document.getElementById("w-"+k);if(el)el.textContent=val;refreshGate();}
 function setThresh(k,val){THRESHOLD[k]=+val;const map={accept:"thAcceptV",review:"thReviewV",rtw:"thRtwV"};const el=document.getElementById(map[k]);if(el)el.textContent=val;refreshGate();}
@@ -983,8 +1181,10 @@ function renderTargeting(){
  const a=state.acct,body=document.getElementById("tabbody");
  const ps=PERSONA_LIB[KITS[bestMatch(a).kit].line]||PERSONA_LIB.Technology;
  const known=a.setup.relationships;
+ const approvedOrg=a.queue.filter(q=>q.sec==="Org structure"&&q.st==="approved");
  body.innerHTML=`
-  <div class="block" style="margin-bottom:14px"><h3>Buying committee <span class="sub">LinkedIn connector keeps this current in production</span></h3>
+  <div class="block" style="margin-bottom:14px"><h3>Buying committee <span class="sub">approved org facts + your relationships</span></h3>
+   ${approvedOrg.length?`<div class="chips" style="margin-bottom:10px">${approvedOrg.map(q=>`<span class="chip sig">${q.item.split(" (")[0]}</span>`).join("")}</div>`:''}
    <p style="font-size:13px">Open with the <b style="color:var(--green)">champion</b>, arm them for the <b style="color:var(--amber)">gatekeeper</b>, neutralize the evaluator with proof.
    ${known.length?`You hold: ${known.map(r=>`<b style="color:var(--ink)">${r.who}</b> (${r.strength})`).join(", ")}.`:`<b style="color:var(--red)">No mapped relationships</b> — the first RTW gap to close.`}</p></div>
   <div class="grid2">${ps.map(p=>`
@@ -1016,7 +1216,7 @@ function renderActivation(){
      </div>
      <div class="hook">&ldquo;Position ${kit} against ${p.toLowerCase()} — opening with ${d.t.toLowerCase()}.&rdquo;</div>
     </div>`;}).join("")}
-    <p class="hint"><b>Contact governor:</b> one approved campaign runs at a time per account. Campaign 2 queues until Campaign 1 completes or is stopped.</p></div>
+    <p class="hint"><b>Contact governor:</b> one approved campaign runs at a time per account.</p></div>
    <div class="block"><h3>Thought-leadership angles <span class="sub">relevance-gated</span></h3>
     <div class="tl-item"><b>${a.industry}: the compounding cost of ${a.problems[0].toLowerCase()}</b><small>POV · champion · supports Campaign 1</small></div>
     <div class="tl-item"><b>A field guide to ${kit.toLowerCase()}</b><small>Practitioner guide · technical evaluator</small></div>
@@ -1029,16 +1229,14 @@ function renderActivation(){
 function renderMethodology(){
  setCrumb('<b>Methodology</b>');
  content.innerHTML=`<div class="meth">
-  <div class="topbar"><div><h2>Methodology</h2><p>Where every number comes from — and which numbers the machine may not produce.</p></div></div>
-  <div class="block" style="margin-bottom:14px"><h3>The loop</h3>
-   <div class="step"><span class="sn">0</span><div><b>Account setup — human first</b><p>You supply what agents cannot find: plays, relationships, incumbents, history. No setup, no score.</p></div></div>
-   <div class="step"><span class="sn">1</span><div><b>Journal — one stream of truth</b><p>Every input (yours, agents&#39;, connectors&#39;) is a dated, sourced entry. GenAI renders current state from the stream, links related entries, and proposes updates. Proposals touching judgment (RTW, relationship warmth) always wait for your confirmation.</p></div></div>
-   <div class="step"><span class="sn">2</span><div><b>Sense &amp; interpret</b><p>Watchers track developments; materiality decides what interrupts you. Trigger budget ${TRIGGER_BUDGET}/week, digest for the rest, dismiss-to-tune.</p></div></div>
-   <div class="step"><span class="sn">3</span><div><b>Fit — is it real?</b><p>Five agent-scored axes with evidence per (account × kit). Cross-sell adds whitespace + kit adjacency for existing clients.</p></div></div>
-   <div class="step"><span class="sn">4</span><div><b>RTP — are we allowed?</b><p>Eligibility checklist: empanelment, certifications, local presence. Factual, so agents verify most items. Fail → &ldquo;Build RTP&rdquo;, usually the cheapest fix.</p></div></div>
-   <div class="step"><span class="sn">5</span><div><b>RTW — can we win?</b><p>Five dimensions, scored 1–5 by you alone. Each has a shelf life (relationships 90d, credentials 365d…). Stale input holds a would-be Pursue at Review until re-affirmed — stale judgment cannot green-light a pursuit.</p></div></div>
-   <div class="step"><span class="sn">6</span><div><b>Gate — capacity-aware</b><p>Pursue / Build RTW / Build RTP / Review / Pass. Disqualifiers override. Pursue competes for a limited pursuit slot, not just a threshold.</p></div></div>
-   <div class="step"><span class="sn">7</span><div><b>Execute &amp; learn</b><p>Pursuit workspace (stages, tasks, meetings, battlecards), trigger-born campaigns under a contact governor, then win/loss capture that recalibrates weights — via proposals you approve.</p></div></div>
+  <div class="topbar"><div><h2>Methodology</h2><p>Zero to one: nothing is analyzed until it is furnished, and every number is explainable.</p></div></div>
+  <div class="block" style="margin-bottom:14px"><h3>The flow — basic to complex</h3>
+   <div class="step"><span class="sn">1</span><div><b>Furnish — the foundation</b><p>Two halves. <b>Kits:</b> upload PPT/PDF, GenAI proposes taxonomy tags, you approve. <b>Accounts:</b> agents pre-draft what they can find; you review it and add plays, relationships, incumbents, history, an RTP check and your RTW baseline. Until furnishing is 100%, an account appears nowhere in analysis.</p></div></div>
+   <div class="step"><span class="sn">2</span><div><b>Journal — one stream of truth</b><p>Every input (yours, agents&#39;, connectors&#39;) is a dated, sourced entry. GenAI renders current state, links related entries, and proposes updates. Judgment changes always wait for your confirmation.</p></div></div>
+   <div class="step"><span class="sn">3</span><div><b>Sense &amp; interpret</b><p>Watchers track developments; materiality decides what interrupts. Trigger budget ${TRIGGER_BUDGET}/week, digest for the rest, dismiss-to-tune.</p></div></div>
+   <div class="step"><span class="sn">4</span><div><b>Analyze — three questions</b><p><b>Fit</b> (agents): is the opportunity real? <b>RTP</b>: are we allowed to compete? <b>RTW</b> (you, with shelf lives): can we win? The gate combines them; disqualifiers override; stale judgment holds the verdict.</p></div></div>
+   <div class="step"><span class="sn">5</span><div><b>Execute</b><p>Pursuit workspace: stages, tasks, meeting prep, proposals, battlecards. Trigger-born campaigns under a contact governor. Nothing auto-sends.</p></div></div>
+   <div class="step"><span class="sn">6</span><div><b>Learn</b><p>Win/loss capture recalibrates weights and rubrics — via proposals you approve, quarterly.</p></div></div>
   </div>
   <div class="block" style="margin-bottom:14px"><h3>Right-to-Win dimensions &amp; shelf lives</h3>
    <table class="rubric"><thead><tr><th>Dimension</th><th>Question (1–5)</th><th>Expires</th></tr></thead><tbody>
@@ -1046,7 +1244,7 @@ function renderMethodology(){
    </tbody></table>
    <p class="hint">Expiry means loss of confidence, not loss of data. Events can stale an input early — a champion leaving flags relationships immediately.</p></div>
   <div class="block"><h3>The formula</h3>
-   <div class="formula">fit = Σ(axis × weight)/Σweights [agents] · rtw = mean(5 dims)×20 [you]<br>gate: fit≥${DEFAULT_T.accept} ∧ rtp ok ∧ rtw≥${DEFAULT_T.rtw} ∧ fresh → Pursue<br>fit≥${DEFAULT_T.accept} ∧ rtw&lt;${DEFAULT_T.rtw} → Build RTW · rtp fail → Build RTP · stale → held at Review<br>disqualifier overrides all · Pursue competes for ${TEAM.reduce((s,t)=>s+t.cap,0)} capacity slots</div></div>
+   <div class="formula">fit = Σ(axis × weight)/Σweights [agents] · rtw = mean(5 dims)×20 [you]<br>gate: furnished ∧ fit≥${DEFAULT_T.accept} ∧ rtp ok ∧ rtw≥${DEFAULT_T.rtw} ∧ fresh → Pursue<br>fit≥${DEFAULT_T.accept} ∧ rtw&lt;${DEFAULT_T.rtw} → Build RTW · rtp fail → Build RTP · stale → held at Review<br>disqualifier overrides all · Pursue competes for ${TEAM.reduce((s,t)=>s+t.cap,0)} capacity slots</div></div>
  </div>`;
 }
 
@@ -1057,35 +1255,40 @@ function renderGovernance(){
   <div class="topbar"><div><h2>Governance & Data</h2><p>Built into the product, not a PDF beside it.</p></div></div>
   <div class="gov-grid gov">
    <div class="block"><h3>Architecture</h3><ul>
-    <li><b>Journal is the source of truth.</b> All state is rendered from an append-only, sourced event stream. Edits are new entries; history survives.</li>
-    <li><b>Nothing hardcoded.</b> Weights, bars, shelf lives, trigger budgets, kits and taxonomy are editable config — versioned like everything else.</li>
-    <li><b>Connectors propose, never overwrite.</b> LinkedIn (org + posts) and CRM/Git imports write journal entries; conflicts wait for you.</li>
-    <li><b>One engine, three lenses.</b> Roles are configuration, not forks.</li>
+    <li><b>Bottom-up by construction.</b> Unfurnished accounts are invisible to analysis. Agent findings enter only after your approval.</li>
+    <li><b>Journal is the source of truth.</b> All state renders from an append-only, sourced event stream. Edits are new entries.</li>
+    <li><b>Nothing hardcoded.</b> Weights, bars, shelf lives, budgets, kits and taxonomy are editable, versioned config.</li>
+    <li><b>Connectors propose, never overwrite.</b> LinkedIn / CRM imports write journal entries; conflicts wait for you.</li>
    </ul></div>
    <div class="block"><h3>Data policy</h3><ul>
-    <li><b>Allowlisted sources.</b> Public filings, press, careers pages, licensed providers. LinkedIn via compliant/licensed access only — no scraping.</li>
+    <li><b>Allowlisted sources.</b> Public filings, press, careers pages, licensed providers. LinkedIn via licensed access only.</li>
     <li><b>Business-role data only.</b> No sensitive personal data. GDPR/DPDP legitimate-interest basis.</li>
     <li><b>Provenance mandatory.</b> Unsourced claims cannot enter scoring. Your inputs are labeled yours.</li>
     <li><b>Retention.</b> Evidence expires (12 months default) unless refreshed.</li>
    </ul></div>
    <div class="block"><h3>Model governance</h3><ul>
-    <li><b>RTW is human-only,</b> with shelf lives. The system fails loudly when it is missing or stale — it never guesses.</li>
-    <li><b>Proposals, not actions.</b> GenAI may propose RTW changes from journal evidence; only you confirm.</li>
+    <li><b>RTW is human-only,</b> with shelf lives. The system fails loudly when it is missing or stale.</li>
+    <li><b>Proposals, not actions.</b> GenAI may propose changes from journal evidence; only you confirm.</li>
     <li><b>Nothing auto-sends.</b> Draft-until-approved; contact governor caps campaigns per account.</li>
-    <li><b>Win/loss recalibration</b> quarterly — engine proposes weight changes, you approve.</li>
+    <li><b>Win/loss recalibration</b> quarterly — engine proposes, you approve.</li>
    </ul></div>
   </div>
   <div class="card"><div class="ch">Decision audit trail <span class="sub">sample — immutable</span></div>
    <table><thead><tr><th>Timestamp</th><th>Account</th><th>Event</th><th>Detail</th><th>Actor</th></tr></thead><tbody>
+    <tr><td class="val" style="font-weight:400">Jul 25 09:10</td><td>Cascade Biotech</td><td><span class="tag">furnishing</span></td><td>4 agent findings queued for review</td><td>intake-agent</td></tr>
     <tr><td class="val" style="font-weight:400">Jul 24 15:20</td><td>Aurora Energy</td><td><span class="pill build"><span class="pd"></span>Build RTW</span></td><td>fit 75 · rtw 52 (user) · weights v1.0</td><td>gate-agent</td></tr>
-    <tr><td class="val" style="font-weight:400">Jul 23 10:04</td><td>Helios Manufacturing</td><td><span class="pill rtp"><span class="pd"></span>Build RTP</span></td><td>missing: local entity VN/ID · deadline linked</td><td>gate-agent</td></tr>
+    <tr><td class="val" style="font-weight:400">Jul 23 10:04</td><td>Helios Manufacturing</td><td><span class="pill rtp"><span class="pd"></span>Build RTP</span></td><td>missing: local entity VN/ID</td><td>gate-agent</td></tr>
     <tr><td class="val" style="font-weight:400">Jul 22 14:03</td><td>Meridian Logistics</td><td><span class="pill review"><span class="pd"></span>Held — stale RTW</span></td><td>credentials input 400d old · re-affirm requested</td><td>gate-agent</td></tr>
-    <tr><td class="val" style="font-weight:400">Jul 21 09:41</td><td>Northwind Retail</td><td><span class="pill review"><span class="pd"></span>Override → Review</span></td><td>rep: worth one meeting · logged</td><td>M. Fischer</td></tr>
     <tr><td class="val" style="font-weight:400">Jul 20 17:12</td><td>—</td><td><span class="tag">weights v1.0</span></td><td>initial parameters approved</td><td>L. Fulara</td></tr>
    </tbody></table></div>`;
 }
 
 renderNav();render();
+document.addEventListener("click",function(){
+ if(document.fullscreenElement)return;
+ const el=document.documentElement;
+ if(el.requestFullscreen)el.requestFullscreen().catch(function(){});
+},{once:true});
 </script>
 </body>
 </html>
