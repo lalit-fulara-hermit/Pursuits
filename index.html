@@ -293,15 +293,38 @@
   .draft{border:1.5px dashed #d9c9e2;background:#fbf9fc;border-radius:var(--radius);padding:18px;margin-bottom:14px}
   .muted{color:var(--muted)}
   .empty{padding:30px;text-align:center;color:var(--faint);font-size:13px}
+  .modes{display:flex;background:var(--panel-2);border:1px solid var(--line);border-radius:9px;padding:3px;gap:3px;margin:0 4px}
+  .modes button{flex:1;background:none;border:none;font:inherit;font-size:11.5px;padding:6px 4px;border-radius:7px;cursor:pointer;color:var(--muted);font-weight:600}
+  .modes button.active{background:var(--panel);color:var(--accent);box-shadow:var(--shadow)}
+  .nav a.locked{color:var(--faint);cursor:not-allowed}
+  .nav a.locked:hover{background:none}
+  .ascent{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:14px 18px 12px;margin-bottom:18px;box-shadow:var(--shadow)}
+  .ascent .steps{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .astep{display:flex;align-items:center;gap:8px;cursor:pointer;padding:5px 9px;border-radius:9px;border:1px solid transparent}
+  .astep:hover{background:var(--panel-2)}
+  .astep .ac{width:22px;height:22px;border-radius:50%;background:var(--line-2);color:var(--muted);display:grid;place-items:center;font-size:11px;font-weight:700;flex-shrink:0}
+  .astep.done .ac{background:#eaf5ee;color:var(--green)}
+  .astep.cur{border-color:var(--accent);background:#f7f3f9}
+  .astep.cur .ac{background:var(--accent);color:#fff}
+  .astep.lock{opacity:.55;cursor:not-allowed}
+  .astep .at b{display:block;font-size:12px;color:var(--ink);line-height:1.25}
+  .astep .at small{font-size:10.5px;color:var(--faint)}
+  .aarr{color:var(--faint);font-size:12px}
+  .anext{margin-top:9px;padding-top:9px;border-top:1px solid var(--line-2);font-size:12.5px;color:var(--body)}
+  .anext b{color:var(--accent)}
+  .ph-item{border:1.5px dashed var(--line);border-radius:8px;padding:9px 12px;font-size:12px;color:var(--faint);margin-bottom:7px;font-style:italic}
+  .rtpitem.click{cursor:pointer}
+  .rtpitem.click:hover{background:var(--panel-2)}
 </style>
 </head>
 <body>
 <div class="app">
   <aside class="side">
     <div class="brand"><div class="logo">P</div><div><h1>Pursuits</h1><span>Growth Cockpit</span></div></div>
+    <div class="modes"><button id="mDemo" onclick="setMode('demo')">Sample vision</button><button id="mMine" onclick="setMode('mine')">My workspace</button></div>
     <div id="navwrap" style="display:flex;flex-direction:column"></div>
     <div><div class="sec-label">Trust</div><nav class="nav" id="nav2"></nav></div>
-    <div class="side-foot">Vision preview · sample data<br>Nothing is analyzed until it is furnished.</div>
+    <div class="side-foot" id="modeFoot">Vision preview · sample data<br>Nothing is analyzed until it is furnished.</div>
   </aside>
   <main class="main">
     <div class="masthead">
@@ -338,7 +361,7 @@ const TRIGGER_BUDGET=5;
 const STAGES=["Qualify","Develop","Propose","Negotiate","Close"];
 const STAGE_PROB={Qualify:.2,Develop:.4,Propose:.6,Negotiate:.8};
 
-const KITS={
+const DEMO_KITS={
  "ADV-1":{name:"Operating Model Redesign",line:"Advisory",tags:["operating model","post-merger","cost-out"],levers:["cost↓","risk↓"],disq:[{t:"No exec mandate for change",hard:true}]},
  "ADV-2":{name:"GTM Strategy",line:"Advisory",tags:["market entry","growth","pricing"],levers:["revenue↑"],disq:[{t:"No growth budget",hard:true}]},
  "TEC-1":{name:"Data Migration & Modernization",line:"Technology",tags:["legacy systems","data silos","cloud"],levers:["cost↓","time↓"],disq:[{t:"Mid-migration with another vendor",hard:true}]},
@@ -346,9 +369,9 @@ const KITS={
  "TEC-3":{name:"AI Document Intelligence",line:"Technology",tags:["document processing","compliance","claims"],levers:["cost↓","time↓","compliance"],disq:[{t:"Regulated data not yet scoped",hard:false}]},
 };
 
-const TEAM=[{name:"A. Rao",cap:2,active:1},{name:"J. Okafor",cap:2,active:1},{name:"M. Fischer",cap:2,active:0}];
+const DEMO_TEAM=[{name:"A. Rao",cap:2,active:1},{name:"J. Okafor",cap:2,active:1},{name:"M. Fischer",cap:2,active:0}];
 
-const ACCOUNTS=[
+const DEMO_ACCOUNTS=[
  {id:"meridian",name:"Meridian Logistics",industry:"Transportation & Logistics",size:"5,000 emp · $1.2B",region:"North America",owner:"A. Rao",value:2.4,tam:11,
   setup:{complete:true,play:"none",engagements:[],incumbents:["Regional SI holds AMS contract"],
    relationships:[{who:"VP Supply Chain",strength:"warm",note:"met at industry summit"}],
@@ -498,10 +521,10 @@ const ACCOUNTS=[
     ev:{problem:"No open problem the incumbent is not covering",value:"No urgent lever",ready:"Mature org",constr:"Freeze + incumbent",signal:"Negative triggers"}}]},
 ];
 /* normalize: furnished accounts default to confirmed baselines */
-ACCOUNTS.forEach(a=>{if(a.rtwConfirmed===undefined)a.rtwConfirmed=a.setup.complete;
+DEMO_ACCOUNTS.forEach(a=>{if(a.rtwConfirmed===undefined)a.rtwConfirmed=a.setup.complete;
  if(a.setup.complete&&!a.setup.relationships.length)a._noRel=true;});
 
-const PURSUITS=[
+const DEMO_PURSUITS=[
  {id:"p1",acct:"meridian",stage:"Develop",kit:"TEC-1",owner:"A. Rao",
   next:[{t:"Send CIO modernization POV",due:"Jul 28",done:false},{t:"Book migration-risk workshop",due:"Aug 04",done:false},{t:"Draft phased pilot scope",due:"Aug 12",done:false}],
   meetings:[{d:"Jul 29",t:"Intro briefing — CIO",kind:"up"},{d:"Jul 15",t:"Head of Data intro call",kind:"past",note:"Confirmed 4-system fragmentation. Budget owner is CIO. Wants a phased plan, allergic to big-bang."}],
@@ -513,13 +536,13 @@ const PURSUITS=[
   proposal:"v2 in internal review · due Aug 01",
   battle:{comp:"Big-4 incumbent (tax & audit)",their:"Board relationships; brand safety",ours:"We hold the COO and a delivered diagnostic; purpose-built claims AI vs generalists",watch:"Expect a strategy-first delay play"}}];
 
-const WINLOSS=[
+const DEMO_WINLOSS=[
  {acct:"Trident Insurance",kit:"TEC-3",res:"won",value:2.2,date:"May 2026",reason:"Champion + backtest pilot beat two rivals",lesson:"Pilot-first converts skeptical evaluators"},
  {acct:"Omni Retail Group",kit:"TEC-2",res:"lost",value:1.6,date:"Apr 2026",reason:"Incumbent bundled forecasting for free",lesson:"Check incumbent bundling risk in the constraints axis"},
  {acct:"Polar Freight",kit:"TEC-1",res:"lost",value:2.0,date:"Feb 2026",reason:"Champion exited mid-pursuit; no second sponsor",lesson:"Champion-exit must stale the RTW relationships score immediately"},
  {acct:"Juno Health",kit:"ADV-1",res:"won",value:1.4,date:"Jan 2026",reason:"Outcome-linked fees closed the trust gap",lesson:"Fee structure is a competitive weapon vs Big-4"}];
 
-const LIBRARY=[
+const DEMO_LIBRARY=[
  {type:"CASE",title:"Zero-downtime WMS migration — logistics client",kits:"TEC-1",ind:"Logistics",used:"Meridian pursuit · CIO POV"},
  {type:"CASE",title:"Claims automation: 62% cycle-time cut — insurer",kits:"TEC-3",ind:"Insurance / Health",used:"Corepoint proposal v2"},
  {type:"CRED",title:"ISO 27001 + SOC2 Type II certificates",kits:"All",ind:"—",used:"RTP checks, security questionnaires"},
@@ -545,9 +568,71 @@ const PERSONA_LIB={
   {role:"Chief Financial Officer",rel:"Budget gatekeeper",init:"CFO",care:"ROI when peers burned money on AI.",objection:"Show one AI project that returned cost.",proof:"One metric, monthly, kill-switch clause.",angle:"Bounded downside, measurable value.",channel:"1:1 business case"}],
 };
 
+/* ============ MODE — sample vision vs my workspace ============ */
+let MODE="demo";try{MODE=localStorage.getItem("pv_mode")||"demo";}catch(e){}
+let MY={accounts:[],kits:{},pursuits:[],winloss:[]};
+try{const _s=JSON.parse(localStorage.getItem("pv_mine")||"null");if(_s)MY={accounts:_s.accounts||[],kits:_s.kits||{},pursuits:_s.pursuits||[],winloss:_s.winloss||[]};}catch(e){}
+function saveMine(){if(MODE!=="mine")return;try{localStorage.setItem("pv_mine",JSON.stringify(MY));}catch(e){}}
+let ACCOUNTS,KITS,PURSUITS,TEAM,WINLOSS,LIBRARY;
+function applyMode(){
+ if(MODE==="mine"){ACCOUNTS=MY.accounts;KITS=MY.kits;PURSUITS=MY.pursuits;WINLOSS=MY.winloss;LIBRARY=[];
+  TEAM=[{name:"You",cap:3,get active(){return MY.pursuits.length;}}];}
+ else{ACCOUNTS=DEMO_ACCOUNTS;KITS=DEMO_KITS;PURSUITS=DEMO_PURSUITS;WINLOSS=DEMO_WINLOSS;LIBRARY=DEMO_LIBRARY;TEAM=DEMO_TEAM;}
+ const mf=document.getElementById("modeFoot");if(mf)mf.innerHTML=MODE==="mine"?"My workspace · saved in this browser<br>Furnish → gate → pursue → learn.":"Vision preview · sample data<br>Nothing is analyzed until it is furnished.";
+ const bd=document.getElementById("mDemo"),bm=document.getElementById("mMine");
+ if(bd){bd.className=MODE==="demo"?"active":"";bm.className=MODE==="mine"?"active":"";}}
+function setMode(m){if(m===MODE)return;saveMine();MODE=m;try{localStorage.setItem("pv_mode",m);}catch(e){}applyMode();
+ state={view:m==="mine"?nextStepView():"overview",geo:"All",acct:null,tab:"intake",fid:null};pfilter="all";render();
+ toast(m==="mine"?"Your workspace. Empty by design — the ascent starts at step 1: furnish a kit.":"Sample vision restored — demo data untouched.");}
+function nextStepView(){if(!Object.keys(KITS).length)return"registry";if(!ACCOUNTS.length||!ACCOUNTS.some(a=>a.setup.complete))return"setup";if(!PURSUITS.length)return"portfolio";return"pursuits";}
+function today(){return new Date().toLocaleDateString("en-US",{month:"short",day:"2-digit"});}
+function ascFlags(){
+ const kitsDone=Object.keys(KITS).length>0;
+ const acctAny=ACCOUNTS.length>0;
+ const acctDone=ACCOUNTS.some(a=>a.setup.complete);
+ const anyAccept=acctDone&&ACCOUNTS.some(a=>a.setup.complete&&verdict(a).v==="accept");
+ return{kitsDone,acctAny,acctDone,anyAccept,pu:PURSUITS.length>0,wl:WINLOSS.length>0};}
+function ascentBar(){
+ const f=ascFlags();
+ const steps=[
+  {t:"Furnish kits",d:"what you sell",v:"registry",done:f.kitsDone,lock:false,msg:""},
+  {t:"Furnish accounts",d:"you + agents",v:"setup",done:f.acctDone,lock:!f.kitsDone,msg:"furnish a kit first — matching needs a vocabulary"},
+  {t:"Face the gate",d:"real · allowed · winnable",v:"portfolio",done:f.anyAccept||f.pu||f.wl,lock:!f.acctDone,msg:"complete an account first — the gate only sees furnished accounts"},
+  {t:"Run pursuits",d:"claim a slot",v:"pursuits",done:f.pu||f.wl,lock:!f.pu&&!f.wl,msg:"earn a Pursue verdict first — a slot must be won at the gate"},
+  {t:"Learn",d:"log the close",v:"insights",done:f.wl,lock:!f.pu&&!f.wl,msg:"run a pursuit first — learning needs a close"}];
+ let cur=steps.findIndex(st=>!st.done&&!st.lock);if(cur<0)cur=4;
+ const next=!f.kitsDone?"Furnish your first solution kit — upload a deck (simulated) or build it by hand."
+  :!f.acctAny?"Add your first account — name it, then furnish what you know."
+  :!f.acctDone?"Finish furnishing the account — every readiness item, then Activate."
+  :!f.anyAccept&&!f.pu?"Work the gate — raise fit (problems ↔ kit tags) or right-to-win until an account earns Pursue."
+  :!f.pu?"An account cleared the gate — open its Gate tab and claim a pursuit slot."
+  :!f.wl?"Advance the pursuit through its stages, then log the win or loss."
+  :"Loop complete — every close now sharpens the next verdict.";
+ return `<div class="ascent"><div class="steps">${steps.map((st,i)=>
+  `<div class="astep ${st.done?'done':''} ${i===cur?'cur':''} ${st.lock?'lock':''}" onclick="${st.lock?`toast('Locked — ${st.msg}.')`:`go('${st.v}')`}"><span class="ac">${st.done?'✓':st.lock?'🔒':i+1}</span><span class="at"><b>${st.t}</b><small>${st.d}</small></span></div>${i<4?'<span class="aarr">→</span>':''}`).join("")}</div>
+  <div class="anext"><b>Next:</b> ${next}</div></div>`;}
+function matchesOf(a){return a._scratch?computeMatches(a):a.matches;}
+function computeMatches(a){
+ return Object.keys(KITS).map(id=>{const k=KITS[id];
+  const probs=a.problems||[],hit=probs.filter(pp=>k.tags.includes(pp));
+  const problem=probs.length?Math.max(15,Math.round(100*hit.length/probs.length)):25;
+  const value=hit.length?Math.min(85,52+9*Math.min((k.levers||[]).length,3)):35;
+  const relPts=(a.setup.relationships||[]).reduce((sm,r)=>sm+({strong:3,warm:2,cooling:1,cold:0}[r.strength]||0),0);
+  const ready=Math.min(90,35+(a.setup.play==="active"?20:a.setup.play==="past"?12:0)+relPts*6);
+  const constr=(a.setup.incumbents||[]).length?55:80;
+  const you=(a.journal||[]).filter(j=>j.src==="you").length;
+  const signal=Math.min(85,25+12*Math.min(you,5));
+  const disq=(k.disq||[]).filter(d=>a._disqFlags&&a._disqFlags[id+"|"+d.t]).map(d=>({t:d.t,hard:d.hard!==false}));
+  return{kit:id,disq,s:{problem,value,ready,constr,signal},
+   ev:{problem:probs.length?hit.length+" of "+probs.length+" selected problems map to kit tags":"No problems selected yet — pick them in furnishing",
+    value:hit.length?((k.levers||[]).join(", ")||"no levers")+" apply where problems overlap":"No overlap — value levers unproven here",
+    ready:"Play "+(a.setup.play||"unset")+" + "+(a.setup.relationships||[]).length+" relationship(s) drive readiness",
+    constr:(a.setup.incumbents||[]).length?"Incumbent present: "+a.setup.incumbents[0]:"No incumbents furnished — open field assumed",
+    signal:you+" first-hand journal entries — agents not yet connected (placeholder)"}};});}
+
 /* ============ SCORING ============ */
 function kitScore(s){const w=WEIGHTS,t=w.problem+w.value+w.ready+w.constr+w.signal;return Math.round((s.problem*w.problem+s.value*w.value+s.ready*w.ready+s.constr*w.constr+s.signal*w.signal)/t);}
-function bestMatch(a){return a.matches.map(m=>({...m,score:kitScore(m.s)})).sort((x,y)=>y.score-x.score)[0];}
+function bestMatch(a){const ms=matchesOf(a)||[];if(!ms.length)return null;return ms.map(m=>({...m,score:kitScore(m.s)})).sort((x,y)=>y.score-x.score)[0];}
 function hardDisqs(a){const top=bestMatch(a);return (top&&top.disq?top.disq:[]).filter(d=>d.hard);}
 function hasHardDisq(a){return hardDisqs(a).length>0;}
 function rtwScore(a){const r=a.rtw;return Math.round((r.rel+r.cred+r.del+r.comp+r.comm)/5*20);}
@@ -555,7 +640,8 @@ function staleDims(a){return RTW_DIMS.filter(d=>(a.rtwAge[d.key]||0)>d.exp).map(
 function rtpFail(a){return (a.rtp||[]).some(x=>x.st!=="ok");}
 function verdict(a){
  if(!a.setup.complete)return{v:"setup",top:null,rtw:null,stale:[]};
- const top=bestMatch(a),hard=hasHardDisq(a),rtw=rtwScore(a),stale=staleDims(a);
+ const top=bestMatch(a);if(!top)return{v:"setup",top:null,rtw:rtwScore(a),stale:[]};
+ const hard=hasHardDisq(a),rtw=rtwScore(a),stale=staleDims(a);
  if(hard)return{v:"reject",top,hard,rtw,stale};
  if(top.score>=THRESHOLD.review&&rtpFail(a))return{v:"rtp",top,hard,rtw,stale};
  if(top.score>=THRESHOLD.accept){
@@ -589,9 +675,19 @@ const NAVG=[
  {label:"4 · Learn",items:[{k:"library",t:"Library"},{k:"insights",t:"Insights"}]}];
 const NAV2=[{k:"methodology",t:"Methodology"},{k:"governance",t:"Governance & Data"}];
 function pendingCount(){return ACCOUNTS.filter(a=>!a.setup.complete).length;}
+function navLocks(){
+ if(MODE!=="mine")return{};
+ const f=ascFlags();const L={};
+ if(!f.kitsDone)L.setup="Furnish a kit first — matching needs a vocabulary.";
+ if(!f.acctDone){L.overview=L.portfolio="Complete an account first — analysis only sees furnished accounts.";}
+ if(!f.pu&&!f.wl){L.pursuits="Earn a Pursue verdict first — a slot must be won at the gate.";L.library=L.insights="Start a pursuit first — Learn needs something to learn from.";}
+ return L;}
 function renderNav(){
+ const locks=navLocks();
  document.getElementById("navwrap").innerHTML=NAVG.map(g=>`<div class="sec-label">${g.label}</div><nav class="nav">${
-  g.items.map(n=>`<a class="${(state.view===n.k||(state.view==="furnish"&&n.k==="setup"))&&!state.acct?'active':''}" onclick="go('${n.k}')"><span>${n.t}</span>${n.k==='setup'&&pendingCount()?`<span class="badge">${pendingCount()}</span>`:''}</a>`).join("")}</nav>`).join("");
+  g.items.map(n=>locks[n.k]
+   ?`<a class="locked" onclick="toast('Locked — ${locks[n.k]}')"><span>${n.t}</span><span style="font-size:10px">🔒</span></a>`
+   :`<a class="${(state.view===n.k||(state.view==="furnish"&&n.k==="setup"))&&!state.acct?'active':''}" onclick="go('${n.k}')"><span>${n.t}</span>${n.k==='setup'&&pendingCount()?`<span class="badge">${pendingCount()}</span>`:''}</a>`).join("")}</nav>`).join("");
  document.getElementById("nav2").innerHTML=NAV2.map(n=>`<a class="${state.view===n.k&&!state.acct?'active':''}" onclick="go('${n.k}')">${n.t}</a>`).join("");}
 function go(v){state.view=v;state.acct=null;state.fid=null;render();}
 function setCrumb(h){document.getElementById("crumb").innerHTML=h;}
@@ -607,8 +703,10 @@ const GEOS=["All","North America","EMEA","APAC"];
 function geoButtons(){return `<div class="geo">${GEOS.map(g=>`<button class="${state.geo===g?'active':''}" onclick="setGeo('${g}')">${g}</button>`).join("")}</div>`;}
 function setGeo(g){state.geo=g;render();}
 function render(){renderNav();
- if(state.acct)return renderDetail();
- ({how:renderHow,overview:renderOverview,setup:renderSetup,furnish:renderFurnish,portfolio:renderPortfolio,pursuits:renderPursuits,library:renderLibrary,insights:renderInsights,registry:renderRegistry,methodology:renderMethodology,governance:renderGovernance})[state.view]();}
+ if(state.acct){renderDetail();if(MODE==="mine")content.insertAdjacentHTML("afterbegin",ascentBar());saveMine();return;}
+ ({how:renderHow,overview:renderOverview,setup:renderSetup,furnish:renderFurnish,portfolio:renderPortfolio,pursuits:renderPursuits,library:renderLibrary,insights:renderInsights,registry:renderRegistry,methodology:renderMethodology,governance:renderGovernance})[state.view]();
+ if(MODE==="mine"&&["registry","setup","furnish","overview","portfolio","pursuits","library","insights"].includes(state.view))content.insertAdjacentHTML("afterbegin",ascentBar());
+ saveMine();}
 
 /* ============ HOW IT WORKS ============ */
 function howPipeline(){
@@ -763,21 +861,37 @@ function readiness(a){
   {t:"Relationships furnished (or confirmed none)",ok:a.setup.relationships.length>0||!!a._noRel},
   {t:"History & context noted",ok:!!a.setup.notes},
   {t:"Eligibility (RTP) reviewed",ok:!(a.rtp||[]).some(r=>r.st==="pending")},
-  {t:"Right-to-Win baseline confirmed by you",ok:!!a.rtwConfirmed}];}
+  {t:"Right-to-Win baseline confirmed by you",ok:!!a.rtwConfirmed}]
+  .concat(a._scratch?[{t:"Problems selected — drives kit matching",ok:(a.problems||[]).length>0}]:[]);}
 function readyPct(a){const c=readiness(a);return Math.round(c.filter(x=>x.ok).length/c.length*100);}
 function renderSetup(){
  setCrumb('<b>Account Setup</b>');
+ const mine=MODE==="mine";
  content.innerHTML=`
-  <div class="topbar"><div><h2>Account Setup</h2><p>Step 1 of the flow. Agents pre-draft what they can find; you review it and add what they never could. An account enters analysis only when its furnishing is complete.</p></div></div>
+  <div class="topbar"><div><h2>Account Setup</h2><p>${mine?"Step 2 of the ascent. You create the account and furnish what you know; agent columns stay as placeholders until agents are connected.":"Step 1 of the flow. Agents pre-draft what they can find; you review it and add what they never could. An account enters analysis only when its furnishing is complete."}</p></div>${mine?'<button class="btn" onclick="toggleNewAcct()">＋ Add account</button>':''}</div>
+  ${mine&&state._newAcct?`<div class="draft">
+    <h3 style="font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--accent);font-weight:700;margin-bottom:10px">New account — the minimum to start; everything else is furnished next</h3>
+    <div style="display:grid;grid-template-columns:1.2fr 1fr .8fr;gap:12px;margin-bottom:10px">
+     <div class="field" style="margin:0"><label>Account name</label><input id="naName" placeholder="e.g. Alpine Foods"></div>
+     <div class="field" style="margin:0"><label>Industry</label><input id="naInd" placeholder="e.g. Consumer Goods"></div>
+     <div class="field" style="margin:0"><label>Region</label><select id="naReg"><option>North America</option><option>EMEA</option><option>APAC</option></select></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px">
+     <div class="field" style="margin:0"><label>Size (free text)</label><input id="naSize" placeholder="e.g. 2,000 emp · $500M"></div>
+     <div class="field" style="margin:0"><label>Est. deal value $M</label><input id="naVal" type="number" step="0.1" value="1.0"></div>
+     <div class="field" style="margin:0"><label>Addressable $M</label><input id="naTam" type="number" step="1" value="5"></div>
+    </div>
+    <div style="display:flex;gap:8px"><button class="btn" onclick="createAccount()">Create — start furnishing</button><button class="btn ghost" onclick="toggleNewAcct()">Cancel</button></div>
+   </div>`:''}
   <div class="card">
-   ${ACCOUNTS.map(a=>`
+   ${ACCOUNTS.length?ACCOUNTS.map(a=>`
     <div class="setup-row" onclick="openFurnish('${a.id}')">
      <div class="co"><b>${a.name}</b><small>${a.industry} · ${a.region} · owner ${a.owner}</small></div>
      <div class="st">
       ${a.setup.play?`<span class="motion ${motionOf(a)}">${a.setup.play==="active"?"active client":a.setup.play==="past"?"past client":"prospect"}</span>`:'<span class="muted" style="font-size:11px">play not set</span>'}
       <div class="prog"><i style="width:${readyPct(a)}%"></i></div>
       ${a.setup.complete?'<span class="pill accept"><span class="pd"></span>In analysis</span>':`<span class="pill setup"><span class="pd"></span>Furnishing ${readyPct(a)}%</span>`}
-     </div></div>`).join("")}
+     </div></div>`).join(""):'<div class="empty">No accounts yet — add your first above. The ascent continues once one is fully furnished.</div>'}
   </div>
   <p class="hint">Click any account to open its furnishing page — also where you edit an active account&#39;s facts later. Every edit appends to the journal.</p>`;
 }
@@ -787,6 +901,7 @@ function openFurnish(id){state.view="furnish";state.fid=id;state.acct=null;rende
 function fA(){return ACCOUNTS.find(a=>a.id===state.fid);}
 function renderFurnish(){
  const a=fA();if(!a)return go('setup');
+ const sc=!!a._scratch;
  const strengths={strong:"rel-strong",warm:"rel-warm",cooling:"rel-cooling",cold:"rel-cold"};
  const checks=readiness(a),pct=readyPct(a);
  const props=a.queue.map((q,i)=>({...q,i})).filter(q=>q.st==="proposed");
@@ -808,7 +923,7 @@ function renderFurnish(){
     <div class="block" style="margin-top:14px"><h3>What agents found <span class="sub">approve or reject — nothing enters unreviewed</span></h3>
      ${props.length?props.map(q=>`<div class="qitem"><div class="qi"><span style="color:var(--ink)">${q.item}</span><small>${q.sec} · found by agent</small></div>
        <button class="btn sm" onclick="approveQ('${a.id}',${q.i})">Approve</button><button class="btn sm ghost" onclick="rejectQ('${a.id}',${q.i})">Reject</button></div>`).join("")
-      :'<p class="muted" style="font-size:12.5px">Nothing awaiting review.</p>'}
+      :(sc?`<div class="ph-item">Org structure — agent findings will queue here for your approval</div><div class="ph-item">Vendor landscape — awaiting agent connection</div><div class="ph-item">Public signals — awaiting agent connection</div><p class="hint">Agents are not connected in this workspace; their slots stay open as placeholders. Everything else proceeds without them.</p>`:'<p class="muted" style="font-size:12.5px">Nothing awaiting review.</p>')}
      ${appr.length?`<p class="hint" style="margin-top:10px"><b>Approved:</b> ${appr.map(q=>q.item.split(" (")[0]).join(" · ")}</p>`:''}
     </div>
    </div>
@@ -832,10 +947,18 @@ function renderFurnish(){
      <div class="field"><label>History & politics — lost bids, pricing, champions who left</label>
       <textarea id="notesIn" onchange="setNotesF('${a.id}',this.value)" placeholder="Free text — the journal keeps versions.">${a.setup.notes}</textarea></div>
     </div>
-    <div class="fsec"><div class="fh"><span class="fn">4</span><b>Eligibility — Right to Participate</b><small>factual · agents verify most</small></div>
-     ${(a.rtp||[]).map(r=>`<div class="rtpitem"><span>${r.item}</span><span class="tag">${r.src}</span><span class="st ${r.st}">${r.st==="ok"?"✓ verified":r.st==="pending"?"◌ pending":"✕ missing"}</span></div>`).join("")}
+    ${sc?`<div class="fsec"><div class="fh"><span class="fn">4</span><b>Problems — what hurts at this account</b><small>same taxonomy as your kits · drives matching</small></div>
+     <div class="chips">${TAXO.map(t=>{const on=(a.problems||[]).includes(t);return `<span class="chip click" style="${on?'background:#43224d;color:#fff;border-color:#43224d':''}" onclick="toggleProb('${a.id}','${t}')">${t}</span>`;}).join("")}</div>
+     <p class="hint">${(a.problems||[]).length?a.problems.length+" selected — fit is computed from overlap with kit tags.":"Pick at least one — with no problems, every kit is a guess."}</p>
+     ${Object.keys(KITS).some(kk=>(KITS[kk].disq||[]).length)?`<div class="sec-label" style="margin:12px 0 6px">Disqualifier check — flag any that apply here</div>
+      <div class="chips">${Object.keys(KITS).flatMap(kid=>(KITS[kid].disq||[]).map(d=>{const key=kid+"|"+d.t;const on=a._disqFlags&&a._disqFlags[key];return `<span class="chip click" style="${on?'background:#c4083f;color:#fff;border-color:#c4083f':''}" onclick="toggleDisqFlag('${a.id}','${key}')">${on?'⛔ ':''}${d.t} <small style="opacity:.7">· ${KITS[kid].name}</small></span>`;})).join("")}</div>
+      <p class="hint">A flagged blocking disqualifier forces a Pass — no score can override it.</p>`:''}
+    </div>`:''}
+    <div class="fsec"><div class="fh"><span class="fn">${sc?5:4}</span><b>Eligibility — Right to Participate</b><small>${sc?"click an item to cycle pending → verified → missing":"factual · agents verify most"}</small></div>
+     ${(a.rtp||[]).map((r,ri)=>`<div class="rtpitem ${sc?'click':''}" ${sc?`onclick="cycleRtp('${a.id}',${ri})"`:''}><span>${r.item}</span><span class="tag">${r.src}</span><span class="st ${r.st}">${r.st==="ok"?"✓ verified":r.st==="pending"?"◌ pending":"✕ missing"}</span></div>`).join("")}
+     ${sc?`<div class="jadd" style="margin-top:8px"><input id="rtpIn" placeholder="e.g. A certification they require"><button class="btn sm" onclick="addRtpItem('${a.id}')">Add</button></div>`:''}
     </div>
-    <div class="fsec rtw"><div class="fh"><span class="fn">5</span><b>Right to Win — your baseline judgment</b><small>agents never set these</small></div>
+    <div class="fsec rtw"><div class="fh"><span class="fn">${sc?6:5}</span><b>Right to Win — your baseline judgment</b><small>agents never set these</small></div>
      ${RTW_DIMS.map(d=>`
       <label style="font-size:12px;color:var(--muted);margin:10px 0 2px;display:flex;justify-content:space-between">${d.label}<span class="wv" style="font-family:var(--mono);color:var(--ink);font-weight:700" id="fb-${d.key}">${a.rtw[d.key]}/5</span></label>
       <div style="font-size:11px;color:var(--faint);margin-bottom:4px">${d.q}</div>
@@ -847,39 +970,86 @@ function renderFurnish(){
   </div>`;
 }
 function approveQ(id,i){const a=ACCOUNTS.find(x=>x.id===id);a.queue[i].st="approved";
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Approved agent finding: "+a.queue[i].item});renderFurnish();toast("Approved — now part of account truth.");}
+ a.journal.unshift({d:today(),src:"you",txt:"Approved agent finding: "+a.queue[i].item});render();toast("Approved — now part of account truth.");}
 function rejectQ(id,i){const a=ACCOUNTS.find(x=>x.id===id);const q=a.queue.splice(i,1)[0];
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Rejected agent finding: "+q.item});renderFurnish();toast("Rejected and logged — helps tune the agents.");}
+ a.journal.unshift({d:today(),src:"you",txt:"Rejected agent finding: "+q.item});render();toast("Rejected and logged — helps tune the agents.");}
 const REL_ORDER=["strong","warm","cooling","cold"];
 function relCycle(id,i){const a=ACCOUNTS.find(x=>x.id===id);const r=a.setup.relationships[i];
  r.strength=REL_ORDER[(REL_ORDER.indexOf(r.strength)+1)%4];
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Relationship updated: "+r.who+" → "+r.strength});
+ a.journal.unshift({d:today(),src:"you",txt:"Relationship updated: "+r.who+" → "+r.strength});
  render();toast(r.who+" → "+r.strength+". If this shifts your RTW, adjust the baseline below.");}
 function relDel(id,i){const a=ACCOUNTS.find(x=>x.id===id);const r=a.setup.relationships.splice(i,1)[0];
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Relationship removed: "+r.who});render();toast(r.who+" removed and logged.");}
+ a.journal.unshift({d:today(),src:"you",txt:"Relationship removed: "+r.who});render();toast(r.who+" removed and logged.");}
 function relAdd(id){const a=ACCOUNTS.find(x=>x.id===id);const w=document.getElementById("relIn"),s=document.getElementById("relSt");
  if(!w.value.trim())return;
  a.setup.relationships.push({who:w.value.trim(),strength:s.value,note:""});a._noRel=false;
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Relationship added: "+w.value.trim()+" ("+s.value+")"});
+ a.journal.unshift({d:today(),src:"you",txt:"Relationship added: "+w.value.trim()+" ("+s.value+")"});
  render();toast("Added and logged.");}
 function confirmNoRel(id){const a=ACCOUNTS.find(x=>x.id===id);a._noRel=true;
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Confirmed: no relationships held at this account."});render();}
+ a.journal.unshift({d:today(),src:"you",txt:"Confirmed: no relationships held at this account."});render();}
 function incAdd(id){const a=ACCOUNTS.find(x=>x.id===id);const el=document.getElementById("incIn");
  if(!el.value.trim())return;a.setup.incumbents.push(el.value.trim());
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Incumbent noted: "+el.value.trim()});render();}
+ a.journal.unshift({d:today(),src:"you",txt:"Incumbent noted: "+el.value.trim()});render();}
 function setPlayF(id,val){const a=ACCOUNTS.find(x=>x.id===id);a.setup.play=val;
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Existing play set: "+(val||"—")});render();}
+ a.journal.unshift({d:today(),src:"you",txt:"Existing play set: "+(val||"—")});render();}
 function setNotesF(id,val){const a=ACCOUNTS.find(x=>x.id===id);a.setup.notes=val;
- a.journal.unshift({d:"Jul 25",src:"you",txt:"History/context updated."});render();}
+ a.journal.unshift({d:today(),src:"you",txt:"History/context updated."});render();}
 function setRtwBase(id,k,val){const a=ACCOUNTS.find(x=>x.id===id);a.rtw[k]=+val;a.rtwAge[k]=0;
  const el=document.getElementById("fb-"+k);if(el)el.textContent=val+"/5";}
 function confirmRtwBase(id){const a=ACCOUNTS.find(x=>x.id===id);a.rtwConfirmed=true;
- a.journal.unshift({d:"Jul 25",src:"you",txt:"RTW baseline confirmed: "+RTW_DIMS.map(d=>d.key+" "+a.rtw[d.key]).join(", ")});
+ a.journal.unshift({d:today(),src:"you",txt:"RTW baseline confirmed: "+RTW_DIMS.map(d=>d.key+" "+a.rtw[d.key]).join(", ")});
  render();toast("Baseline confirmed — shelf-life clocks start now.");}
 function activateAccount(id){const a=ACCOUNTS.find(x=>x.id===id);
  if(readyPct(a)<100){toast("Not yet — complete the remaining readiness items first.");return;}
- a.setup.complete=true;a.journal.unshift({d:"Jul 25",src:"you",txt:"Furnishing complete. Account activated for analysis."});
+ a.setup.complete=true;a.journal.unshift({d:today(),src:"you",txt:"Furnishing complete. Account activated for analysis."});
  go('portfolio');toast(a.name+" is now in analysis — scored, ranked, watched.");}
+
+/* ---- scratch-mode: create & work from zero ---- */
+function toggleNewAcct(){state._newAcct=!state._newAcct;render();}
+function createAccount(){
+ const nm=document.getElementById("naName").value.trim();
+ if(!nm){toast("Name the account first.");return;}
+ const id="a"+Date.now();
+ ACCOUNTS.push({id,name:nm,industry:document.getElementById("naInd").value.trim()||"—",
+  size:document.getElementById("naSize").value.trim()||"—",region:document.getElementById("naReg").value,
+  owner:"You",value:parseFloat(document.getElementById("naVal").value)||1,tam:parseFloat(document.getElementById("naTam").value)||5,
+  _scratch:true,_disqFlags:{},
+  setup:{complete:false,play:"",engagements:[],incumbents:[],relationships:[],notes:""},
+  rtwConfirmed:false,rtw:{rel:3,cred:3,del:3,comp:3,comm:3},rtwAge:{rel:0,cred:0,del:0,comp:0,comm:0},
+  rtp:[{item:"MSA / vendor registration",st:"pending",src:"you"},{item:"Certifications they require",st:"pending",src:"you"}],
+  queue:[],journal:[{d:today(),src:"you",txt:"Account created — furnishing started."}],problems:[],devs:[],matches:[]});
+ state._newAcct=false;saveMine();openFurnish(id);toast(nm+" created. Furnish it — the gate sees nothing until 100%.");}
+function toggleProb(id,t){const a=ACCOUNTS.find(x=>x.id===id);a.problems=a.problems||[];
+ const i=a.problems.indexOf(t);if(i>=0)a.problems.splice(i,1);else a.problems.push(t);
+ a.journal.unshift({d:today(),src:"you",txt:(i>=0?"Problem removed: ":"Problem noted: ")+t});render();}
+function cycleRtp(id,i){const a=ACCOUNTS.find(x=>x.id===id);if(!a._scratch)return;
+ const order=["pending","ok","missing"];const r=a.rtp[i];r.st=order[(order.indexOf(r.st)+1)%3];
+ a.journal.unshift({d:today(),src:"you",txt:"Eligibility updated: "+r.item+" → "+r.st});render();}
+function addRtpItem(id){const a=ACCOUNTS.find(x=>x.id===id);const el=document.getElementById("rtpIn");
+ if(!el.value.trim())return;a.rtp.push({item:el.value.trim(),st:"pending",src:"you"});
+ a.journal.unshift({d:today(),src:"you",txt:"Eligibility item added: "+el.value.trim()});render();}
+function toggleDisqFlag(id,key){const a=ACCOUNTS.find(x=>x.id===id);a._disqFlags=a._disqFlags||{};
+ a._disqFlags[key]=!a._disqFlags[key];
+ a.journal.unshift({d:today(),src:"you",txt:(a._disqFlags[key]?"Disqualifier flagged: ":"Disqualifier cleared: ")+key.split("|")[1]});render();}
+function startPursuit(id){const a=ACCOUNTS.find(x=>x.id===id);const top=bestMatch(a);
+ const cap=TEAM.reduce((sm,t)=>sm+t.cap,0),used=TEAM.reduce((sm,t)=>sm+t.active,0);
+ if(used>=cap){toast("No free slots — close or drop a pursuit first.");return;}
+ PURSUITS.push({id:"p"+Date.now(),acct:id,stage:"Qualify",kit:top.kit,owner:"You",
+  next:[{t:"Identify the champion and book the first meeting",due:"+7d",done:false},
+        {t:"Draft a point-of-view for "+KITS[top.kit].name,due:"+14d",done:false},
+        {t:"Map the buying committee (Targeting tab)",due:"+21d",done:false}],
+  meetings:[],proposal:"Not started",
+  battle:{comp:(a.setup.incumbents[0]||"No incumbent furnished"),their:"— furnish what you learn —",ours:"— your counters —",watch:"— what could blindside you —"}});
+ a.journal.unshift({d:today(),src:"you",txt:"Pursuit started — slot claimed for "+KITS[top.kit].name+"."});
+ saveMine();go('pursuits');toast("Slot claimed. Stage 1: Qualify.");}
+function advanceStage(pid){const p=PURSUITS.find(x=>x.id===pid);const i=STAGES.indexOf(p.stage);
+ if(i<STAGES.length-1){p.stage=STAGES[i+1];saveMine();render();toast("Stage → "+p.stage+".");}}
+function closePursuit(pid,res){const p=PURSUITS.find(x=>x.id===pid);const a=ACCOUNTS.find(x=>x.id===p.acct);
+ const reason=prompt(res==="won"?"Why did we win? (one line — it recalibrates the engine)":"Why did we lose? (one line — the lesson matters more than the loss)")||"—";
+ WINLOSS.unshift({acct:a.name,kit:p.kit,res,value:a.value,date:today()+" 2026",reason,lesson:reason});
+ PURSUITS.splice(PURSUITS.indexOf(p),1);
+ a.journal.unshift({d:today(),src:"you",txt:"Pursuit closed — "+res+". "+reason});
+ saveMine();go('insights');toast(res==="won"?"Won — logged. The loop is complete.":"Lost — logged. The lesson feeds the next verdict.");}
 
 /* ============ PORTFOLIO (furnished only) ============ */
 let pfilter="all";
@@ -887,7 +1057,7 @@ function renderPortfolio(){
  setCrumb('<b>Target Portfolio</b> · '+state.geo);
  const accts=geoAccounts().filter(a=>a.setup.complete);
  const hidden=geoAccounts().length-accts.length;
- const scored=accts.map(a=>({a,v:verdict(a)})).sort((x,y)=>y.v.top.score-x.v.top.score);
+ const scored=accts.map(a=>({a,v:verdict(a)})).sort((x,y)=>((y.v.top?y.v.top.score:0)-(x.v.top?x.v.top.score:0)));
  const c={accept:0,build:0,rtp:0,review:0,reject:0};scored.forEach(x=>c[x.v.v]++);
  const shown=scored.filter(x=>pfilter==="all"||x.v.v===pfilter);
  content.innerHTML=`
@@ -914,7 +1084,7 @@ function renderPortfolio(){
     </tr>`).join("")||'<tr><td colspan="7" class="empty">No accounts match.</td></tr>'}</tbody>
   </table></div>`;
 }
-function setF(f){pfilter=f;renderPortfolio();}
+function setF(f){pfilter=f;render();}
 
 /* ============ PURSUITS ============ */
 function renderPursuits(){
@@ -927,10 +1097,12 @@ function renderPursuits(){
      ${TEAM.map(t=>`<div class="kv"><span>${t.name}</span><b>${t.active} / ${t.cap} slots</b></div>`).join("")}
      <p class="hint">${cap-used} slot${cap-used!==1?'s':''} free. "Pursue" competes for a slot, it doesn&#39;t just pass a bar.</p></div></div>
    <div>
+   ${PURSUITS.length?'':'<div class="card" style="margin-bottom:14px"><div class="empty">No pursuits yet. A pursuit is earned at the gate — take an account to a Pursue verdict, then claim a slot from its Gate tab.</div></div>'}
    ${PURSUITS.map(p=>{const a=ACCOUNTS.find(x=>x.id===p.acct);const si=STAGES.indexOf(p.stage);return `
     <div class="card" style="margin-bottom:14px"><div class="ch"><span>${a.name} — ${KITS[p.kit].name}</span><span class="sub">$${a.value.toFixed(1)}M · ${p.owner} · <span class="whylink" onclick="open_('${a.id}')">open account →</span></span></div>
      <div class="cb">
       <div class="stagebar">${STAGES.map((s,i)=>`<div class="sg ${i<si?'done':i===si?'cur':''}"><div class="cir">${i<si?'✓':i+1}</div><div class="lb">${s}</div></div>`).join("")}</div>
+      ${MODE==="mine"?`<div style="display:flex;gap:8px;margin-top:12px">${si<STAGES.length-1?`<button class="btn sm" onclick="advanceStage('${p.id}')">Advance stage →</button>`:''}<button class="btn sm" style="background:var(--green)" onclick="closePursuit('${p.id}','won')">Close — won</button><button class="btn sm ghost" onclick="closePursuit('${p.id}','lost')">Close — lost</button></div>`:''}
       <div class="grid2" style="margin-top:14px">
        <div>
         <h3 style="font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">Next steps</h3>
@@ -952,7 +1124,7 @@ function renderPursuits(){
    </div>
   </div>`;
 }
-function toggleTask(pid,i){const p=PURSUITS.find(x=>x.id===pid);p.next[i].done=!p.next[i].done;renderPursuits();}
+function toggleTask(pid,i){const p=PURSUITS.find(x=>x.id===pid);p.next[i].done=!p.next[i].done;render();}
 
 /* ============ LIBRARY ============ */
 function renderLibrary(){
@@ -962,7 +1134,7 @@ function renderLibrary(){
   <div class="card">
    ${LIBRARY.map(l=>`<div class="lib"><div class="ic">${l.type}</div>
     <div style="flex:1"><b>${l.title}</b><small>Kits: ${l.kits} · Industry: ${l.ind}</small></div>
-    <small class="muted" style="white-space:nowrap">${l.used}</small></div>`).join("")}
+    <small class="muted" style="white-space:nowrap">${l.used}</small></div>`).join("")||'<div class="empty">Empty — collateral accrues as pursuits run: cases, references, proposals, battlecards.</div>'}
   </div>`;
 }
 
@@ -976,28 +1148,28 @@ function renderInsights(){
  const forecast=PURSUITS.reduce((s,p)=>{const a=ACCOUNTS.find(x=>x.id===p.acct);return s+a.value*(STAGE_PROB[p.stage]||.3);},0);
  const raw=PURSUITS.reduce((s,p)=>s+ACCOUNTS.find(x=>x.id===p.acct).value,0);
  const fun=[["Accounts scanned",ACCOUNTS.length],["Furnished & in analysis",furnished.length],["Past the gate",qual],["Active pursuits",PURSUITS.length]];
- const mx=ACCOUNTS.length;
+ const mx=Math.max(ACCOUNTS.length,1);
  content.innerHTML=`
   <div class="topbar"><div><h2>Insights</h2><p>Forecast, funnel, and the win/loss log that recalibrates the engine.</p></div></div>
   <div class="kpis" style="grid-template-columns:repeat(3,1fr)">
    <div class="kpi"><div class="l">Weighted forecast</div><div class="n">$${forecast.toFixed(1)}M</div><div class="d">$${raw.toFixed(1)}M unweighted · stage-weighted</div></div>
-   <div class="kpi"><div class="l">Win rate (12 mo)</div><div class="n">${Math.round(won/WINLOSS.length*100)}%</div><div class="d">${won} won · ${WINLOSS.length-won} lost</div></div>
-   <div class="kpi"><div class="l">Avg. won deal</div><div class="n">$${(WINLOSS.filter(w=>w.res==="won").reduce((s,w)=>s+w.value,0)/won).toFixed(1)}M</div><div class="d">sizing audit vs actual: −8%</div></div>
+   <div class="kpi"><div class="l">Win rate (12 mo)</div><div class="n">${WINLOSS.length?Math.round(won/WINLOSS.length*100):0}%</div><div class="d">${won} won · ${WINLOSS.length-won} lost</div></div>
+   <div class="kpi"><div class="l">Avg. won deal</div><div class="n">$${won?(WINLOSS.filter(w=>w.res==="won").reduce((s,w)=>s+w.value,0)/won).toFixed(1):"0.0"}M</div><div class="d">${won?"sizing audit vs actual: −8%":"no wins logged yet"}</div></div>
   </div>
   <div class="cols" style="grid-template-columns:.8fr 1.2fr">
    <div class="block"><h3>Funnel</h3><div class="funl">
     ${fun.map(([t,n])=>`<div class="fr"><div class="t"><span>${t}</span><b>${n}</b></div><div class="track"><i style="width:${Math.round(n/mx*100)}%"></i></div></div>`).join("")}
-    <div class="fr"><div class="t"><span>Historical win rate</span><b>${won} of ${WINLOSS.length}</b></div><div class="track"><i style="width:${Math.round(won/WINLOSS.length*100)}%"></i></div></div>
+    <div class="fr"><div class="t"><span>Historical win rate</span><b>${won} of ${WINLOSS.length}</b></div><div class="track"><i style="width:${WINLOSS.length?Math.round(won/WINLOSS.length*100):0}%"></i></div></div>
    </div></div>
    <div class="card"><div class="ch">Win / loss log <span class="sub">every close feeds recalibration</span></div>
     <table><thead><tr><th>Account</th><th>Kit</th><th>Result</th><th>Why</th></tr></thead><tbody>
      ${WINLOSS.map(w=>`<tr><td><div class="co"><b>${w.acct}</b><small>${w.date} · $${w.value}M</small></div></td><td>${w.kit}</td>
-      <td><span class="pill ${w.res}"><span class="pd"></span>${w.res}</span></td><td style="font-size:12.5px">${w.reason}</td></tr>`).join("")}
+      <td><span class="pill ${w.res}"><span class="pd"></span>${w.res}</span></td><td style="font-size:12.5px">${w.reason}</td></tr>`).join("")||'<tr><td colspan="4" class="empty">No closes yet — every one will feed recalibration.</td></tr>'}
     </tbody></table>
    </div>
   </div>
   <div class="block" style="margin-top:14px"><h3>What the engine learned <span class="sub">from losses — applied as proposals you approve</span></h3>
-   ${WINLOSS.filter(w=>w.res==="lost").map(w=>`<div class="kv"><span>${w.acct}</span><b style="max-width:70%;font-weight:500;color:var(--body)">${w.lesson}</b></div>`).join("")}
+   ${WINLOSS.filter(w=>w.res==="lost").map(w=>`<div class="kv"><span>${w.acct}</span><b style="max-width:70%;font-weight:500;color:var(--body)">${w.lesson}</b></div>`).join("")||'<p class="muted" style="font-size:12.5px">Nothing yet — lessons appear after your first logged loss.</p>'}
   </div>`;
 }
 
@@ -1045,14 +1217,14 @@ function renderRegistry(){
     <p class="hint">GenAI parsed ${draftKit.slides} slides and mapped language to the shared taxonomy. Remove any tag that overreaches — a kit that claims too much matches too much.</p>
    </div>`:''}
   ${Object.entries(KITS).map(([id,k])=>{
-   const used=ACCOUNTS.filter(a=>a.setup.complete&&a.matches.some(m=>m.kit===id));
+   const used=ACCOUNTS.filter(a=>a.setup.complete&&(matchesOf(a)||[]).some(m=>m.kit===id));
    return `<div class="card" style="margin-bottom:12px"><div class="ch">${k.name} <span class="sub">${id} · ${k.line}${k.fresh?" · "+k.fresh:""}</span></div>
     <div class="cb" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
      <div><div class="sec-label" style="margin:0 0 6px">Problem tags</div><div class="chips">${k.tags.map(t=>`<span class="chip">${t}</span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">Value levers</div><div class="chips">${k.levers.map(t=>`<span class="chip">${t}</span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">Disqualifiers</div><div class="chips">${k.disq.map(d=>`<span class="chip" style="border-color:${d.hard?'#f0d4dc':'#eee0bd'};color:${d.hard?'var(--red)':'var(--amber)'};background:${d.hard?'#fdf4f7':'#fdf8ec'}">${d.hard?'⛔ ':'⚠ '}${d.t}</span>`).join("")}</div></div>
      <div><div class="sec-label" style="margin:0 0 6px">In portfolio</div><p style="font-size:12.5px">${used.length?used.map(a=>`<span class="whylink" onclick="open_('${a.id}')">${a.name}</span>`).join(" · "):'<span class="muted">no match yet</span>'}</p></div>
-    </div></div>`;}).join("")}`;
+    </div></div>`;}).join("")}${Object.keys(KITS).length?'':'<div class="card"><div class="empty">No kits yet. The kit is the vocabulary everything downstream matches against — upload a deck (simulated) or build one manually.</div></div>'}`;
 }
 function addKitDemo(){
  manualKit=null;
@@ -1130,12 +1302,12 @@ function renderTab(){
     </div>
     <div class="block" style="margin-top:14px"><h3>Developments <span class="sub">materiality decides what interrupts</span></h3>
      ${a.devs.map(d=>`<div class="dev" style="padding:10px 0"><span class="dt">${d.d}</span><span class="dk ${d.type}"></span>
-      <div class="db"><p style="color:var(--ink);font-weight:600">${d.t} <span class="mat ${d.mat}">${d.mat.toUpperCase()}</span></p></div></div>`).join("")}
+      <div class="db"><p style="color:var(--ink);font-weight:600">${d.t} <span class="mat ${d.mat}">${d.mat.toUpperCase()}</span></p></div></div>`).join("")||'<div class="ph-item">No developments yet — agents will log them here once connected. Your journal entries feed the engine meanwhile.</div>'}
     </div>
    </div></div>`;
  }
  else if(state.tab==="fit"){
-  const rows=a.matches.map(m=>({...m,score:kitScore(m.s)})).sort((x,y)=>y.score-x.score);
+  const rows=matchesOf(a).map(m=>({...m,score:kitScore(m.s)})).sort((x,y)=>y.score-x.score);
   body.innerHTML=`<div class="block"><h3>Problem ↔ Kit fit map <span class="sub"><span class="whylink" onclick="go('methodology')">how scored? →</span></span></h3>
    <table class="matrix">
     <thead><tr><th style="text-align:left">Solution kit</th>${AXES.map(x=>`<th>${x.label}</th>`).join("")}<th style="text-align:right">Fit</th></tr></thead>
@@ -1153,21 +1325,21 @@ function renderTab(){
 
 function addJournal(id){const a=ACCOUNTS.find(x=>x.id===id);const el=document.getElementById("jin");
  if(!el.value.trim())return;
- a.journal.unshift({d:"Jul 25",src:"you",txt:el.value.trim()});el.value="";renderTab();
+ a.journal.unshift({d:today(),src:"you",txt:el.value.trim()});el.value="";renderTab();
  toast("Logged. State renderer will link it to prior entries and propose updates.");}
 function playScenario(){const a=ACCOUNTS.find(x=>x.id==="corepoint");
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Not getting meetings with the COO anymore — two attempts since June went unanswered."});
+ a.journal.unshift({d:today(),src:"you",txt:"Not getting meetings with the COO anymore — two attempts since June went unanswered."});
  a._played=true;
  a.proposal={dim:"rel",from:a.rtw.rel,to:2,why:"Links to Apr 12 (&ldquo;met COO — positive&rdquo;) and Jun 03 (LinkedIn: COO absorbed by merger integration). Access is degrading; likely bandwidth, not rejection. Suggested angle: enter through the integration office."};
  renderTab();toast("Journal updated. The renderer linked 3 entries and raised a proposal — your call.");}
 function acceptProp(){const a=state.acct;
  a.rtw[a.proposal.dim]=a.proposal.to;a.rtwAge[a.proposal.dim]=0;
  const rel=a.setup.relationships.find(r=>r.who==="COO");if(rel)rel.strength="cooling";
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Confirmed renderer proposal: relationships 5 → 2. COO marked cooling."});
+ a.journal.unshift({d:today(),src:"you",txt:"Confirmed renderer proposal: relationships 5 → 2. COO marked cooling."});
  a.proposal=null;renderTab();
  toast("Confirmed. RTW updated, COO marked cooling, gate re-scored. Trigger raised: approach via integration office.");}
 function rejectProp(){const a=state.acct;
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Dismissed renderer proposal — keeping relationships at "+a.proposal.from+"."});
+ a.journal.unshift({d:today(),src:"you",txt:"Dismissed renderer proposal — keeping relationships at "+a.proposal.from+"."});
  a.proposal=null;renderTab();toast("Dismissed and logged.");}
 
 /* ---- GATE ---- */
@@ -1226,7 +1398,10 @@ function refreshGate(){
  box.innerHTML=`<div class="vh"><span class="big" style="color:${VCOLOR[v.v]}">${VLABEL[v.v]}</span>
   <span class="pill ${v.v}"><span class="pd"></span>fit ${top.score}/${THRESHOLD.accept} · rtw ${v.rtw}/${THRESHOLD.rtw}</span></div>
   <div class="sc">best fit: <b>${KITS[top.kit].name}</b> · ${motionOf(a)==="cross"?"cross-sell":"new account"}</div>
-  <p>${explain(a,v)}</p><div class="impact" id="impact"></div>`;
+  <p>${explain(a,v)}</p>
+  ${MODE==="mine"&&v.v==="accept"&&!PURSUITS.some(pp=>pp.acct===a.id)?`<button class="btn" style="margin:10px 0" onclick="startPursuit('${a.id}')">Claim a slot — start the pursuit →</button>`:''}
+  ${MODE==="mine"&&PURSUITS.some(pp=>pp.acct===a.id)?`<p class="hint">Pursuit running — <span class="whylink" onclick="go('pursuits')">open the workspace →</span></p>`:''}
+  <div class="impact" id="impact"></div>`;
  const w=WEIGHTS,t=w.problem+w.value+w.ready+w.constr+w.signal;
  document.getElementById("axisBars").innerHTML=AXES.map(x=>{const c=Math.round(top.s[x.key]*w[x.key]/t);
   return `<div class="axis"><div class="top"><b>${x.label}</b><span class="v">${top.s[x.key]} × ${w[x.key]} → +${c}</span></div><div class="track"><i style="width:${top.s[x.key]}%"></i></div></div>`;}).join("");
@@ -1241,7 +1416,7 @@ function refreshGate(){
  const hp=document.getElementById("hdrPill");if(hp){hp.className="pill "+v.v;hp.innerHTML=`<span class="pd"></span>${VLABEL[v.v]} · fit ${top.score} · rtw ${v.rtw}`;}
 }
 function reaffirm(k){const a=state.acct;a.rtwAge[k]=0;
- a.journal.unshift({d:"Jul 25",src:"you",txt:"Re-affirmed "+dimLabel(k).toLowerCase()+" at "+a.rtw[k]+"/5."});
+ a.journal.unshift({d:today(),src:"you",txt:"Re-affirmed "+dimLabel(k).toLowerCase()+" at "+a.rtw[k]+"/5."});
  renderGate();toast(dimLabel(k)+" re-affirmed — clock reset.");}
 function setRtw(k,val){state.acct.rtw[k]=+val;state.acct.rtwAge[k]=0;const el=document.getElementById("r-"+k);if(el)el.textContent=val+"/5";refreshGate();}
 function setW(k,val){WEIGHTS[k]=+val;const el=document.getElementById("w-"+k);if(el)el.textContent=val;refreshGate();}
@@ -1278,7 +1453,7 @@ function renderActivation(){
    ${actionable.map(d=>`<div class="dev" style="padding:10px 0"><span class="dt">${d.d}</span><span class="dk ${d.type}"></span><div class="db"><p style="color:var(--ink);font-weight:600">${d.t}</p><p class="muted" style="font-size:12px">${d.trig}</p></div></div>`).join("")}</div>`
   :`<div class="banner" style="margin-bottom:14px">◦ <span>No high-materiality trigger live. The engine recommends <b>no outreach</b> — contact without a reason spends relationship capital for nothing.</span></div>`}
   <div class="grid2" style="grid-template-columns:1.25fr .75fr">
-   <div>${a.problems.slice(0,2).map((p,i)=>{const d=a.devs[i%a.devs.length];const st=i===0?"approved — queued":"draft — awaiting approval";return `
+   <div>${a.problems.slice(0,2).map((p,i)=>{const d=a.devs.length?a.devs[i%a.devs.length]:{t:"no live development yet — placeholder",d:""};const st=i===0?"approved — queued":"draft — awaiting approval";return `
     <div class="camp"><div class="chd"><div><div class="ct">Campaign ${i+1} — counter &ldquo;${p.toLowerCase()}&rdquo;</div>
      <div class="cmeta">anchored on: ${d.t.toLowerCase()}</div></div><span class="tag ${i===0?'on':''}">${st}</span></div>
      <div class="cgrid">
@@ -1292,7 +1467,7 @@ function renderActivation(){
    <div class="block"><h3>Thought-leadership angles <span class="sub">relevance-gated</span></h3>
     <div class="tl-item"><b>${a.industry}: the compounding cost of ${a.problems[0].toLowerCase()}</b><small>POV · champion · supports Campaign 1</small></div>
     <div class="tl-item"><b>A field guide to ${kit.toLowerCase()}</b><small>Practitioner guide · technical evaluator</small></div>
-    <div class="tl-item"><b>From &ldquo;${a.devs[0].t.toLowerCase()}&rdquo; to outcomes</b><small>Trigger-linked · timed to the window</small></div>
+    ${a.devs.length?`<div class="tl-item"><b>From &ldquo;${a.devs[0].t.toLowerCase()}&rdquo; to outcomes</b><small>Trigger-linked · timed to the window</small></div>`:''}
    </div>
   </div>`;
 }
@@ -1355,7 +1530,10 @@ function renderGovernance(){
    </tbody></table></div>`;
 }
 
+applyMode();
+if(MODE==="mine")state.view=nextStepView();
 renderNav();render();
+setInterval(saveMine,1500);window.addEventListener("beforeunload",saveMine);
 document.addEventListener("click",function(){
  if(document.fullscreenElement)return;
  const el=document.documentElement;
